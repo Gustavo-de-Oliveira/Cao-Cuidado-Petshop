@@ -1,6 +1,3 @@
-![Petshop](https://user-images.githubusercontent.com/48142112/119210999-0d82ec00-ba86-11eb-85b6-8bc347abeb9b.png)
-![Petshop](https://user-images.githubusercontent.com/48142112/119211003-1a074480-ba86-11eb-9139-f66b845ef4ec.png)
-![Petshop](https://user-images.githubusercontent.com/48142112/119211007-1c699e80-ba86-11eb-8815-19e119127de9.png)
 Guilherme Alves Neves Tavares - 11218730 <br>
 Guilherme Jun Yazaki Grillo - 11208350 <br>
 Gustavo de Oliveira Silva  - 10734366 <br>
