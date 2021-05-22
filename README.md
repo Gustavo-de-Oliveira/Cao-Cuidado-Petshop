@@ -1,3 +1,6 @@
+![Petshop](https://user-images.githubusercontent.com/48142112/119210999-0d82ec00-ba86-11eb-85b6-8bc347abeb9b.png)
+![Petshop](https://user-images.githubusercontent.com/48142112/119211003-1a074480-ba86-11eb-9139-f66b845ef4ec.png)
+![Petshop](https://user-images.githubusercontent.com/48142112/119211007-1c699e80-ba86-11eb-8815-19e119127de9.png)
 Guilherme Alves Neves Tavares - 11218730 <br>
 Guilherme Jun Yazaki Grillo - 11208350 <br>
 Gustavo de Oliveira Silva  - 10734366 <br>
@@ -30,7 +33,7 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
    </ul>
   </li><br>
  
-  <li> O sistema deve permitir que os administradores adicionem e removam os serviços do estoque. Para cadastrar um serviço, deve ser fornecida uma descrição geral. Os dados a serem armazenados sobre cada produto são: <i> Nome, animais, descrição, duração, horários disponíveis, preço atual, preço real, avaliação e dúvidas frequentes.</li>
+  <li> O sistema deve permitir que os administradores adicionem e removam os serviços do estoque. Para cadastrar um serviço, deve ser fornecida uma descrição geral. Os dados a serem armazenados sobre cada produto são: <i> Nome, animais, descrição, duração, horários disponíveis, preço atual, preço real, avaliação e dúvidas frequentes.</i></li>
   <ul>
     <li> Para cada serviço, o sistema deve armazenar uma lista, cujo tamanho depende da duração do serviço, com todos os horários disponíveis para a semana. Sempre que o cliente realizar o agendamento no site, este horário não deve mais aparecer como disponível. </li>
     <li> Deve ser possível filtrar os serviços com marca e animais relacionados.
@@ -47,12 +50,33 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
  
   <li> Os administradores podem adicionar, remover e gerenciar animais da adoção. Para cadastrar um animal, deve ser fornecida uma descrição geral sobre o animal. Os dados a serem armazenados sobre cada animal são: <i> Espécie, raça, idade, descrição, vacinas e imagens.</i> 
     <ul>
-      <il> O sistema deve permitir que os clientes sinalizem ao petshop que têm interesse em adotar um animal.</il>
-      <il> O sistema deve conter uma lista com todos horários disponíveis na semana para os clientes visitarem os animais em adoção.</il>
-      <il> Os clientes devem poder agendar um horário para visitar o petshop paara conhecer os animais em adoção. </il>
+      <li> O sistema deve permitir que os clientes sinalizem ao petshop que têm interesse em adotar um animal.</li>
+      <li> O sistema deve conter uma lista com todos horários disponíveis na semana para os clientes visitarem os animais em adoção.</li>
+      <li> Os clientes devem poder agendar um horário para visitar o petshop paara conhecer os animais em adoção. </li>
     </ul>
   </li>
+</ul>
+</p>
  
-</ul> </p>
+ ## Descrição
+ <p>
+ As páginas web do site foram feitas em HTML5 e CSS3, utilizando as frameworks ... [?] <br>
+ O banco de dados foi feito utilizando ...[?] <br>
+ 
+ ### Modelagem do Banco de Dados
+ O diagrama a seguir representa o Modelo Entidade-Relacionamento do sistema, e será útil para ilustrar como as principais funcionalidades do sistema serão implementadas:
+![Petshop](https://user-images.githubusercontent.com/48142112/119211010-2095bc00-ba86-11eb-81a3-4172f9bb9b16.png)
+
+ <ul>
+  <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são derivados de um usuário genérico.</li> 
+  <li> Os produtos do petshop foram implementados com uma generalização, de forma que serviços e produtos são derivados de um item comercializável genérico.</li><br>
+  <li> As vendas do sistema serão armazenadas dado um par <i>Cliente</i> e <i>"Item comercializável</i>. Mesmo que o cliente adquira vários itens em uma mesma compra, uma <i>Venda</i> será criada para cada produto. Para cada <i> Venda </i> o cliente poderá realizar avaliações. </li>
+  <li> Analogamente, a adoção será instanciada dado um par <i> Cliente </i> e <i> Animal </i>, de forma que, cada adoção será identificada pelo par e pela data em que foi realizada. Nota-se também que, os animais são identificados por um código numérico</li>
+ </ul>
+</p>
+
+### Navegação das Páginas...[?]
+
+
 
 
