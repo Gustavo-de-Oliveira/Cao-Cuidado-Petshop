@@ -634,6 +634,13 @@ footer {
 	text-decoration: underline;
 }
 
+/**********************************************NOT FOUND**************************************************/
+
+.notFound {
+	text-align: center;
+	margin: 2em 10em 2em 10em;
+}
+
 /*Primary Orange - EB5E0B
 Primary Blue - 5EAAA8
 Secondary Blue - A3D2CA
