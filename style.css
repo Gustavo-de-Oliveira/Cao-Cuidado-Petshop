@@ -77,22 +77,19 @@ header {
 
 .navbar-down {
   background-color: var(--secondary);
-  padding: 0px 0px 8px 8px;
+  padding: 10px 70px;
   vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-dropdown {
-  width: 120px;
-  height: 35px;
-  margin-left: 25px;
   color: var(--main_white);
-  margin-top: auto;
-  margin-bottom: auto;
-
-  padding-top: auto;
-  padding-bottom: auto;
-
+  cursor: pointer;
   border: none;
+  font-size: 16px;
+
   -webkit-appearance: none;
   background-image: none;
   background-color: transparent;
@@ -102,11 +99,8 @@ header {
 }
 
 .vertical-hr {
-  border-left: 1px solid var(--main_white);
+  border-left: 2px solid var(--main_white);
   height: 40px;
-  margin-top: 10px;
-  margin-bottom: -10px;
-  display: inline-block;
 }
 
 .navbar-link {
