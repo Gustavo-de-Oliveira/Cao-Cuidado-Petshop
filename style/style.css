@@ -92,7 +92,7 @@ header {
 
   -webkit-appearance: none;
   background-image: none;
-  background-color: transparent;
+  background-color: var(--secondary);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -118,13 +118,14 @@ header {
 /**********************************************FOOTER**************************************************/
 
 footer {
-  background-color: var(--secondary);
-  column-count: 5;
-  column-gap: 10px;
-  -moz-column-count: 5;
-  -webkit-column-count: 5;
-  margin: 0px -8px -16px -8px;
-  padding-top: 5px;
+	background-color: var(--secondary);
+	column-count: 5;
+	column-gap: 10px;
+	-moz-column-count: 5;
+	-webkit-column-count: 5;
+	margin: 0px -8px -16px -8px;
+	padding-top: 15px;
+	height: 175px;
 }
 
 .contact-form {
@@ -171,7 +172,11 @@ footer {
 }
 
 .footer-section {
-  margin: 0px 10px 10px 10px;
+  margin: 0px 10px 20px 10px;
+}
+
+#footer-logo {
+	margin-top: 25px;
 }
 
 .footer-section h3 {
