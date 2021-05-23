@@ -24,8 +24,8 @@
 }
 
 .item-info #cart {
-  background: #eb5e0b;
-  color: #f8f1f1;
+  background: var(--primary);
+  color: var(--main_white);
   border: none;
   padding: auto auto auto auto;
   width: 175px;
@@ -38,8 +38,8 @@
 }
 
 .item-info #buy {
-  background: #5eaaa8;
-  color: #f8f1f1;
+  background: var(--secondary);
+  color: var(--main_white);
   border: none;
   padding: auto auto auto auto;
   width: 175px;
@@ -52,18 +52,18 @@
 }
 
 .description-header {
-  background-color: #5eaaa8;
+  background-color: var(--secondary);
   margin-top: 1em;
   padding: 8px 8px 8px 8px;
 }
 
 .description-header a {
   text-decoration: none;
-  color: #f8f1f1;
+  color: var(--main_white);
 }
 
 .description-header a:hover {
-  color: #eb5e0b;
+  color: var(--primary);
 }
 
 .description-header ul li {
@@ -73,7 +73,7 @@
 }
 
 .description-section {
-  border: 1px solid #5eaaa8;
+  border: 1px solid var(--secondary);
   border-radius: 10px;
   padding: 1em 1em 1em 1em;
   margin-top: 1em;
@@ -85,7 +85,7 @@
 
 #buy-together a {
   text-decoration: none;
-  color: #000000;
+  color: var(--main_black);
 }
 
 #buy-together a:hover {

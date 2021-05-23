@@ -1,5 +1,5 @@
 body {
-  background-color: #f8f1f1;
+  background-color: var(--main_white);
 }
 
 /**********************************************HEADER**************************************************/
@@ -9,7 +9,7 @@ header {
 }
 
 .navbar-up {
-  background-color: #a3d2ca;
+  background-color: var(--secondary_dark);
   padding: 8px 8px 8px 8px;
 }
 
@@ -26,7 +26,7 @@ header {
   padding-left: 25px;
   padding-right: 40px;
   width: 300px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid var(--main_white);
   font-size: 13px;
   color: gray;
 }
@@ -54,7 +54,7 @@ header {
 }
 
 .nav-section {
-  color: #f8f1f1;
+  color: var(--main_white);
   position: absolute;
   width: 150px;
   padding: 15px;
@@ -63,7 +63,7 @@ header {
 }
 
 .nav-section:hover {
-  background-color: #5eaaa8;
+  background-color: var(--secondary);
   border-bottom: 1px;
 }
 
@@ -76,7 +76,7 @@ header {
 }
 
 .navbar-down {
-  background-color: #5eaaa8;
+  background-color: var(--secondary);
   padding: 0px 0px 8px 8px;
   vertical-align: middle;
 }
@@ -85,7 +85,7 @@ header {
   width: 120px;
   height: 35px;
   margin-left: 25px;
-  color: #f8f1f1;
+  color: var(--main_white);
   margin-top: auto;
   margin-bottom: auto;
 
@@ -102,7 +102,7 @@ header {
 }
 
 .vertical-hr {
-  border-left: 1px solid #f8f1f1;
+  border-left: 1px solid var(--main_white);
   height: 40px;
   margin-top: 10px;
   margin-bottom: -10px;
@@ -111,12 +111,12 @@ header {
 
 .navbar-link {
   text-decoration: none;
-  color: #f8f1f1;
+  color: var(--main_white);
   margin-left: 2em;
 }
 
 .navbar-link:hover {
-  color: #eb5e0b;
+  color: var(--primary);
 }
 
 /**********************************************HEADER**************************************************/
@@ -124,7 +124,7 @@ header {
 /**********************************************FOOTER**************************************************/
 
 footer {
-  background-color: #5eaaa8;
+  background-color: var(--secondary);
   column-count: 5;
   column-gap: 10px;
   -moz-column-count: 5;
@@ -135,7 +135,7 @@ footer {
 
 .contact-form {
   width: 80%;
-  background-color: #a3d2ca;
+  background-color: var(--secondary_light);
   border-radius: 30px;
 
   margin-left: auto;
@@ -159,14 +159,14 @@ footer {
   padding-left: 25px;
   padding-right: 40px;
   width: 500px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid var(--main_white);
   font-size: 20px;
   color: gray;
 }
 
 .contact-form button {
-  background: #eb5e0b;
-  color: #f8f1f1;
+  background: var(--primary);
+  color: var(--main_white);
   border: none;
   padding: auto auto auto auto;
   font-size: 25px;
@@ -186,15 +186,15 @@ footer {
 
 .footer-section ul li {
   list-style: none;
-  color: #000000;
+  color: var(--main_black);
 }
 .footer-section ul li a {
   text-decoration: none;
-  color: #000000;
+  color: var(--main_black);
 }
 
 .footer-section ul li a:hover {
-  color: #eb5e0b;
+  color: var(--primary);
 }
 
 .inline li {
@@ -449,7 +449,7 @@ li {
 .card-payment {
   width: 15em;
   height: 5em;
-  background-color: #eb5e0b;
+  background-color: var(--primary);
   border-radius: 10px;
 
   padding: 1em 1em 1em 1em;
@@ -469,7 +469,7 @@ li {
 
 #sale-week a {
   text-decoration: none;
-  color: #000000;
+  color: var(--main_black);
 }
 
 #sale-week a:hover {
@@ -505,11 +505,11 @@ li {
 
 .card-cupom a {
   text-decoration: none;
-  color: #000000;
+  color: var(--main_black);
 }
 
 .card-cupom a:hover {
-  color: #eb5e0b;
+  color: var(--primary);
 }
 
 /**********************************************SALE-CUPOM**************************************************/
@@ -525,8 +525,3 @@ li {
 }
 
 /**********************************************BRANDS-OF-THE-WEEK**************************************************/
-
-/*Primary Orange - EB5E0B
-Primary Blue - 5EAAA8
-Secondary Blue - A3D2CA
-Main White - F8F1F1*/
