@@ -47,8 +47,7 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
  
   <li> Os administradores podem adicionar, remover e gerenciar animais da adoção. Para cadastrar um animal, deve ser fornecida uma descrição geral sobre o animal. Os dados a serem armazenados sobre cada animal são: <i> Espécie, raça, idade, descrição, vacinas e imagens.</i> 
     <ul>
-      <li> O sistema deve permitir que os clientes sinalizem ![Untitled Diagram](https://user-images.githubusercontent.com/48142112/119587680-8a270a80-bda5-11eb-824a-97c58040b4dd.png)
-ao petshop que têm interesse em adotar um animal.</li>
+      <li> O sistema deve permitir que os clientes sinalizem ao petshop que têm interesse em adotar um animal.</li>
       <li> O sistema deve conter uma lista com todos horários disponíveis na semana para os clientes visitarem os animais em adoção.</li>
       <li> Os clientes devem poder agendar um horário para visitar o petshop paara conhecer os animais em adoção. </li>
     </ul>
@@ -58,12 +57,12 @@ ao petshop que têm interesse em adotar um animal.</li>
  
  ## Descrição
  <p>
- As páginas web do site foram feitas em HTML5 e CSS3, utilizando as frameworks ... [?] <br>
- O banco de dados foi feito utilizando ...[?] <br>
+ As páginas web do site foram feitas em HTML5 e CSS3
+
  
  ### Modelagem do Banco de Dados
  O diagrama a seguir representa o Modelo Entidade-Relacionamento do sistema, e será útil para ilustrar como as principais funcionalidades do sistema serão implementadas:
-![Petshop](https://user-images.githubusercontent.com/48142112/119211010-2095bc00-ba86-11eb-81a3-4172f9bb9b16.png)
+![Petshop](https://user-images.githubusercontent.com/48142112/119704277-d584fb80-be2d-11eb-8332-bfcf128ac8c1.png)
 
  <ul>
   <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são derivados de um usuário genérico.</li> 
@@ -96,5 +95,5 @@ ao petshop que têm interesse em adotar um animal.</li>
 
 ![Untitled Diagram](https://user-images.githubusercontent.com/48142112/119587739-af1b7d80-bda5-11eb-8857-b0cbc2a02dee.png)
 
-Obs: Este é um diagrama que ilustra a navegação lógica em que as páginas podem ser acessadas porém, ela desconsidera os headers e footers do website. A Página "Lista", "Carrinho" e "About" podem ser acessadas a partir de qualquer outra página do website, através do header.
+Obs: Este é um diagrama que ilustra a navegação lógica em que as páginas podem ser acessadas porém, ela desconsidera os headers e footers do website. As Páginas "Inicial", "Lista", "Carrinho", e "About" podem ser acessadas a partir de qualquer outra página do website, através do header.
 
