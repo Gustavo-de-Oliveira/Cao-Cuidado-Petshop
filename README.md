@@ -47,7 +47,8 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
  
   <li> Os administradores podem adicionar, remover e gerenciar animais da adoção. Para cadastrar um animal, deve ser fornecida uma descrição geral sobre o animal. Os dados a serem armazenados sobre cada animal são: <i> Espécie, raça, idade, descrição, vacinas e imagens.</i> 
     <ul>
-      <li> O sistema deve permitir que os clientes sinalizem ao petshop que têm interesse em adotar um animal.</li>
+      <li> O sistema deve permitir que os clientes sinalizem ![Untitled Diagram](https://user-images.githubusercontent.com/48142112/119587680-8a270a80-bda5-11eb-824a-97c58040b4dd.png)
+ao petshop que têm interesse em adotar um animal.</li>
       <li> O sistema deve conter uma lista com todos horários disponíveis na semana para os clientes visitarem os animais em adoção.</li>
       <li> Os clientes devem poder agendar um horário para visitar o petshop paara conhecer os animais em adoção. </li>
     </ul>
@@ -72,8 +73,28 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
  </ul>
 </p>
 
-### Navegação das Páginas...[?]
+### Telas da Aplicação
+<p> O protótipo das páginas do website estão contidas em: https://www.figma.com/file/ajgzL9tCnb0tVoOSCGWkdZ/Cão-Cuidado-Pet-Shop?node-id=0:1 </p>
+
+#### Tela Inicial
+  <p> Ao acessar o sistema, o cliente é direcionado para esta página. Nela, o usuário encontra as ofertas da semana, as promoções selecionadas, e as marcas com as quais o petshop trabalha </p>
+  
+#### Tela de Lista
+  <p> As telas de lista estão relacionadas a um tipo de animal, de forma que, o usuário pode acessar cada Tela de Lista pelo header das páginas. Nesta tela o usuário tem acesso aos produtos vendidos pelo petshop, podendo realizar buscas ou filtrá-los por categoria, preço ou marca.</p>
+  
+#### Tela de Item
+  <p> O usuário tem acesso a essa tela ao selecionar um produto ou serviço. Nela, o produto é descrito com imagens, descrição geral, especificação técnica, perguntas mais frequentes, avaliações e comentários dos usuários. Além disso, na tela do produto, é possível adicioná-lo ao carrinho e ver outros produtos relacionados</p>
+
+#### Tela de Carrinho
+  <p> O usuário é redirecionado para esta tela ao clicar em seu carrinho. Ela exibe todos itens adicionados ao carrinho do usuário. </p>
+
+#### Tela "Sobre Nós"
+  <p> Esta tela contém uma descrição sobre o petshop. </p>
 
 
+### Diagrama de Navegação
 
+![Untitled Diagram](https://user-images.githubusercontent.com/48142112/119587739-af1b7d80-bda5-11eb-8857-b0cbc2a02dee.png)
+
+Obs: Este é um diagrama que ilustra a navegação lógica em que as páginas podem ser acessadas porém, ela desconsidera os headers e footers do website. A Página "Lista", "Carrinho" e "About" podem ser acessadas a partir de qualquer outra página do website, através do header.
 
