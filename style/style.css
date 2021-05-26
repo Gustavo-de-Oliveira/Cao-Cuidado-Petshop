@@ -111,50 +111,50 @@ header {
   color: var(--primary);
 }
 
+/**********************************************HEADER**************************************************/
+
 .contact-form {
   width: 80%;
   background-color: var(--secondary_light);
-  border-radius: 30px;
-
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 12px;
+  margin: auto;
   margin-bottom: 20px;
+  padding: 16px 0;
 
-  padding-top: 1em;
-  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-around;
 }
 
-.contact-form p {
-  text-align: center;
+#contact-form-input {
+  display: flex;
+  align-items: center;
 }
 
 .contact-form input {
-  margin-left: 13em;
-  height: 45px;
   box-sizing: border-box;
   border-radius: 15px;
-  padding: 17px;
-  padding-left: 25px;
-  padding-right: 40px;
+  padding: 16px;
   width: 500px;
   border: 1px solid var(--main_white);
-  font-size: 20px;
-  color: gray;
+  font-size: 16px;
 }
 
 .contact-form button {
   background: var(--primary);
   color: var(--main_white);
   border: none;
-  padding: auto auto auto auto;
-  font-size: 25px;
-  margin-left: 15px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-left: 16px;
+  border-radius: 10px;
   cursor: pointer;
-  outline: inherit;
+  display: flex;
+  align-items: center;
 }
 
-/**********************************************HEADER**************************************************/
+.contact-form button i {
+  margin-left: 8px;
+}
 
 /**********************************************FOOTER**************************************************/
 
