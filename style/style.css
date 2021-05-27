@@ -9,62 +9,60 @@ header {
 }
 
 .navbar-up {
-  background-color: var(--secondary_dark);
-  padding: 8px 8px 8px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary);
+  padding: 8px 70px;
 }
 
-.navbar-up * {
-  vertical-align: middle;
+.header-left-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
 }
 
 .nav-search-input {
-  height: 40px;
-  margin-left: 1em;
-  box-sizing: border-box;
-  border-radius: 15px;
-  padding: 17px;
-  padding-left: 25px;
-  padding-right: 40px;
-  width: 300px;
-  border: 1px solid var(--main_white);
-  font-size: 13px;
-  color: gray;
-}
-
-.search-btn {
-  background-image: url('https://images.vexels.com/media/users/3/195032/isolated/preview/5c8f453f712deaccf64d803b6578abd6-escola-de-iacute-cones-lisos-de-lupa-by-vexels.png');
-  background-repeat: no-repeat;
-  background-position: 97% 50%;
-  background-size: 25px;
-  outline: 0;
-}
-
-.nav-button {
-  background: none;
-  color: inherit;
+  width: 400px;
+  margin-left: 50px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+  font-size: 16px;
 }
 
-.nav-button img {
-  width: 30px;
+.fas,
+.fab {
+  font-size: 20px;
+}
+
+.fa-search {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.header-buttons-container {
+  display: flex;
 }
 
 .nav-section {
   color: var(--main_white);
-  position: absolute;
-  width: 150px;
-  padding: 15px;
-  margin-top: -8px;
-  height: 67px;
+  padding: 10px;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
 
 .nav-section:hover {
-  background-color: var(--secondary);
-  border-bottom: 1px;
+  background-color: var(--secondary_dark);
+  transition: all 0.3s;
 }
 
 .first {
@@ -76,7 +74,7 @@ header {
 }
 
 .navbar-down {
-  background-color: var(--secondary);
+  background-color: var(--secondary_dark);
   padding: 10px 70px;
   vertical-align: middle;
   display: flex;
@@ -92,7 +90,7 @@ header {
 
   -webkit-appearance: none;
   background-image: none;
-  background-color: var(--secondary);
+  background-color: var(--secondary_dark);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -115,60 +113,56 @@ header {
 
 /**********************************************HEADER**************************************************/
 
-/**********************************************FOOTER**************************************************/
-
-footer {
-	background-color: var(--secondary);
-	column-count: 5;
-	column-gap: 10px;
-	-moz-column-count: 5;
-	-webkit-column-count: 5;
-	margin: 0px -8px -16px -8px;
-	padding-top: 15px;
-	height: 175px;
-}
-
 .contact-form {
   width: 80%;
   background-color: var(--secondary_light);
-  border-radius: 30px;
-
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 12px;
+  margin: auto;
   margin-bottom: 20px;
+  padding: 16px 0;
 
-  padding-top: 1em;
-  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-around;
 }
 
-.contact-form p {
-  text-align: center;
+#contact-form-input {
+  display: flex;
+  align-items: center;
 }
 
 .contact-form input {
-  margin-left: 13em;
-  height: 45px;
   box-sizing: border-box;
   border-radius: 15px;
-  padding: 17px;
-  padding-left: 25px;
-  padding-right: 40px;
+  padding: 16px;
   width: 500px;
   border: 1px solid var(--main_white);
-  font-size: 20px;
-  color: gray;
+  font-size: 16px;
 }
 
 .contact-form button {
   background: var(--primary);
   color: var(--main_white);
   border: none;
-  padding: auto auto auto auto;
-  font-size: 25px;
-  margin-left: 15px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  margin-left: 16px;
+  border-radius: 10px;
   cursor: pointer;
-  outline: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.contact-form button i {
+  margin-left: 8px;
+}
+
+/**********************************************FOOTER**************************************************/
+
+footer {
+  background-color: var(--secondary);
+  margin: 0px -8px -16px -8px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer-section {
@@ -176,7 +170,7 @@ footer {
 }
 
 #footer-logo {
-	margin-top: 25px;
+  margin-top: 25px;
 }
 
 .footer-section h3 {
@@ -197,7 +191,7 @@ footer {
 }
 
 .inline li {
-  display: inline;
+  display: inline-block;
   margin-left: 10px;
 }
 /**********************************************FOOTER**************************************************/
@@ -210,6 +204,7 @@ footer {
 
 .item {
   width: 175px;
+  margin-right: 1.5em;
   text-align: center;
 }
 
