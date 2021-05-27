@@ -61,7 +61,7 @@ header {
 }
 
 .nav-section:hover {
-  background-color: var(--secondary);
+  background-color: var(--secondary_dark);
   transition: all 0.3s;
 }
 
@@ -191,7 +191,7 @@ footer {
 }
 
 .inline li {
-  display: inline;
+  display: inline-block;
   margin-left: 10px;
 }
 /**********************************************FOOTER**************************************************/
@@ -204,6 +204,7 @@ footer {
 
 .item {
   width: 175px;
+  margin-right: 1.5em;
   text-align: center;
 }
 
