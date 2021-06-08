@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import '../style/index.css';
+import '../src/theme/GlobalStyle.css';
 
 export default function MyApp({ Component, pageProps }) {
   return (

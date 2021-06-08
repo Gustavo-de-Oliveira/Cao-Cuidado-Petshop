@@ -1,17 +1,14 @@
-/* ensure all pages have Bootstrap CSS */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
-.md-container {
+.mdContainer {
   max-width: 800px;
   padding-top: 2rem;
 }
 
-.sml-card {
+.smlCard {
   width: 22rem;
   margin: 1rem 0;
 }
 
-.cntr-footer {
+.cntrFooter {
   height: 80px;
   margin-top: 20px;
   display: flex;
@@ -20,7 +17,7 @@
   border-top: 1px solid #ccc;
 }
 
-.sml-logo {
+.smlLogo {
   height: 1em;
   margin-left: 10px;
 }
