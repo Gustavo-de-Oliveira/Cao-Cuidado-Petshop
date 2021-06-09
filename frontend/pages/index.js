@@ -1,17 +1,15 @@
 import React from 'react';
 import { Container, Row, Card, Button } from 'react-bootstrap';
 import styles from '../src/theme/pages/index.module.css';
+import Header from './components/header.js';
 
 export default function Home() {
   return (
-    <Container className={styles.mdContainer}>
+    <Container>
       <Container>
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <p>
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <Header />
+
+
         <Container>
           <Row className="justify-content-md-between">
             <Card className={styles.smlCard}>
