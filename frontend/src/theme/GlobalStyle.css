@@ -11,3 +11,7 @@
   --main_white: #eeeeee;
   --main_black: #222222;
 }
+
+body {
+  margin: 13rem 0rem 0rem 0rem;
+}

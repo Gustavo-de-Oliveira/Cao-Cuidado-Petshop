@@ -4,6 +4,7 @@ import React from 'react';
 import Head from 'next/head';
 import '../src/theme/GlobalStyle.css';
 
+
 export default function MyApp({ Component, pageProps }) {
   return (
     <>

@@ -2,14 +2,14 @@ import React from 'react';
 import { Container, Row, Card, Button } from 'react-bootstrap';
 import styles from '../src/theme/pages/index.module.css';
 import Header from './components/header.js';
+import Footer from './components/footer.js';
 
 export default function Home() {
   return (
-    <Container>
+    <div>
+      <Header/>
+      
       <Container>
-        <Header />
-
-
         <Container>
           <Row className="justify-content-md-between">
             <Card className={styles.smlCard}>
@@ -68,17 +68,8 @@ export default function Home() {
           </Row>
         </Container>
       </Container>
-
-      <footer className={styles.cntrFooter}>
-        <a
-          href="https://vercel.com?filter=next.js&utm_source=github&utm_medium=example&utm_campaign=next-example"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.smlLogo} />
-        </a>
-      </footer>
-    </Container>
+    
+      <Footer/>
+    </div>
   );
 }
