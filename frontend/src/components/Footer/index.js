@@ -1,6 +1,5 @@
 import React from 'react';
-// import NextLink from 'next/link';
-// import headerIcon from '../../src/images/Logo_white.png';
+import NextImage from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter,
@@ -14,6 +13,7 @@ import {
   faCcAmex,
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
+import brandIcon from '../../../public/Logo_white.png';
 
 // import {
 //   Container,
@@ -65,13 +65,7 @@ export default function Header() {
         <section className="bg-dark col-12 mt-4">
           <div className="row">
             <div className="col-lg-3 col-md-6">
-              <img
-                src="../../../public/Logo_white.png"
-                className=""
-                width="250px"
-                height="250px"
-                alt="Logo"
-              />
+              <NextImage src={brandIcon} alt="Logo cao cuidado pet shop" />
             </div>
 
             <div className="col-lg-2 col-md-6 mb-4 mt-3 mb-md-0">
@@ -184,7 +178,7 @@ export default function Header() {
             <div className="col-lg-3 col-md-6 mb-4 mt-3 mb-md-0">
               <h5 className="text-uppercase">Formas de pagamento</h5>
 
-              <ul className="list-inline">
+              <ul className="list-inline text-white">
                 <li className="list-inline-item p-1">
                   <FontAwesomeIcon width="20px" height="20px" icon={faCcAmex} />
                 </li>

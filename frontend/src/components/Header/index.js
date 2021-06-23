@@ -1,6 +1,5 @@
 import React from 'react';
-import NextLink from 'next/link';
-// import headerIcon from '../../src/images/Logo_white.png';
+import NextImage from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSearch,
@@ -10,7 +9,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
   Container,
-  Image,
   Col,
   Row,
   Nav,
@@ -20,6 +18,7 @@ import {
   Button,
   InputGroup,
 } from 'react-bootstrap';
+import brandIcon from '../../../public/Logo_white.png';
 
 export default function Header() {
   return (
@@ -27,12 +26,13 @@ export default function Header() {
       <header>
         <Navbar bg="dark">
           <Navbar.Brand href="/">
-            <img
-              src="../../../public/Logo_white.png"
-              className="align-top"
-              width="50px"
-              height="50px"
-              alt="img"
+            <NextImage
+              src={brandIcon}
+              // className="align-top"
+              // height="100%"
+              width={95}
+              height={67}
+              alt="Logo cao cuidado pet shop"
             />
           </Navbar.Brand>
 
