@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
 import brandIcon from '../../../public/Logo_white.png';
+import styles from './styles.module.css';
 
 // import {
 //   Container,
@@ -28,10 +29,10 @@ import brandIcon from '../../../public/Logo_white.png';
 //   InputGroup,
 // } from 'react-bootstrap';
 
-export default function Header() {
+export default function Footer() {
   return (
-    <footer>
-      <div className="">
+    <footer className={`${styles.footerContainer}`}>
+      <div>
         <section className="bg-danger p-4 mx-auto col-lg-10 col-md-12 rounded">
           <form action="">
             <div className="row d-flex justify-content-center">
