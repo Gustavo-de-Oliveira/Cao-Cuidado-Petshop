@@ -1,2 +1,34 @@
-.footerContainer {
+.newsletterSection {
+	background-color: #a3d2ca;
+	border-radius: 15px;
+}
+
+.inputEmail {
+	border-radius: 15px;
+	height: 50px;
+}
+
+.sendBtn {
+	background-color: #eb5e0b;
+	border-radius: 10px;
+	color: #eeeeee;
+}
+
+.sendBtn:hover {
+	color: #eeeeee;
+}
+
+.footerSection {
+	background-color: #5eaaa8;
+	color: #222222;
+}
+
+.listStyle a {
+	text-decoration: none;
+	color: #222222;
+}
+
+
+.listStyle a:hover {
+	color: #eb5e0b;
 }
