@@ -1,6 +1,6 @@
 import React from 'react';
-import NextLink from 'next/link';
-//import headerIcon from '../../src/images/Logo_white.png';
+// import NextLink from 'next/link';
+// import headerIcon from '../../src/images/Logo_white.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter,
@@ -15,22 +15,22 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
 
-import {
-  Container,
-  Image,
-  Col,
-  Row,
-  Nav,
-  Navbar,
-  Form,
-  FormControl,
-  Button,
-  InputGroup,
-} from 'react-bootstrap';
+// import {
+//   Container,
+//   Image,
+//   Col,
+//   Row,
+//   Nav,
+//   Navbar,
+//   Form,
+//   FormControl,
+//   Button,
+//   InputGroup,
+// } from 'react-bootstrap';
 
 export default function Header() {
   return (
-    <footer className="text-center mt-5 col-12">
+    <footer>
       <div className="">
         <section className="bg-danger p-4 mx-auto col-lg-10 col-md-12 rounded">
           <form action="">
@@ -70,6 +70,7 @@ export default function Header() {
                 className=""
                 width="250px"
                 height="250px"
+                alt="Logo"
               />
             </div>
 
