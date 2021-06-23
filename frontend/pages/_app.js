@@ -4,13 +4,12 @@ import React from 'react';
 import Head from 'next/head';
 import '../src/theme/GlobalStyle.css';
 
-
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
         <title>ReactJS with react-bootstrap</title>
-        <link rel="icon" href="/favicon-32x32.png" />
+        <link rel="icon" href="./paw.ico" />
       </Head>
       <Component {...pageProps} />
     </>
