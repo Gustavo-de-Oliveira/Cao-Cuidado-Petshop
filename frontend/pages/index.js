@@ -161,6 +161,16 @@ export default function Home() {
             </Card.Body>
           </Card>
         </Container>
+
+        <Container>
+          <h1>As melhores marcas</h1>
+          <img
+            alt="brand"
+            src="https://twineich.com/wp-content/uploads/2017/10/Logo.png"
+            width="75px"
+            height="75px"
+          />
+        </Container>
       </Container>
 
       <Footer />
