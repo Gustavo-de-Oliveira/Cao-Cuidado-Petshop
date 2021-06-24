@@ -2,7 +2,10 @@ import React from 'react';
 import { Container, Card, Carousel, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faCat,
   faCreditCard,
+  faDog,
+  faFish,
   faPercent,
   faShippingFast,
   faStar,
@@ -123,6 +126,41 @@ export default function Home() {
             </Card>
           </Row>
         </div>
+
+        <Container className={styles.cardsContainer}>
+          <Card className={styles.cardItem}>
+            <Card.Body>
+              <h4>Promoções em artigos para cachorros</h4>
+              <p>Até 50% de desconto em rações, banhos e brinquedos</p>
+              <div className={styles.cardBodyDiscount}>
+                <a href="/">ACESSE</a>
+                <FontAwesomeIcon height="50px" icon={faDog} />
+              </div>
+            </Card.Body>
+          </Card>
+
+          <Card className={styles.cardItem}>
+            <Card.Body>
+              <h4>Promoções em artigos para gatos</h4>
+              <p>Até 50% de desconto em rações, banhos e areia</p>
+              <div className={styles.cardBodyDiscount}>
+                <a href="/">ACESSE</a>
+                <FontAwesomeIcon height="50px" icon={faCat} />
+              </div>
+            </Card.Body>
+          </Card>
+
+          <Card className={styles.cardItem}>
+            <Card.Body>
+              <h4>Promoções em artigos para coelhos</h4>
+              <p>Até 50% de desconto em rações, banhos secos e brinquedos</p>
+              <div className={styles.cardBodyDiscount}>
+                <a href="/">ACESSE</a>
+                <FontAwesomeIcon height="50px" icon={faFish} />
+              </div>
+            </Card.Body>
+          </Card>
+        </Container>
       </Container>
 
       <Footer />
