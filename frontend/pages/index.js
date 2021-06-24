@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Card, Button, Carousel } from 'react-bootstrap';
+import { Container, Card, Carousel, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCreditCard,
@@ -66,6 +66,63 @@ export default function Home() {
             </Card.Body>
           </Card>
         </Container>
+
+        <div>
+          <h1>Ofertas da semana</h1>
+          <h3>Aproveite!</h3>
+          <Row xs={3} md={6}>
+            <Card className={styles.cardProduct}>
+              <img alt="img" src="https://placehold.it/184x232" />
+              <Card.Body>
+                <p className={styles.cardProductTitle}>
+                  Ração para cachorro médio - 5kg
+                </p>
+                <h6>De: R$59,99</h6>
+                <h6>Por: R$39,99</h6>
+              </Card.Body>
+            </Card>
+            <Card className={styles.cardProduct}>
+              <img alt="img" src="https://placehold.it/184x232" />
+              <Card.Body>
+                <p className={styles.cardProductTitle}>
+                  Ração para cachorro médio - 5kg
+                </p>
+                <h6>De: R$59,99</h6>
+                <h6>Por: R$39,99</h6>
+              </Card.Body>
+            </Card>
+            <Card className={styles.cardProduct}>
+              <img alt="img" src="https://placehold.it/184x232" />
+              <Card.Body>
+                <p className={styles.cardProductTitle}>
+                  Ração para cachorro médio - 5kg
+                </p>
+                <h6>De: R$59,99</h6>
+                <h6>Por: R$39,99</h6>
+              </Card.Body>
+            </Card>
+            <Card className={styles.cardProduct}>
+              <img alt="img" src="https://placehold.it/184x232" />
+              <Card.Body>
+                <p className={styles.cardProductTitle}>
+                  Ração para cachorro médio - 5kg
+                </p>
+                <h6>De: R$59,99</h6>
+                <h6>Por: R$39,99</h6>
+              </Card.Body>
+            </Card>
+            <Card className={styles.cardProduct}>
+              <img alt="img" src="https://placehold.it/184x232" />
+              <Card.Body>
+                <p className={styles.cardProductTitle}>
+                  Ração para cachorro médio - 5kg
+                </p>
+                <h6>De: R$59,99</h6>
+                <h6>Por: R$39,99</h6>
+              </Card.Body>
+            </Card>
+          </Row>
+        </div>
       </Container>
 
       <Footer />
