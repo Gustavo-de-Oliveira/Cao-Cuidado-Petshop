@@ -54,11 +54,6 @@ export default function Header() {
               </InputGroup>
 
               <Container fluid className="col-lg-7 col-md-5 d-flex justify-content-end">
-                <Button onClick={() => setSmShow(true)} className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}>
-                  <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
-                  <span className="text-center"> Cadastro</span>
-                </Button>
-
                 <Nav.Link href="/" className={`col-lg-3 col-md-2 col-sm-1 ${styles.topBtn}`}>
                   <FontAwesomeIcon
                     width="20px"
@@ -67,6 +62,11 @@ export default function Header() {
                   />
                   <span className="text-center"> Carrinho</span>
                 </Nav.Link>
+
+                <Button onClick={() => setSmShow(true)} className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}>
+                  <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
+                  <span className="text-center"> Cadastro</span>
+                </Button>
               </Container>
             </Row>
           </Navbar.Collapse>
