@@ -1,13 +1,10 @@
 import React from 'react';
 import { Container, Row, Card, Button } from 'react-bootstrap';
 import styles from '../src/theme/pages/index.module.css';
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
 
 export default function Home() {
   return (
     <>
-      <Header />
       <Container>
         <Row className="justify-content-md-between">
           <Card className={styles.smlCard}>
@@ -64,8 +61,6 @@ export default function Home() {
           </Card>
         </Row>
       </Container>
-
-      <Footer />
     </>
   );
 }

@@ -17,14 +17,23 @@ import {
   FormControl,
   Button,
   InputGroup,
+  Card,
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  Modal,
 } from 'react-bootstrap';
 import styles from './styles.module.css';
 //import brandIcon from '../../../public/Logo_white.png';
 
 export default function Header() {
+  const [smShow, setSmShow] = React.useState(false);
+  const [hasLogin, setHasLogin] = React.useState(true);
+
   return (
     <>
-      <header>
+      <header className="mb-5">
         <Navbar className={`${styles.bgNavbarUp}`} expand="lg">
           <Navbar.Brand href="/">
           </Navbar.Brand>
@@ -45,10 +54,10 @@ export default function Header() {
               </InputGroup>
 
               <Container fluid className="col-lg-7 col-md-5 d-flex justify-content-end">
-                <Nav.Link href="/" className={`col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}>
+                <Button onClick={() => setSmShow(true)} className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}>
                   <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
                   <span className="text-center"> Cadastro</span>
-                </Nav.Link>
+                </Button>
 
                 <Nav.Link href="/" className={`col-lg-3 col-md-2 col-sm-1 ${styles.topBtn}`}>
                   <FontAwesomeIcon
@@ -108,12 +117,16 @@ export default function Header() {
                 <div className="border-right ml-lg-5" />
 
                 <div className="col-lg-5 ml-lg-5 d-lg-flex">
-                  <Nav.Link href="/" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                  <Nav.Link href="/about" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
                     Sobre o Cão Cuidado
                   </Nav.Link>
 
-                  <Nav.Link href="/" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                  <Nav.Link href="/404" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
                     FAQ
+                  </Nav.Link>
+
+                  <Nav.Link href="/adoption" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                    Adoção
                   </Nav.Link>
                 </div>
               </Form.Row>
@@ -121,6 +134,95 @@ export default function Header() {
           </Navbar.Collapse>
         </Navbar>
       </header>
+
+      { hasLogin ?
+        <Modal size="sm" show={smShow} onHide={() => setSmShow(false)} aria-labelledby="example-modal-sizes-title-sm">
+          <Modal.Header>
+            <Form className="text-center mx-auto">
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Digite o email" />
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Senha</Form.Label>
+                <Form.Control type="password" placeholder="Senha" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Entrar
+              </Button>
+            </Form>
+          </Modal.Header>
+
+          <Modal.Body>
+            <Form.Text className="text-muted">
+              <Button variant="link" onClick={() => setHasLogin(false)}>
+                Não tenho uma conta, quero me cadastrar!
+              </Button>
+            </Form.Text>
+          </Modal.Body>
+        </Modal>
+        
+        :
+        <Modal size="md" show={smShow} onHide={() => {setSmShow(false); setHasLogin(true)}} aria-labelledby="example-modal-sizes-title-sm">
+          <Modal.Header className="col-12">
+            <Form>
+              <Form.Group as={Form.Row} controlId="formHorizontalEmail">
+                <Form.Label column sm={4}>
+                  Nome
+                </Form.Label>
+                <Col sm={8}>
+                  <Form.Control type="text" placeholder="Nome" />
+                </Col>
+              </Form.Group>
+
+              <Form.Group as={Form.Row} controlId="formHorizontalEmail">
+                <Form.Label column sm={4}>
+                  Email
+                </Form.Label>
+                <Col sm={8}>
+                  <Form.Control type="email" placeholder="Email" />
+                </Col>
+
+                <Form.Text className="text-muted">
+                  Nunca compartilharemos seus dados com terceiros!
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group as={Form.Row} controlId="formHorizontalPassword">
+                <Form.Label column sm={4}>
+                  Senha
+                </Form.Label>
+                <Col sm={8}>
+                  <Form.Control type="password" placeholder="Senha" />
+                </Col>
+              </Form.Group>
+
+              <Form.Group as={Form.Row} controlId="formHorizontalConfirmPassword">
+                <Form.Label column sm={4}>
+                  Repita sua senha
+                </Form.Label>
+                <Col sm={8}>
+                  <Form.Control type="password" placeholder="Repita sua senha" />
+                </Col>
+              </Form.Group>
+              
+
+              <Form.Group as={Form.Row} controlId="formHorizontalCheck">
+                <Col sm={{ span: 10, offset: 0 }}>
+                  <Form.Check label="Remember me" />
+                </Col>
+              </Form.Group>
+
+              <Form.Group as={Form.Row}>
+                <Col sm={{ span: 10, offset: 3 }}>
+                  <Button type="submit">Criar conta</Button>
+                </Col>
+              </Form.Group>
+            </Form>
+          </Modal.Header>
+        </Modal>
+      }
     </>
   );
 }
