@@ -12,6 +12,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../src/theme/pages/index.module.css';
+import Link from '../src/components/Link';
 
 const products = [
   {
@@ -175,12 +176,12 @@ export default function Home() {
             <Col>
               <Card className={styles.cardItem}>
                 <Card.Body>
-                  <h4>Promoções em artigos para coelhos</h4>
+                  <h4>Promoções em artigos para peixes</h4>
                   <p>
-                    Até 50% de desconto em rações, banhos secos e brinquedos
+                    Até 50% de desconto em rações, banhos secos e brinquedos (?)
                   </p>
                   <div className={styles.cardBodyDiscount}>
-                    <NextLink href="/itens">ACESSE</NextLink>
+                    <Link href="/itens">ACESSE</Link>
                     <FontAwesomeIcon height="50px" icon={faFish} />
                   </div>
                 </Card.Body>
