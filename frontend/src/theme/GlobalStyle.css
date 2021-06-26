@@ -12,7 +12,8 @@
   --main_black: #222222;
 }
 
-body {
+body,
+p {
   margin: 0;
   padding: 0;
 
