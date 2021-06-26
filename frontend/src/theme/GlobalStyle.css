@@ -12,10 +12,13 @@
   --main_black: #222222;
 }
 
-body,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main_white);
+}
+
 p {
   margin: 0;
   padding: 0;
-
-  background-color: #eeeeee;
 }
