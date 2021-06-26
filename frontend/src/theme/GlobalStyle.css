@@ -1,5 +1,6 @@
 /* ensure all pages have Bootstrap CSS */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@csstools/normalize.css';
 
 * {
   --primary: #eb5e0b;
