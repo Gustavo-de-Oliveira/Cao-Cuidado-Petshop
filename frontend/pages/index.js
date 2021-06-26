@@ -1,4 +1,5 @@
 import React from 'react';
+import NextLink from 'next/link';
 import { Container, Card, Carousel, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,6 +12,49 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../src/theme/pages/index.module.css';
+
+const products = [
+  {
+    id: 1,
+    image: 'https://placehold.it/184x232',
+    title: 'Ração para cachorro médio - 5kg',
+    oldPrice: '59,99',
+    newPrice: '39,99',
+    link: 'racao-royal-canin-medio-5kg',
+  },
+  {
+    id: 2,
+    image: 'https://placehold.it/184x232',
+    title: 'Ração para cachorro grande - 25kg',
+    oldPrice: '169,99',
+    newPrice: '149,99',
+    link: 'racao-royal-canin-medio-25kg',
+  },
+  {
+    id: 3,
+    image: 'https://placehold.it/184x232',
+    title: 'Ração para cachorro pequeno - 10kg',
+    oldPrice: '99,99',
+    newPrice: '69,99',
+    link: 'racao-royal-canin-medio-10kg',
+  },
+  {
+    id: 4,
+    image: 'https://placehold.it/184x232',
+    title: 'Ração para cachorro médio - 5kg',
+    oldPrice: '39,99',
+    newPrice: '29,99',
+    link: 'racao-premier-medio-5kg',
+  },
+  {
+    id: 5,
+    image: 'https://placehold.it/184x232',
+    title: 'Ração para cachorro grande - 15kg',
+    oldPrice: '109,99',
+    newPrice: '99,99',
+    link: 'racao-balance-grande-15kg',
+  },
+];
 
 export default function Home() {
   return (
@@ -81,66 +125,24 @@ export default function Home() {
           <h1>Ofertas da semana</h1>
           <h3>Aproveite!</h3>
           <Row xs={2} md={3} lg={5}>
-            <Col>
-              <Card className={styles.cardProduct}>
-                <img alt="img" src="https://placehold.it/184x232" />
-                <Card.Body>
-                  <p className={styles.cardProductTitle}>
-                    Ração para cachorro médio - 5kg
-                  </p>
-                  <h6>De: R$59,99</h6>
-                  <h6>Por: R$39,99</h6>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card className={styles.cardProduct}>
-                <img alt="img" src="https://placehold.it/184x232" />
-                <Card.Body>
-                  <p className={styles.cardProductTitle}>
-                    Ração para cachorro médio - 5kg
-                  </p>
-                  <h6>De: R$59,99</h6>
-                  <h6>Por: R$39,99</h6>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card className={styles.cardProduct}>
-                <img alt="img" src="https://placehold.it/184x232" />
-                <Card.Body>
-                  <p className={styles.cardProductTitle}>
-                    Ração para cachorro médio - 5kg
-                  </p>
-                  <h6>De: R$59,99</h6>
-                  <h6>Por: R$39,99</h6>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card className={styles.cardProduct}>
-                <img alt="img" src="https://placehold.it/184x232" />
-                <Card.Body>
-                  <p className={styles.cardProductTitle}>
-                    Ração para cachorro médio - 5kg
-                  </p>
-                  <h6>De: R$59,99</h6>
-                  <h6>Por: R$39,99</h6>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col>
-              <Card className={styles.cardProduct}>
-                <img alt="img" src="https://placehold.it/184x232" />
-                <Card.Body>
-                  <p className={styles.cardProductTitle}>
-                    Ração para cachorro médio - 5kg
-                  </p>
-                  <h6>De: R$59,99</h6>
-                  <h6>Por: R$39,99</h6>
-                </Card.Body>
-              </Card>
-            </Col>
+            {products.map((product) => {
+              return (
+                <Col>
+                  <a href="/product">
+                    <Card key={product.id} className={styles.cardProduct}>
+                      <img alt="img" src={product.image} />
+                      <Card.Body>
+                        <p className={styles.cardProductTitle}>
+                          {product.title}
+                        </p>
+                        <h6>De: R${product.oldPrice}</h6>
+                        <h6>Por: R${product.newPrice}</h6>
+                      </Card.Body>
+                    </Card>
+                  </a>
+                </Col>
+              );
+            })}
           </Row>
         </div>
 
@@ -152,7 +154,7 @@ export default function Home() {
                   <h4>Promoções em artigos para cachorros</h4>
                   <p>Até 50% de desconto em rações, banhos e brinquedos</p>
                   <div className={styles.cardBodyDiscount}>
-                    <a href="/">ACESSE</a>
+                    <NextLink href="/itens">ACESSE</NextLink>
                     <FontAwesomeIcon height="50px" icon={faDog} />
                   </div>
                 </Card.Body>
@@ -164,7 +166,7 @@ export default function Home() {
                   <h4>Promoções em artigos para gatos</h4>
                   <p>Até 50% de desconto em rações, banhos e areia</p>
                   <div className={styles.cardBodyDiscount}>
-                    <a href="/">ACESSE</a>
+                    <NextLink href="/itens">ACESSE</NextLink>
                     <FontAwesomeIcon height="50px" icon={faCat} />
                   </div>
                 </Card.Body>
@@ -178,7 +180,7 @@ export default function Home() {
                     Até 50% de desconto em rações, banhos secos e brinquedos
                   </p>
                   <div className={styles.cardBodyDiscount}>
-                    <a href="/">ACESSE</a>
+                    <NextLink href="/itens">ACESSE</NextLink>
                     <FontAwesomeIcon height="50px" icon={faFish} />
                   </div>
                 </Card.Body>
