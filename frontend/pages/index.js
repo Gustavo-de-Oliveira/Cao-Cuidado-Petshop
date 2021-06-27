@@ -12,49 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../src/theme/pages/index.module.css';
 import Link from '../src/components/Link';
-
-const products = [
-  {
-    id: 1,
-    image: 'https://placehold.it/184x232',
-    title: 'Ração para cachorro médio - 5kg',
-    oldPrice: '59,99',
-    newPrice: '39,99',
-    link: 'racao-royal-canin-medio-5kg',
-  },
-  {
-    id: 2,
-    image: 'https://placehold.it/184x232',
-    title: 'Ração para cachorro grande - 25kg',
-    oldPrice: '169,99',
-    newPrice: '149,99',
-    link: 'racao-royal-canin-medio-25kg',
-  },
-  {
-    id: 3,
-    image: 'https://placehold.it/184x232',
-    title: 'Ração para cachorro pequeno - 10kg',
-    oldPrice: '99,99',
-    newPrice: '69,99',
-    link: 'racao-royal-canin-medio-10kg',
-  },
-  {
-    id: 4,
-    image: 'https://placehold.it/184x232',
-    title: 'Ração para cachorro médio - 5kg',
-    oldPrice: '39,99',
-    newPrice: '29,99',
-    link: 'racao-premier-medio-5kg',
-  },
-  {
-    id: 5,
-    image: 'https://placehold.it/184x232',
-    title: 'Ração para cachorro grande - 15kg',
-    oldPrice: '109,99',
-    newPrice: '99,99',
-    link: 'racao-balance-grande-15kg',
-  },
-];
+import products from '../public/products.json';
 
 export default function Home() {
   return (
@@ -125,10 +83,13 @@ export default function Home() {
           <h1>Ofertas da semana</h1>
           <h3>Aproveite!</h3>
           <Row xs={2} md={3} lg={5}>
-            {products.map((product) => {
+            {products.data.map((product) => {
               return (
                 <Col key={product.id}>
-                  <Link color="var(--main_black)" href="/itens">
+                  <Link
+                    color="var(--main_black)"
+                    href={`/item/${product.link}`}
+                  >
                     <Card className={styles.cardProduct}>
                       <img alt="img" src={product.image} />
                       <Card.Body>
