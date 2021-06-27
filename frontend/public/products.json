@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "image": "https://placehold.it/184x232",
+      "title": "Ração para cachorro médio - 5kg",
+      "oldPrice": "59,99",
+      "newPrice": "39,99",
+      "link": "racao-royal-canin-medio-5kg"
+    },
+    {
+      "id": 2,
+      "image": "https://placehold.it/184x232",
+      "title": "Ração para cachorro grande - 25kg",
+      "oldPrice": "169,99",
+      "newPrice": "149,99",
+      "link": "racao-royal-canin-medio-25kg"
+    },
+    {
+      "id": 3,
+      "image": "https://placehold.it/184x232",
+      "title": "Ração para cachorro pequeno - 10kg",
+      "oldPrice": "99,99",
+      "newPrice": "69,99",
+      "link": "racao-royal-canin-medio-10kg"
+    },
+    {
+      "id": 4,
+      "image": "https://placehold.it/184x232",
+      "title": "Ração para cachorro médio - 5kg",
+      "oldPrice": "39,99",
+      "newPrice": "29,99",
+      "link": "racao-premier-medio-5kg"
+    },
+    {
+      "id": 5,
+      "image": "https://placehold.it/184x232",
+      "title": "Ração para cachorro grande - 15kg",
+      "oldPrice": "109,99",
+      "newPrice": "99,99",
+      "link": "racao-balance-grande-15kg"
+    }
+  ]
+}
