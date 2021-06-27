@@ -93,7 +93,7 @@ export default function Itens({ productsData }) {
                         </Link>
                       </Card.Title>
                       <Card.Text>
-                        <small>Descrição curta...</small>
+                        <small>{product.description}</small>
                         <br />
                         {product.newPrice}
                       </Card.Text>

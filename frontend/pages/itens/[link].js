@@ -6,6 +6,7 @@ import ProductScreen from '../../src/components/screens/ProductScreen';
 export default function ProductInternalScreen({
   image,
   title,
+  description,
   oldPrice,
   newPrice,
 }) {
@@ -13,6 +14,7 @@ export default function ProductInternalScreen({
     <ProductScreen
       image={image}
       title={title}
+      description={description}
       oldPrice={oldPrice}
       newPrice={newPrice}
     />
@@ -28,6 +30,7 @@ export function getStaticProps({ params }) {
         ...accumulator,
         image: productInfo.image,
         title: productInfo.title,
+        description: productInfo.description,
         oldPrice: productInfo.oldPrice,
         newPrice: productInfo.newPrice,
       };
@@ -39,6 +42,7 @@ export function getStaticProps({ params }) {
     props: {
       image: pageData.image,
       title: pageData.title,
+      description: pageData.description,
       oldPrice: pageData.oldPrice,
       newPrice: pageData.newPrice,
     },
