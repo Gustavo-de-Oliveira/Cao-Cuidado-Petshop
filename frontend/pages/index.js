@@ -83,7 +83,7 @@ export default function Home() {
           <h1>Ofertas da semana</h1>
           <h3>Aproveite!</h3>
           <Row xs={2} md={3} lg={5}>
-            {products.data.map((product) => {
+            {products.data.slice(0, 5).map((product) => {
               return (
                 <Col key={product.id}>
                   <Link
