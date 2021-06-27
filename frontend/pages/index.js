@@ -1,5 +1,4 @@
 import React from 'react';
-import NextLink from 'next/link';
 import { Container, Card, Carousel, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -128,9 +127,9 @@ export default function Home() {
           <Row xs={2} md={3} lg={5}>
             {products.map((product) => {
               return (
-                <Col>
-                  <a href="/product">
-                    <Card key={product.id} className={styles.cardProduct}>
+                <Col key={product.id}>
+                  <Link color="var(--main_black)" href="/itens">
+                    <Card className={styles.cardProduct}>
                       <img alt="img" src={product.image} />
                       <Card.Body>
                         <p className={styles.cardProductTitle}>
@@ -140,7 +139,7 @@ export default function Home() {
                         <h6>Por: R${product.newPrice}</h6>
                       </Card.Body>
                     </Card>
-                  </a>
+                  </Link>
                 </Col>
               );
             })}
@@ -155,7 +154,9 @@ export default function Home() {
                   <h4>Promoções em artigos para cachorros</h4>
                   <p>Até 50% de desconto em rações, banhos e brinquedos</p>
                   <div className={styles.cardBodyDiscount}>
-                    <NextLink href="/itens">ACESSE</NextLink>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
                     <FontAwesomeIcon height="50px" icon={faDog} />
                   </div>
                 </Card.Body>
@@ -167,7 +168,9 @@ export default function Home() {
                   <h4>Promoções em artigos para gatos</h4>
                   <p>Até 50% de desconto em rações, banhos e areia</p>
                   <div className={styles.cardBodyDiscount}>
-                    <NextLink href="/itens">ACESSE</NextLink>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
                     <FontAwesomeIcon height="50px" icon={faCat} />
                   </div>
                 </Card.Body>
@@ -181,7 +184,9 @@ export default function Home() {
                     Até 50% de desconto em rações, banhos secos e brinquedos (?)
                   </p>
                   <div className={styles.cardBodyDiscount}>
-                    <Link href="/itens">ACESSE</Link>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
                     <FontAwesomeIcon height="50px" icon={faFish} />
                   </div>
                 </Card.Body>
