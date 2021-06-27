@@ -88,7 +88,7 @@ export default function Home() {
                 <Col key={product.id}>
                   <Link
                     color="var(--main_black)"
-                    href={`/item/${product.link}`}
+                    href={`/itens/${product.link}`}
                   >
                     <Card className={styles.cardProduct}>
                       <img alt="img" src={product.image} />
