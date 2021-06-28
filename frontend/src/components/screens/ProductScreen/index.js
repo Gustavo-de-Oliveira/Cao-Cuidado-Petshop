@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 import Link from '../../Link';
+import HorizontalProductsList from '../../HorizontalProductsList';
+import products from '../../../../public/products.json';
 
 export default function ProductScreen({
   image,
@@ -202,6 +204,7 @@ export default function ProductScreen({
             <Col>
               <h1>Compre junto</h1>
               <p>Normalmente esse produtos sao comprado juntos</p>
+              <HorizontalProductsList products={products} />
             </Col>
           </Row>
         </div>

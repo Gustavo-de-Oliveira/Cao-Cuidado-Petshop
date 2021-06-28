@@ -13,6 +13,7 @@ import {
 import styles from '../src/theme/pages/index.module.css';
 import Link from '../src/components/Link';
 import products from '../public/products.json';
+import HorizontalProductsList from '../src/components/HorizontalProductsList';
 
 export default function Home() {
   return (
@@ -82,29 +83,7 @@ export default function Home() {
         <div className={styles.spacingContainer}>
           <h1>Ofertas da semana</h1>
           <h3>Aproveite!</h3>
-          <Row xs={2} md={3} lg={5}>
-            {products.data.slice(0, 5).map((product) => {
-              return (
-                <Col key={product.id}>
-                  <Link
-                    color="var(--main_black)"
-                    href={`/itens/${product.link}`}
-                  >
-                    <Card className={styles.cardProduct}>
-                      <img alt="img" src={product.image} />
-                      <Card.Body>
-                        <p className={styles.cardProductTitle}>
-                          {product.title}
-                        </p>
-                        <h6>De: R${product.oldPrice}</h6>
-                        <h6>Por: R${product.newPrice}</h6>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </Col>
-              );
-            })}
-          </Row>
+          <HorizontalProductsList products={products} />
         </div>
 
         <div className={styles.spacingContainer}>
