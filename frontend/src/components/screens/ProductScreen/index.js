@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 import Link from '../../Link';
 
@@ -132,8 +132,10 @@ export default function ProductScreen({
                   <li>pelagem mais macia e brilhante;</li>
                 </ul>
                 <Card.Text>
-                  Para mais informações acesse: www.nutrilus.com.br Dúvidas
-                  entre em contato com sac@nutrire.ind.com.br
+                  Para mais informações acesse: www.nutrilus.com.br
+                </Card.Text>
+                <Card.Text>
+                  Dúvidas entre em contato com sac@nutrire.ind.com.br
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -158,8 +160,10 @@ export default function ProductScreen({
                   <li>pelagem mais macia e brilhante;</li>
                 </ul>
                 <Card.Text>
-                  Para mais informações acesse: www.nutrilus.com.br Dúvidas
-                  entre em contato com sac@nutrire.ind.com.br
+                  Para mais informações acesse: www.nutrilus.com.br
+                </Card.Text>
+                <Card.Text>
+                  Dúvidas entre em contato com sac@nutrire.ind.com.br
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -167,10 +171,15 @@ export default function ProductScreen({
             <Card className={styles.detailCard}>
               <Card.Body>
                 <Card.Title id="avaliacao">Avaliação de clientes</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the cards content.
-                </Card.Text>
+                <h6>Top top top, até eu comi</h6>
+                <div>
+                  <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
+                  <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
+                  <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
+                  <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
+                  <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
+                </div>
+                <p>Muito gostoso, meus dogs amaram S2</p>
               </Card.Body>
             </Card>
 
