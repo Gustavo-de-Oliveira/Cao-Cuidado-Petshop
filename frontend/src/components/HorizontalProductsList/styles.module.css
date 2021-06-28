@@ -1,0 +1,10 @@
+.cardProduct {
+  margin: 0 1rem;
+  text-align: center;
+  border: none;
+  background-color: var(--main_white);
+}
+
+.cardProductTitle {
+  padding: 0;
+}
