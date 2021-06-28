@@ -20,6 +20,15 @@ export default function ProductScreen({
   return (
     <>
       <Container>
+        <div style={{ display: 'flex' }}>
+          <Link color="var(--main_black)" href="/">
+            Home &gt;
+          </Link>
+          <Link color="var(--main_black)" href="/itens">
+            Cachorro &gt;
+          </Link>
+          <p>{title}</p>
+        </div>
         <div className={styles.spacingContainer}>
           <Row>
             <Col className={styles.imagesContainer}>
@@ -87,9 +96,11 @@ export default function ProductScreen({
                 </button>
               </div>
               <div>
-                <p style={{ textDecoration: 'line-through' }}>R$ {oldPrice}</p>
+                <p style={{ textDecoration: 'line-through' }}>
+                  De: R$ {oldPrice}
+                </p>
                 <h3 style={{ color: 'var(--primary)' }}>
-                  R$ {newPrice} à vista
+                  Por: R$ {newPrice} à vista
                 </h3>
               </div>
               <div>
