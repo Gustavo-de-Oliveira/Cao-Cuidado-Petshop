@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 import Link from '../../Link';
 import HorizontalProductsList from '../../HorizontalProductsList';
+import InputQuantity from '../../InputQuantity';
 import products from '../../../../public/products.json';
 
 export default function ProductScreen({
@@ -15,8 +16,6 @@ export default function ProductScreen({
   oldPrice,
   newPrice,
 }) {
-  const [countQuantity, setCountQuantity] = useState(0);
-
   return (
     <>
       <Container>
@@ -72,29 +71,7 @@ export default function ProductScreen({
                 </button>
               </div>
               <p>Quantidade:</p>
-              <div className={styles.productQuantityContainer}>
-                <button
-                  type="button"
-                  className={styles.productQuantityBtn}
-                  onClick={() => setCountQuantity(countQuantity - 1)}
-                >
-                  <FontAwesomeIcon height="20px" icon={faMinus} />
-                </button>
-                <input
-                  className={styles.productQuantityInput}
-                  type="number"
-                  value={countQuantity}
-                  min="1"
-                  max="5"
-                />
-                <button
-                  type="button"
-                  className={styles.productQuantityBtn}
-                  onClick={() => setCountQuantity(countQuantity + 1)}
-                >
-                  <FontAwesomeIcon height="20px" icon={faPlus} />
-                </button>
-              </div>
+              <InputQuantity />
               <div>
                 <p style={{ textDecoration: 'line-through' }}>
                   De: R$ {oldPrice}
