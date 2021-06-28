@@ -22,8 +22,25 @@ export default function ProductScreen({
       <Container>
         <div className={styles.spacingContainer}>
           <Row>
-            <Col>
-              <img src={image} alt="Imagem produto" width="100%" />
+            <Col className={styles.imagesContainer}>
+              <img src={image} alt="Imagem produto principal" width="50%" />
+              <div className={styles.smallImagesContainer}>
+                <img
+                  className={styles.smallImages}
+                  src={image}
+                  alt="Imagem produto secundaria"
+                />
+                <img
+                  className={styles.smallImages}
+                  src={image}
+                  alt="Imagem produto secundaria"
+                />
+                <img
+                  className={styles.smallImages}
+                  src={image}
+                  alt="Imagem produto secundaria"
+                />
+              </div>
             </Col>
             <Col>
               <div>
