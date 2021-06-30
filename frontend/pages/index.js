@@ -23,21 +23,21 @@ export default function Home() {
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1250x350"
+              src="https://via.placeholder.com/1250x350"
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1250x350"
+              src="https://via.placeholder.com/1250x350"
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1250x350"
+              src="https://via.placeholder.com/1250x350"
               alt="Third slide"
             />
           </Carousel.Item>
