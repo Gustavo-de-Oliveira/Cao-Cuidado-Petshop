@@ -5,8 +5,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "59,99",
-      "newPrice": "39,99",
+      "oldPrice": 59.99,
+      "newPrice": 39.99,
       "link": "racao-royal-canin-medio-5kg"
     },
     {
@@ -14,8 +14,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 25kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "169,99",
-      "newPrice": "149,99",
+      "oldPrice": 16.99,
+      "newPrice": 149.99,
       "link": "racao-royal-canin-medio-25kg"
     },
     {
@@ -23,8 +23,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro pequeno - 10kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "99,99",
-      "newPrice": "69,99",
+      "oldPrice": 99.99,
+      "newPrice": 69.99,
       "link": "racao-royal-canin-medio-10kg"
     },
     {
@@ -32,8 +32,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "39,99",
-      "newPrice": "29,99",
+      "oldPrice": 39.99,
+      "newPrice": 29.99,
       "link": "racao-premier-medio-5kg"
     },
     {
@@ -41,8 +41,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 15kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "109,99",
-      "newPrice": "99,99",
+      "oldPrice": 109.99,
+      "newPrice": 99.99,
       "link": "racao-balance-grande-15kg"
     },
     {
@@ -50,8 +50,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "59,99",
-      "newPrice": "39,99",
+      "oldPrice": 59.99,
+      "newPrice": 39.99,
       "link": "racao-royal-canin-medio-5kg"
     },
     {
@@ -59,8 +59,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 25kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "169,99",
-      "newPrice": "149,99",
+      "oldPrice": 169.90,
+      "newPrice": 149.99,
       "link": "racao-royal-canin-medio-25kg"
     },
     {
@@ -68,8 +68,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro pequeno - 10kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "99,99",
-      "newPrice": "69,99",
+      "oldPrice": 99.99,
+      "newPrice": 69.99,
       "link": "racao-royal-canin-medio-10kg"
     },
     {
@@ -77,8 +77,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "39,99",
-      "newPrice": "29,99",
+      "oldPrice": 39.99,
+      "newPrice": 29.99,
       "link": "racao-premier-medio-5kg"
     },
     {
@@ -86,8 +86,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 15kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "109,99",
-      "newPrice": "99,99",
+      "oldPrice": 109.99,
+      "newPrice": 99.99,
       "link": "racao-balance-grande-15kg"
     },
     {
@@ -95,8 +95,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "59,99",
-      "newPrice": "39,99",
+      "oldPrice": 59.99,
+      "newPrice": 39.99,
       "link": "racao-royal-canin-medio-5kg"
     },
     {
@@ -104,8 +104,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 25kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "169,99",
-      "newPrice": "149,99",
+      "oldPrice": 169.99,
+      "newPrice": 149.99,
       "link": "racao-royal-canin-medio-25kg"
     },
     {
@@ -113,8 +113,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro pequeno - 10kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "99,99",
-      "newPrice": "69,99",
+      "oldPrice": 99.99,
+      "newPrice": 69.99,
       "link": "racao-royal-canin-medio-10kg"
     },
     {
@@ -122,8 +122,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "39,99",
-      "newPrice": "29,99",
+      "oldPrice": 39.99,
+      "newPrice": 29.90,
       "link": "racao-premier-medio-5kg"
     },
     {
@@ -131,8 +131,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 15kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "109,99",
-      "newPrice": "99,99",
+      "oldPrice": 109.90,
+      "newPrice": 99.99,
       "link": "racao-balance-grande-15kg"
     },
     {
@@ -140,8 +140,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "59,99",
-      "newPrice": "39,99",
+      "oldPrice": 59.99,
+      "newPrice": 39.99,
       "link": "racao-royal-canin-medio-5kg"
     },
     {
@@ -149,8 +149,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 25kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "169,99",
-      "newPrice": "149,99",
+      "oldPrice": 169.99,
+      "newPrice": 149.99,
       "link": "racao-royal-canin-medio-25kg"
     },
     {
@@ -158,8 +158,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro pequeno - 10kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "99,99",
-      "newPrice": "69,99",
+      "oldPrice": 99.99,
+      "newPrice": 69.99,
       "link": "racao-royal-canin-medio-10kg"
     },
     {
@@ -167,8 +167,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro médio - 5kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "39,99",
-      "newPrice": "29,99",
+      "oldPrice": 39.99,
+      "newPrice": 29.99,
       "link": "racao-premier-medio-5kg"
     },
     {
@@ -176,8 +176,8 @@
       "image": "https://via.placeholder.com/184x232",
       "title": "Ração para cachorro grande - 15kg",
       "description": "Ração para cachorro média muito gostosa huuum que delicia",
-      "oldPrice": "109,99",
-      "newPrice": "99,99",
+      "oldPrice": 109.99,
+      "newPrice": 99.99,
       "link": "racao-balance-grande-15kg"
     }
   ]
