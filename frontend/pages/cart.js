@@ -7,8 +7,12 @@ import InputQuantity from '../src/components/InputQuantity';
 import ProductsCart from '../src/context/productsCart';
 
 export default function Cart() {
-  const { cartItems, handleAddToCart, handleRemoveFromCart } =
-    useContext(ProductsCart);
+  const {
+    cartItems,
+    handleAddToCart,
+    handleRemoveFromCart,
+    handleDeleteProductFromCart,
+  } = useContext(ProductsCart);
 
   function calculateTotal(products) {
     return products.reduce(
@@ -31,7 +35,7 @@ export default function Cart() {
   return (
     <Container>
       <h1>Meu carrinho</h1>
-      {!cartItems ? (
+      {!cartItems || cartItems.length === 0 ? (
         <h5>Não existem itens no carrinho</h5>
       ) : (
         cartItems.map((cartProduct) => {
@@ -70,58 +74,65 @@ export default function Cart() {
               </Col>
               <Col className={styles.cartMainProcessItem}>
                 <h5>Limpar:</h5>
-                <FontAwesomeIcon height="20px" icon={faTrash} />
-                <p>Excluir</p>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteProductFromCart(cartProduct.id)}
+                >
+                  <FontAwesomeIcon height="20px" icon={faTrash} />
+                  <p>Excluir</p>
+                </button>
               </Col>
             </Row>
           );
         })
       )}
 
-      <div className={styles.spacingContainer}>
-        <Row>
-          <Col>
-            <div className={styles.inputInformationContainer}>
-              <div className={styles.cartLeftContainer}>
-                <h4>Prazo de entrega</h4>
-                <p>Informe seu CEP para consultar as datas de entrega</p>
+      {!cartItems || cartItems.length === 0 ? null : (
+        <div className={styles.spacingContainer}>
+          <Row>
+            <Col>
+              <div className={styles.inputInformationContainer}>
+                <div className={styles.cartLeftContainer}>
+                  <h4>Prazo de entrega</h4>
+                  <p>Informe seu CEP para consultar as datas de entrega</p>
+                </div>
+                <input type="number" name="CEP" />
+                <button type="button">Calcular</button>
               </div>
-              <input type="number" name="CEP" />
-              <button type="button">Calcular</button>
-            </div>
 
-            <div className={styles.inputInformationContainer}>
-              <div className={styles.cartLeftContainer}>
-                <h4>Cupom de desconto</h4>
-                <p>Insira o cupom de desconto</p>
+              <div className={styles.inputInformationContainer}>
+                <div className={styles.cartLeftContainer}>
+                  <h4>Cupom de desconto</h4>
+                  <p>Insira o cupom de desconto</p>
+                </div>
+                <input type="text" name="cupom" />
+                <button type="button">Verificar</button>
               </div>
-              <input type="text" name="cupom" />
-              <button type="button">Verificar</button>
-            </div>
-          </Col>
+            </Col>
 
-          <Col>
-            <div className={styles.finishCartContainer}>
-              <h2>Resumo do pedido</h2>
-              <div className={styles.priceContainer}>
-                <h6>Subtotal:</h6>
-                <p>R$ {calculateTotal(cartItems).toFixed(2)}</p>
+            <Col>
+              <div className={styles.finishCartContainer}>
+                <h2>Resumo do pedido</h2>
+                <div className={styles.priceContainer}>
+                  <h6>Subtotal:</h6>
+                  <p>R$ {calculateTotal(cartItems).toFixed(2)}</p>
+                </div>
+                <div className={styles.priceContainer}>
+                  <h6>Frete:</h6>
+                  <p>R$ 9,90</p>
+                </div>
+                <div className={styles.finalPriceContainer}>
+                  <h6>Total:</h6>
+                  <p>R$ {calculateTotalShip(cartItems).toFixed(2)}</p>
+                </div>
+                <div className={styles.finishCartBtn}>
+                  <button type="button">Finalizar compra</button>
+                </div>
               </div>
-              <div className={styles.priceContainer}>
-                <h6>Frete:</h6>
-                <p>R$ 9,90</p>
-              </div>
-              <div className={styles.finalPriceContainer}>
-                <h6>Total:</h6>
-                <p>R$ {calculateTotalShip(cartItems).toFixed(2)}</p>
-              </div>
-              <div className={styles.finishCartBtn}>
-                <button type="button">Finalizar compra</button>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </div>
+            </Col>
+          </Row>
+        </div>
+      )}
     </Container>
   );
 }

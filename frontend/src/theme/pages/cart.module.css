@@ -11,6 +11,11 @@
   border-right: 2px solid var(--main_black);
 }
 
+.cartMainProcessItem button {
+  border: none;
+  margin: 0.3rem;
+}
+
 .inputInformationContainer {
   margin: 1.5rem 0;
   display: flex;

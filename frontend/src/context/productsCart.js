@@ -42,6 +42,17 @@ export const ProductsCartProvider = ({ children }) => {
     );
   }
 
+  function handleDeleteProductFromCart(productId) {
+    setCartItems((prev) =>
+      prev.reduce((accumulator, item) => {
+        if (item.id === productId) {
+          return accumulator;
+        }
+        return [...accumulator, item];
+      }, [])
+    );
+  }
+
   return (
     <ProductsCart.Provider
       value={{
@@ -51,6 +62,7 @@ export const ProductsCartProvider = ({ children }) => {
         getTotalItems,
         handleAddToCart,
         handleRemoveFromCart,
+        handleDeleteProductFromCart,
       }}
     >
       {children}
