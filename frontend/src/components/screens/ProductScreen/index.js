@@ -18,7 +18,7 @@ export default function ProductScreen({
   oldPrice,
   newPrice,
 }) {
-  const { handleAddToCart } = useContext(ProductsCart);
+  const { handleAddQuantityToCart } = useContext(ProductsCart);
 
   const [countQuantity, setCountQuantity] = useState(1);
   return (
@@ -91,7 +91,12 @@ export default function ProductScreen({
               </div>
               <div>
                 <button
-                  onClick={() => handleAddToCart(productItem)}
+                  onClick={
+                    countQuantity > 0
+                      ? () =>
+                          handleAddQuantityToCart(productItem, countQuantity)
+                      : null
+                  }
                   type="button"
                   className={styles.addToCartBtn}
                 >
@@ -99,7 +104,12 @@ export default function ProductScreen({
                 </button>
                 <Link href="/cart" color="var(--main_white)">
                   <button
-                    onClick={() => handleAddToCart(productItem)}
+                    onClick={
+                      countQuantity > 0
+                        ? () =>
+                            handleAddQuantityToCart(productItem, countQuantity)
+                        : null
+                    }
                     type="button"
                     className={styles.fastShopBtn}
                   >

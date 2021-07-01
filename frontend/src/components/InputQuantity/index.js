@@ -7,21 +7,44 @@ import styles from './styles.module.css';
 export default function InputQuantity({ countQuantity, increase, decrease }) {
   return (
     <div className={styles.productQuantityContainer}>
-      <button
-        type="button"
-        className={styles.productQuantityBtn}
-        onClick={decrease}
-      >
-        <FontAwesomeIcon height="20px" icon={faMinus} />
-      </button>
+      {countQuantity <= 1 ? (
+        <button
+          disabled
+          type="button"
+          className={styles.productQuantityBtn}
+          onClick={decrease}
+        >
+          <FontAwesomeIcon height="20px" icon={faMinus} />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className={styles.productQuantityBtn}
+          onClick={decrease}
+        >
+          <FontAwesomeIcon height="20px" icon={faMinus} />
+        </button>
+      )}
+
       <p className={styles.productQuantityInput}>{countQuantity}</p>
-      <button
-        type="button"
-        className={styles.productQuantityBtn}
-        onClick={increase}
-      >
-        <FontAwesomeIcon height="20px" icon={faPlus} />
-      </button>
+      {countQuantity >= 10 ? (
+        <button
+          disabled
+          type="button"
+          className={styles.productQuantityBtn}
+          onClick={increase}
+        >
+          <FontAwesomeIcon height="20px" icon={faPlus} />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className={styles.productQuantityBtn}
+          onClick={increase}
+        >
+          <FontAwesomeIcon height="20px" icon={faPlus} />
+        </button>
+      )}
     </div>
   );
 }

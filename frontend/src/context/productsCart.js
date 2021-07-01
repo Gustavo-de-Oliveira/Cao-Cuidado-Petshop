@@ -28,6 +28,24 @@ export const ProductsCartProvider = ({ children }) => {
     });
   }
 
+  function handleAddQuantityToCart(productItem, quantity) {
+    setCartItems((prev) => {
+      // item ja foi inserido no carrinho anteriormente, add + 1
+      const isItemInCart = prev.find((item) => item.id === productItem.id);
+
+      if (isItemInCart) {
+        return prev.map((item) =>
+          item.id === productItem.id
+            ? { ...item, amount: item.amount + quantity }
+            : item
+        );
+      }
+
+      // primeira vez que o item eh adicionado no carrinho
+      return [...prev, { ...productItem, amount: quantity }];
+    });
+  }
+
   function handleRemoveFromCart(productId) {
     setCartItems((prev) =>
       prev.reduce((accumulator, item) => {
@@ -61,6 +79,7 @@ export const ProductsCartProvider = ({ children }) => {
         // functions
         getTotalItems,
         handleAddToCart,
+        handleAddQuantityToCart,
         handleRemoveFromCart,
         handleDeleteProductFromCart,
       }}
