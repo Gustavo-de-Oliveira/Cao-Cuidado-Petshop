@@ -4,6 +4,7 @@ import products from '../../public/products.json';
 import ProductScreen from '../../src/components/screens/ProductScreen';
 
 export default function ProductInternalScreen({
+  productItem,
   image,
   title,
   description,
@@ -12,6 +13,7 @@ export default function ProductInternalScreen({
 }) {
   return (
     <ProductScreen
+      productItem={productItem}
       image={image}
       title={title}
       description={description}
@@ -28,6 +30,7 @@ export function getStaticProps({ params }) {
     if (productInfo.link === params.link) {
       return {
         ...accumulator,
+        productItem: productInfo,
         image: productInfo.image,
         title: productInfo.title,
         description: productInfo.description,
@@ -40,6 +43,7 @@ export function getStaticProps({ params }) {
 
   return {
     props: {
+      productItem: pageData.productItem,
       image: pageData.image,
       title: pageData.title,
       description: pageData.description,

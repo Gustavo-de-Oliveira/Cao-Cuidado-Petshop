@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 
-export default function InputQuantity() {
-  const [countQuantity, setCountQuantity] = useState(0);
+export default function InputQuantity({ countQuantity, increase, decrease }) {
   return (
     <div className={styles.productQuantityContainer}>
       <button
         type="button"
         className={styles.productQuantityBtn}
-        onClick={() => setCountQuantity(countQuantity - 1)}
+        onClick={decrease}
       >
         <FontAwesomeIcon height="20px" icon={faMinus} />
       </button>
-      <input
-        className={styles.productQuantityInput}
-        type="number"
-        value={countQuantity}
-        min="1"
-        max="5"
-      />
+      <p className={styles.productQuantityInput}>{countQuantity}</p>
       <button
         type="button"
         className={styles.productQuantityBtn}
-        onClick={() => setCountQuantity(countQuantity + 1)}
+        onClick={increase}
       >
         <FontAwesomeIcon height="20px" icon={faPlus} />
       </button>

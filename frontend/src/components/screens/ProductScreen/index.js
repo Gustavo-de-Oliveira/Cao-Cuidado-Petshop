@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -8,14 +8,19 @@ import Link from '../../Link';
 import HorizontalProductsList from '../../HorizontalProductsList';
 import InputQuantity from '../../InputQuantity';
 import products from '../../../../public/products.json';
+import ProductsCart from '../../../context/productsCart';
 
 export default function ProductScreen({
+  productItem,
   image,
   title,
   description,
   oldPrice,
   newPrice,
 }) {
+  const { handleAddToCart } = useContext(ProductsCart);
+
+  const [countQuantity, setCountQuantity] = useState(1);
   return (
     <>
       <Container>
@@ -71,7 +76,11 @@ export default function ProductScreen({
                 </button>
               </div>
               <p>Quantidade:</p>
-              <InputQuantity />
+              <InputQuantity
+                countQuantity={countQuantity}
+                increase={() => setCountQuantity(countQuantity + 1)}
+                decrease={() => setCountQuantity(countQuantity - 1)}
+              />
               <div>
                 <p style={{ textDecoration: 'line-through' }}>
                   De: R$ {oldPrice}
@@ -81,12 +90,22 @@ export default function ProductScreen({
                 </h3>
               </div>
               <div>
-                <button type="button" className={styles.addToCartBtn}>
+                <button
+                  onClick={() => handleAddToCart(productItem)}
+                  type="button"
+                  className={styles.addToCartBtn}
+                >
                   Adicionar ao carrinho
                 </button>
-                <button type="button" className={styles.fastShopBtn}>
-                  Compra rápida
-                </button>
+                <Link href="/cart" color="var(--main_white)">
+                  <button
+                    onClick={() => handleAddToCart(productItem)}
+                    type="button"
+                    className={styles.fastShopBtn}
+                  >
+                    Compra rápida
+                  </button>
+                </Link>
               </div>
             </Col>
           </Row>
