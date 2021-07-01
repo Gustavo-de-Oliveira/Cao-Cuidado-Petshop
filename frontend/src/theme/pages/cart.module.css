@@ -6,7 +6,7 @@
   height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-right: 2px solid var(--main_black);
 }
