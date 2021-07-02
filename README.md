@@ -6,6 +6,29 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
 # Cao-Cuidado-Petshop
   <p>   O projeto é um sistema web completo para um Petshop fictício chamado Cão Cuidado. Este petshop realiza vendas de produtos para diversos animais, além de disponibilizar serviços como banho e tosa para os pets dos clientes. Adicionalmente, o estabelecimento também trabalha com a adoção de animais abandonados, exibindo no website uma lista de todos que ainda podem ser adotados. </p>
  
+## Rodando o projeto - frontend
+### Pré-requisitos
+* [Git](https://git-scm.com)
+* [Node.js](https://nodejs.org/en/) mínimo v.12
+
+Clone o repositório:
+```bash
+git clone https://github.com/Gustavo-de-Oliveira/Cao-Cuidado-Petshop.git
+```
+Acesse o projeto na pasta /frontend
+```bash
+cd frontend
+```
+Instale as dependências
+```bash
+npm install
+```
+Execute a aplicação
+```bash
+npm run dev
+```
+Irá rodar na porta:3000 -> acesse http://localhost:3000
+ 
 ## Requisitos
 <p> <ul>
  
@@ -73,7 +96,7 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
 </p>
 
 ### Telas da Aplicação
-<p> O protótipo das páginas do website estão contidas em: https://www.figma.com/file/ajgzL9tCnb0tVoOSCGWkdZ/Cão-Cuidado-Pet-Shop?node-id=0:1 </p>
+<p> O protótipo das páginas do website estão contidas em: https://www.figma.com/file/ajgzL9tCnb0tVoOSCGWkdZ/C%C3%A3o-Cuidado-Pet-Shop?node-id=0%3A1 </p>
 
 #### Tela Inicial
   <p> Ao acessar o sistema, o cliente é direcionado para esta página. Nela, o usuário encontra as ofertas da semana, as promoções selecionadas, e as marcas com as quais o petshop trabalha </p>
