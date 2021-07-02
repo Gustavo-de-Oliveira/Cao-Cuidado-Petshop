@@ -1,0 +1,43 @@
+.bgNavbarUp {
+	background-color: #5eaaa8;
+}
+
+.btnSearch {
+	background-color: #eb5e0b;
+	color: #eeeeee;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.btnSearch:hover {
+	background-color: #b74909;
+	color: #eeeeee;
+}
+
+.topBtn {
+	color: #eeeeee;
+}
+
+.topBtn:hover {
+	color: #f67d35;
+}
+
+.bgNavbarBottom {
+	background-color: #478685;
+}
+
+.optGroup {
+	appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	background-color: #478685 !important;;
+	margin-top: 5px;
+}
+
+.optGroupOpt {
+	background-color: #478685 !important;
+}
+
+.navbarLink:hover {
+	color: #f67d35 !important;
+}

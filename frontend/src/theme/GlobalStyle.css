@@ -1,0 +1,36 @@
+/* ensure all pages have Bootstrap CSS */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@csstools/normalize.css';
+
+* {
+  --primary: #eb5e0b;
+  --primary_light: #f67d35;
+  --primary_dark: #b74909;
+  --secondary: #5eaaa8;
+  --secondary_light: #a3d2ca;
+  --secondary_dark: #478685;
+  --main_white: #eeeeee;
+  --main_black: #222222;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main_white);
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}

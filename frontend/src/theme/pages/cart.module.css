@@ -1,0 +1,79 @@
+.spacingContainer {
+  padding: 1rem 0;
+}
+
+.cartMainProcessItem {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-right: 2px solid var(--main_black);
+}
+
+.cartMainProcessItem button {
+  border: none;
+  margin: 0.3rem;
+}
+
+.inputInformationContainer {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartLeftContainer {
+  width: 100%;
+}
+
+.inputInformationContainer input {
+  margin: 0 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: solid 2px var(--secondary_dark);
+  border-radius: 12px;
+}
+
+.inputInformationContainer button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary);
+  color: var(--main_white);
+}
+
+.finishCartContainer {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--secondary_light);
+}
+
+.priceContainer {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px var(--main_black);
+}
+
+.finalPriceContainer {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--primary);
+}
+
+.finishCartBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.finishCartBtn button {
+  margin: 1rem 0;
+  padding: 0.7rem;
+  background-color: var(--primary);
+  color: var(--main_white);
+  border: none;
+  border-radius: 12px;
+}

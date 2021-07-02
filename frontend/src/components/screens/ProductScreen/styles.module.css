@@ -1,0 +1,72 @@
+.spacingContainer {
+  padding: 1rem 0;
+}
+
+.imagesContainer {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.smallImagesContainer {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.smallImages {
+  margin: 0 1rem;
+  border: solid 2px var(--primary);
+  border-radius: 12px;
+  width: 15%;
+  cursor: pointer;
+}
+
+.productSelectBtn {
+  margin: 1rem 10px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--secondary_light);
+  color: var(--main_black);
+  transition: 0.3s;
+}
+
+.productSelectBtn:hover {
+  background-color: var(--primary);
+  color: var(--main_white);
+}
+
+.addToCartBtn,
+.fastShopBtn {
+  width: 45%;
+  margin: 1rem 10px;
+  padding: 0.5rem;
+  border: none;
+  background-color: var(--primary);
+  color: var(--main_white);
+  transition: 0.3s;
+  border-radius: 12px;
+}
+
+.fastShopBtn {
+  width: 45%;
+  background-color: var(--secondary);
+}
+
+.productsCategories {
+  display: flex;
+  text-align: center;
+  padding: 1.5rem 0rem;
+  background-color: var(--secondary_dark);
+  border-radius: 12px;
+}
+
+.detailCard {
+  width: 100%;
+  border: solid 2px var(--secondary);
+  border-radius: 12px;
+  margin: 1rem 0;
+}
