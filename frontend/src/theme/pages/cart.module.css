@@ -1,9 +1,8 @@
 .spacingContainer {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
 
 .cartMainProcessItem {
-  height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -43,13 +42,13 @@
 }
 
 .finishCartContainer {
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 12px;
   background-color: var(--secondary_light);
 }
 
 .priceContainer {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +56,7 @@
 }
 
 .finalPriceContainer {
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,7 +69,7 @@
 }
 
 .finishCartBtn button {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   padding: 0.7rem;
   background-color: var(--primary);
   color: var(--main_white);

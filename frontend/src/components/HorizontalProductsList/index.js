@@ -15,8 +15,8 @@ export default function HorizontalProductsList({ products }) {
                 <img alt="img" src={product.image} />
                 <Card.Body>
                   <p className={styles.cardProductTitle}>{product.title}</p>
-                  <h6>De: R${product.oldPrice}</h6>
-                  <h6>Por: R${product.newPrice}</h6>
+                  <h4>De: R${product.oldPrice}</h4>
+                  <h4>Por: R${product.newPrice}</h4>
                 </Card.Body>
               </Card>
             </Link>
