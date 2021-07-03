@@ -270,7 +270,7 @@ export default function Header() {
 
               <Form.Group as={Form.Row} controlId="formHorizontalCheck">
                 <Col sm={{ span: 10, offset: 0 }}>
-                  <Form.Check label="Remember me" />
+                  <Form.Check label="Lembrar de mim" />
                 </Col>
               </Form.Group>
 

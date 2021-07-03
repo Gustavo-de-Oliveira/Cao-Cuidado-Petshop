@@ -75,22 +75,22 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Sobre a Cão Cuidado PetShop
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Nossas lojas
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Trabalhe conosco
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Projetos sociais
                   </a>
                 </li>
@@ -102,12 +102,12 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Central de atendimento
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Assessoria de imprensa
                   </a>
                 </li>
@@ -117,7 +117,7 @@ export default function Footer() {
 
               <ul className="list-inline">
                 <li className="list-inline-item">
-                  <a href="#!" className=" list-inline-item">
+                  <a href="https://twitter.com" className=" list-inline-item">
                     <FontAwesomeIcon
                       width="20px"
                       height="20px"
@@ -126,7 +126,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className=" list-inline-item">
+                  <a href="https://facebook.com" className=" list-inline-item">
                     <FontAwesomeIcon
                       width="20px"
                       height="20px"
@@ -135,7 +135,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className=" list-inline-item">
+                  <a href="https://instagram.com" className=" list-inline-item">
                     <FontAwesomeIcon
                       width="20px"
                       height="20px"
@@ -144,7 +144,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="#!" className=" list-inline-item">
+                  <a href="https://youtube.com" className=" list-inline-item">
                     <FontAwesomeIcon
                       width="20px"
                       height="20px"
@@ -160,17 +160,17 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Política de privacidade
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Política de entrega e devolução
                   </a>
                 </li>
                 <li>
-                  <a href="#!" className="">
+                  <a href="404.js" className="">
                     Política de white hat
                   </a>
                 </li>
