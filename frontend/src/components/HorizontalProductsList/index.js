@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 export default function HorizontalProductsList({ products }) {
   return (
-    <Row xs={2} md={3} lg={5}>
+    <Row xs={2} md={3} lg={5} id="horizontalProductsList">
       {products.data.slice(0, 5).map((product) => {
         return (
           <Col key={product.id}>

@@ -120,7 +120,10 @@ export default function Cart() {
                   <h3>Frete:</h3>
                   <h4>R$ 9,90</h4>
                 </div>
-                <div className={styles.finalPriceContainer}>
+                <div
+                  id="finalPriceContainer"
+                  className={styles.finalPriceContainer}
+                >
                   <h3>Total:</h3>
                   <h4>R$ {calculateTotalShip(cartItems).toFixed(2)}</h4>
                 </div>
