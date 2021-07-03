@@ -36,7 +36,7 @@ export default function Cart() {
     <Container>
       <h1>Meu carrinho</h1>
       {!cartItems || cartItems.length === 0 ? (
-        <h5>Não existem itens no carrinho</h5>
+        <h4>Não existem itens no carrinho</h4>
       ) : (
         cartItems.map((cartProduct) => {
           return (
@@ -50,16 +50,15 @@ export default function Cart() {
                 />
               </Col>
               <Col className={styles.cartMainProcessItem}>
-                <h5>Produto:</h5>
-                <p>{cartProduct.title}</p>
-                {/* <p>{cartProduct.description}</p> */}
+                <h3>Produto:</h3>
+                <h4>{cartProduct.title}</h4>
               </Col>
               <Col className={styles.cartMainProcessItem}>
-                <h5>Preço (1un):</h5>
-                <p>R$ {cartProduct.newPrice}</p>
+                <h3>Preço (1un):</h3>
+                <h4>R$ {cartProduct.newPrice}</h4>
               </Col>
               <Col className={styles.cartMainProcessItem}>
-                <h5>Quantidade:</h5>
+                <h3>Quantidade:</h3>
                 <InputQuantity
                   countQuantity={cartProduct.amount}
                   increase={() => handleAddToCart(cartProduct)}
@@ -67,19 +66,19 @@ export default function Cart() {
                 />
               </Col>
               <Col className={styles.cartMainProcessItem}>
-                <h5>Total:</h5>
-                <p>
+                <h3>Total:</h3>
+                <h4>
                   R$ {(cartProduct.newPrice * cartProduct.amount).toFixed(2)}
-                </p>
+                </h4>
               </Col>
               <Col className={styles.cartMainProcessItem}>
-                <h5>Limpar:</h5>
+                <h3>Limpar:</h3>
                 <button
                   type="button"
                   onClick={() => handleDeleteProductFromCart(cartProduct.id)}
                 >
                   <FontAwesomeIcon height="20px" icon={faTrash} />
-                  <p>Excluir</p>
+                  <h4>Excluir</h4>
                 </button>
               </Col>
             </Row>
@@ -93,7 +92,7 @@ export default function Cart() {
             <Col>
               <div className={styles.inputInformationContainer}>
                 <div className={styles.cartLeftContainer}>
-                  <h4>Prazo de entrega</h4>
+                  <h2>Prazo de entrega</h2>
                   <p>Informe seu CEP para consultar as datas de entrega</p>
                 </div>
                 <input type="number" name="CEP" />
@@ -102,7 +101,7 @@ export default function Cart() {
 
               <div className={styles.inputInformationContainer}>
                 <div className={styles.cartLeftContainer}>
-                  <h4>Cupom de desconto</h4>
+                  <h2>Cupom de desconto</h2>
                   <p>Insira o cupom de desconto</p>
                 </div>
                 <input type="text" name="cupom" />
@@ -112,18 +111,18 @@ export default function Cart() {
 
             <Col>
               <div className={styles.finishCartContainer}>
-                <h2>Resumo do pedido</h2>
+                <h1>Resumo do pedido</h1>
                 <div className={styles.priceContainer}>
-                  <h6>Subtotal:</h6>
-                  <p>R$ {calculateTotal(cartItems).toFixed(2)}</p>
+                  <h3>Subtotal:</h3>
+                  <h4>R$ {calculateTotal(cartItems).toFixed(2)}</h4>
                 </div>
                 <div className={styles.priceContainer}>
-                  <h6>Frete:</h6>
-                  <p>R$ 9,90</p>
+                  <h3>Frete:</h3>
+                  <h4>R$ 9,90</h4>
                 </div>
                 <div className={styles.finalPriceContainer}>
-                  <h6>Total:</h6>
-                  <p>R$ {calculateTotalShip(cartItems).toFixed(2)}</p>
+                  <h3>Total:</h3>
+                  <h4>R$ {calculateTotalShip(cartItems).toFixed(2)}</h4>
                 </div>
                 <div className={styles.finishCartBtn}>
                   <button type="button">Finalizar compra</button>

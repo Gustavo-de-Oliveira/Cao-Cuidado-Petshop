@@ -19,7 +19,7 @@ export default function Itens({ productsData }) {
   // const [ShowFilter, setShowFilter] = React.useState(true);
 
   return (
-    <div>
+    <>
       <div className="col-12 row">
         <div className="col-lg-2">
           <h4 className="border-bottom">Categoria 1</h4>
@@ -88,15 +88,16 @@ export default function Itens({ productsData }) {
                     <Card.Img variant="top" src={product.image} />
                     <Card.Body>
                       <Card.Title>
-                        <Link href={`/itens/${product.link}`} className="w-100">
+                        <Link
+                          color="var(--main_black)"
+                          href={`/itens/${product.link}`}
+                          className="w-100"
+                        >
                           {product.title}
                         </Link>
                       </Card.Title>
-                      <Card.Text>
-                        <small>{product.description}</small>
-                        <br />
-                        {product.newPrice}
-                      </Card.Text>
+                      <h4>De: R${product.oldPrice}</h4>
+                      <h4>Por: R${product.newPrice}</h4>
                     </Card.Body>
                   </Card>
                 );
@@ -105,6 +106,6 @@ export default function Itens({ productsData }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
