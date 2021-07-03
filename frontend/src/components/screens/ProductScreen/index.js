@@ -91,6 +91,7 @@ export default function ProductScreen({
               </div>
               <div>
                 <button
+                  id="addToCartBtn"
                   onClick={
                     countQuantity > 0
                       ? () =>

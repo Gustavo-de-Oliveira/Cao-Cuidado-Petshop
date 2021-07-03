@@ -55,8 +55,9 @@ export default function Header() {
                 fluid
                 className="col-lg-7 col-md-5 d-flex justify-content-end"
               >
-                <Nav.Link
-                  href="/"
+                <Link
+                  color="var(--main_white)"
+                  href="/cart"
                   className={`col-lg-3 col-md-2 col-sm-1 ${styles.topBtn}`}
                 >
                   <FontAwesomeIcon
@@ -65,7 +66,7 @@ export default function Header() {
                     icon={faShoppingCart}
                   />
                   <span className="text-center"> Carrinho</span>
-                </Nav.Link>
+                </Link>
 
                 <Button
                   onClick={() => setSmShow(true)}

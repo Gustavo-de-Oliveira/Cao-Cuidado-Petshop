@@ -38,6 +38,7 @@ export default function InputQuantity({ countQuantity, increase, decrease }) {
         </button>
       ) : (
         <button
+          id="increase_button"
           type="button"
           className={styles.productQuantityBtn}
           onClick={increase}
