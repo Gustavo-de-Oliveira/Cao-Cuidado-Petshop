@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Carousel, Row } from 'react-bootstrap';
+import { Container, Card, Carousel, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCat,
@@ -11,6 +11,9 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../src/theme/pages/index.module.css';
+import Link from '../src/components/Link';
+import products from '../public/products.json';
+import HorizontalProductsList from '../src/components/HorizontalProductsList';
 
 export default function Home() {
   return (
@@ -20,154 +23,131 @@ export default function Home() {
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1000x250"
+              src="https://via.placeholder.com/1250x350"
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1000x250"
+              src="https://via.placeholder.com/1250x350"
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://placehold.it/1000x250"
+              src="https://via.placeholder.com/1250x350"
               alt="Third slide"
             />
           </Carousel.Item>
         </Carousel>
 
-        <Container className={styles.cardsContainer}>
-          <Card className={styles.cardItem}>
-            <Card.Body className={styles.cardBody}>
-              <p>Grande variedade de marcas</p>
-              <FontAwesomeIcon height="50px" icon={faStar} />
-            </Card.Body>
-          </Card>
-          <Card className={styles.cardItem}>
-            <Card.Body className={styles.cardBody}>
-              <p>Frete grátis em todo o Brasil</p>
-              <FontAwesomeIcon height="50px" icon={faShippingFast} />
-            </Card.Body>
-          </Card>
-          <Card className={styles.cardItem}>
-            <Card.Body className={styles.cardBody}>
-              <p>Maior a compra maior o desconto</p>
-              <FontAwesomeIcon height="50px" icon={faPercent} />
-            </Card.Body>
-          </Card>
-          <Card className={styles.cardItem}>
-            <Card.Body className={styles.cardBody}>
-              <p>Parcelamento em até 6x sem juros</p>
-              <FontAwesomeIcon height="50px" icon={faCreditCard} />
-            </Card.Body>
-          </Card>
-        </Container>
-
-        <div>
-          <h1>Ofertas da semana</h1>
-          <h3>Aproveite!</h3>
-          <Row xs={3} md={6}>
-            <Card className={styles.cardProduct}>
-              <img alt="img" src="https://placehold.it/184x232" />
-              <Card.Body>
-                <p className={styles.cardProductTitle}>
-                  Ração para cachorro médio - 5kg
-                </p>
-                <h6>De: R$59,99</h6>
-                <h6>Por: R$39,99</h6>
-              </Card.Body>
-            </Card>
-            <Card className={styles.cardProduct}>
-              <img alt="img" src="https://placehold.it/184x232" />
-              <Card.Body>
-                <p className={styles.cardProductTitle}>
-                  Ração para cachorro médio - 5kg
-                </p>
-                <h6>De: R$59,99</h6>
-                <h6>Por: R$39,99</h6>
-              </Card.Body>
-            </Card>
-            <Card className={styles.cardProduct}>
-              <img alt="img" src="https://placehold.it/184x232" />
-              <Card.Body>
-                <p className={styles.cardProductTitle}>
-                  Ração para cachorro médio - 5kg
-                </p>
-                <h6>De: R$59,99</h6>
-                <h6>Por: R$39,99</h6>
-              </Card.Body>
-            </Card>
-            <Card className={styles.cardProduct}>
-              <img alt="img" src="https://placehold.it/184x232" />
-              <Card.Body>
-                <p className={styles.cardProductTitle}>
-                  Ração para cachorro médio - 5kg
-                </p>
-                <h6>De: R$59,99</h6>
-                <h6>Por: R$39,99</h6>
-              </Card.Body>
-            </Card>
-            <Card className={styles.cardProduct}>
-              <img alt="img" src="https://placehold.it/184x232" />
-              <Card.Body>
-                <p className={styles.cardProductTitle}>
-                  Ração para cachorro médio - 5kg
-                </p>
-                <h6>De: R$59,99</h6>
-                <h6>Por: R$39,99</h6>
-              </Card.Body>
-            </Card>
+        <div className={styles.spacingContainer}>
+          <Row xs={2} md={2} lg={4}>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body className={styles.cardBody}>
+                  <h4>Grande variedade de marcas</h4>
+                  <FontAwesomeIcon height="60px" icon={faStar} />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body className={styles.cardBody}>
+                  <h4>Frete grátis em todo o Brasil</h4>
+                  <FontAwesomeIcon height="60px" icon={faShippingFast} />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body className={styles.cardBody}>
+                  <h4>Maior a compra maior o desconto</h4>
+                  <FontAwesomeIcon height="60px" icon={faPercent} />
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body className={styles.cardBody}>
+                  <h4>Parcelamento em até 6x sem juros</h4>
+                  <FontAwesomeIcon height="60px" icon={faCreditCard} />
+                </Card.Body>
+              </Card>
+            </Col>
           </Row>
         </div>
 
-        <Container className={styles.cardsContainer}>
-          <Card className={styles.cardItem}>
-            <Card.Body>
-              <h4>Promoções em artigos para cachorros</h4>
-              <p>Até 50% de desconto em rações, banhos e brinquedos</p>
-              <div className={styles.cardBodyDiscount}>
-                <a href="/">ACESSE</a>
-                <FontAwesomeIcon height="50px" icon={faDog} />
-              </div>
-            </Card.Body>
-          </Card>
+        <div className={styles.spacingContainer}>
+          <h1>Ofertas da semana</h1>
+          <h4>Aproveite!</h4>
+          <HorizontalProductsList products={products} />
+        </div>
 
-          <Card className={styles.cardItem}>
-            <Card.Body>
-              <h4>Promoções em artigos para gatos</h4>
-              <p>Até 50% de desconto em rações, banhos e areia</p>
-              <div className={styles.cardBodyDiscount}>
-                <a href="/">ACESSE</a>
-                <FontAwesomeIcon height="50px" icon={faCat} />
-              </div>
-            </Card.Body>
-          </Card>
+        <div className={styles.spacingContainer}>
+          <Row xs={1} md={3} lg={3}>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body>
+                  <h4>Promoções em artigos para cachorros</h4>
+                  <p>Até 50% de desconto em rações, banhos e brinquedos</p>
+                  <div className={styles.cardBodyDiscount}>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
+                    <FontAwesomeIcon height="50px" icon={faDog} />
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body>
+                  <h4>Promoções em artigos para gatos</h4>
+                  <p>Até 50% de desconto em rações, banhos e areia</p>
+                  <div className={styles.cardBodyDiscount}>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
+                    <FontAwesomeIcon height="50px" icon={faCat} />
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card className={styles.cardItem}>
+                <Card.Body>
+                  <h4>Promoções em artigos para peixes</h4>
+                  <p>
+                    Até 50% de desconto em rações, banhos secos e brinquedos (?)
+                  </p>
+                  <div className={styles.cardBodyDiscount}>
+                    <Link color="var(--main_white)" href="/itens">
+                      ACESSE
+                    </Link>
+                    <FontAwesomeIcon height="50px" icon={faFish} />
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </div>
 
-          <Card className={styles.cardItem}>
-            <Card.Body>
-              <h4>Promoções em artigos para coelhos</h4>
-              <p>Até 50% de desconto em rações, banhos secos e brinquedos</p>
-              <div className={styles.cardBodyDiscount}>
-                <a href="/">ACESSE</a>
-                <FontAwesomeIcon height="50px" icon={faFish} />
-              </div>
-            </Card.Body>
-          </Card>
-        </Container>
-
-        <Container>
+        <div className={styles.spacingContainer}>
           <h1>As melhores marcas</h1>
-          <img
-            alt="brand"
-            src="https://twineich.com/wp-content/uploads/2017/10/Logo.png"
-            width="75px"
-            height="75px"
-          />
-        </Container>
+          <Row>
+            <Col>
+              <img
+                alt="brand"
+                src="https://twineich.com/wp-content/uploads/2017/10/Logo.png"
+                width="75px"
+                height="75px"
+              />
+            </Col>
+          </Row>
+        </div>
       </Container>
     </>
   );

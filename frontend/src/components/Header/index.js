@@ -17,15 +17,11 @@ import {
   FormControl,
   Button,
   InputGroup,
-  Card,
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
   Modal,
 } from 'react-bootstrap';
+import Link from '../Link';
 import styles from './styles.module.css';
-//import brandIcon from '../../../public/Logo_white.png';
+import brandIcon from '../../../public/Logo_white.png';
 
 export default function Header() {
   const [smShow, setSmShow] = React.useState(false);
@@ -35,8 +31,10 @@ export default function Header() {
     <>
       <header className="mb-5">
         <Navbar className={`${styles.bgNavbarUp}`} expand="lg">
-          <Navbar.Brand href="/">
-          </Navbar.Brand>
+          <Link href="/">
+            <NextImage src={brandIcon} alt="logo" width="95" height="67" />
+            {/* <img src={brandIcon.src} alt="logo" width="95" height="67" /> */}
+          </Link>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
 
@@ -53,17 +51,27 @@ export default function Header() {
                 </Button>
               </InputGroup>
 
-              <Container fluid className="col-lg-7 col-md-5 d-flex justify-content-end">
-                <Nav.Link href="/" className={`col-lg-3 col-md-2 col-sm-1 ${styles.topBtn}`}>
+              <Container
+                fluid
+                className="col-lg-7 col-md-5 d-flex justify-content-end"
+              >
+                <Link
+                  color="var(--main_white)"
+                  href="/cart"
+                  className={`col-lg-3 col-md-2 col-sm-1 ${styles.topBtn}`}
+                >
                   <FontAwesomeIcon
                     width="20px"
                     height="20px"
                     icon={faShoppingCart}
                   />
                   <span className="text-center"> Carrinho</span>
-                </Nav.Link>
+                </Link>
 
-                <Button onClick={() => setSmShow(true)} className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}>
+                <Button
+                  onClick={() => setSmShow(true)}
+                  className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}
+                >
                   <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
                   <span className="text-center"> Cadastro</span>
                 </Button>
@@ -82,15 +90,31 @@ export default function Header() {
               <Form.Row>
                 <div className="col-lg-6 d-lg-flex">
                   <Col>
-                    <Form.Control size="sm" as="select" className={`border-0 text-white ${styles.optGroup}`}>
-                      <option className={`${styles.optGroupOpt}`} value="all">Cachorros</option>
-                      <option className={`${styles.optGroupOpt}`} value="food">Ração</option>
-                      <option className={`${styles.optGroupOpt}`} value="toys">Brinquedos</option>
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      className={`border-0 text-white ${styles.optGroup}`}
+                    >
+                      <option className={`${styles.optGroupOpt}`} value="all">
+                        Cachorros
+                      </option>
+                      <option className={`${styles.optGroupOpt}`} value="food">
+                        Ração
+                      </option>
+                      <option className={`${styles.optGroupOpt}`} value="toys">
+                        Brinquedos
+                      </option>
                     </Form.Control>
                   </Col>
 
                   <Col>
-                    <Form.Control size="sm" as="select" className={`border-0 text-white ${styles.optGroup}`} name="cats" id="cats">
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      className={`border-0 text-white ${styles.optGroup}`}
+                      name="cats"
+                      id="cats"
+                    >
                       <option value="all">Gatos</option>
                       <option value="food">Ração</option>
                       <option value="toys">Brinquedos</option>
@@ -99,7 +123,13 @@ export default function Header() {
                   </Col>
 
                   <Col>
-                    <Form.Control size="sm" as="select" className={`border-0 text-white ${styles.optGroup}`} name="others" id="others" >
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      className={`border-0 text-white ${styles.optGroup}`}
+                      name="others"
+                      id="others"
+                    >
                       <option value="all">Outros pets</option>
                       <option value="food">Ração</option>
                       <option value="toys">Brinquedos</option>
@@ -108,7 +138,13 @@ export default function Header() {
                   </Col>
 
                   <Col>
-                    <Form.Control size="sm" as="select" className={`border-0 text-white ${styles.optGroup}`} name="brands" id="brands" >
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      className={`border-0 text-white ${styles.optGroup}`}
+                      name="brands"
+                      id="brands"
+                    >
                       <option value="all">Marcas</option>
                     </Form.Control>
                   </Col>
@@ -117,15 +153,22 @@ export default function Header() {
                 <div className="border-right ml-lg-5" />
 
                 <div className="col-lg-5 ml-lg-5 d-lg-flex">
-                  <Nav.Link href="/about" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
-                    Sobre o Cão Cuidado
+                  <Nav.Link
+                    href="/about"
+                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
+                  >
+                    Sobre Cão cuidado
                   </Nav.Link>
 
-                  <Nav.Link href="/404" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                  <Nav.Link
+                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
+                  >
                     FAQ
                   </Nav.Link>
 
-                  <Nav.Link href="/adoption" className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                  <Nav.Link
+                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
+                  >
                     Adoção
                   </Nav.Link>
                 </div>
@@ -135,8 +178,13 @@ export default function Header() {
         </Navbar>
       </header>
 
-      { hasLogin ?
-        <Modal size="sm" show={smShow} onHide={() => setSmShow(false)} aria-labelledby="example-modal-sizes-title-sm">
+      {hasLogin ? (
+        <Modal
+          size="sm"
+          show={smShow}
+          onHide={() => setSmShow(false)}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
           <Modal.Header>
             <Form className="text-center mx-auto">
               <Form.Group controlId="formBasicEmail">
@@ -162,9 +210,16 @@ export default function Header() {
             </Form.Text>
           </Modal.Body>
         </Modal>
-        
-        :
-        <Modal size="md" show={smShow} onHide={() => {setSmShow(false); setHasLogin(true)}} aria-labelledby="example-modal-sizes-title-sm">
+      ) : (
+        <Modal
+          size="md"
+          show={smShow}
+          onHide={() => {
+            setSmShow(false);
+            setHasLogin(true);
+          }}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
           <Modal.Header className="col-12">
             <Form>
               <Form.Group as={Form.Row} controlId="formHorizontalEmail">
@@ -198,15 +253,20 @@ export default function Header() {
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Form.Row} controlId="formHorizontalConfirmPassword">
+              <Form.Group
+                as={Form.Row}
+                controlId="formHorizontalConfirmPassword"
+              >
                 <Form.Label column sm={4}>
                   Repita sua senha
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="password" placeholder="Repita sua senha" />
+                  <Form.Control
+                    type="password"
+                    placeholder="Repita sua senha"
+                  />
                 </Col>
               </Form.Group>
-              
 
               <Form.Group as={Form.Row} controlId="formHorizontalCheck">
                 <Col sm={{ span: 10, offset: 0 }}>
@@ -222,7 +282,7 @@ export default function Header() {
             </Form>
           </Modal.Header>
         </Modal>
-      }
+      )}
     </>
   );
 }

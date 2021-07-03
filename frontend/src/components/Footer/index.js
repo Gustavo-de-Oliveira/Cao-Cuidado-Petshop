@@ -13,27 +13,17 @@ import {
   faCcAmex,
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-//import brandIcon from '../../../public/Logo_white.png';
+import brandIcon from '../../../public/Logo_white.png';
 import styles from './styles.module.css';
-
-// import {
-//   Container,
-//   Image,
-//   Col,
-//   Row,
-//   Nav,
-//   Navbar,
-//   Form,
-//   FormControl,
-//   Button,
-//   InputGroup,
-// } from 'react-bootstrap';
+import Link from '../Link';
 
 export default function Footer() {
   return (
     <footer className={`${styles.footerContainer}`}>
       <div>
-        <section className={`mt-5 p-4 mx-auto col-lg-10 col-md-12 ${styles.newsletterSection}`}>
+        <section
+          className={`mt-5 p-4 mx-auto col-lg-10 col-md-12 ${styles.newsletterSection}`}
+        >
           <form action="">
             <div className="row d-flex justify-content-center">
               <div className="col-auto">
@@ -55,8 +45,11 @@ export default function Footer() {
               </div>
 
               <div className="col-auto mt-2">
-                <button type="submit" className={`btn mt-3 mb-4 ${styles.sendBtn}`}>
-                  Enviar {' '}
+                <button
+                  type="submit"
+                  className={`btn mt-3 mb-4 ${styles.sendBtn}`}
+                >
+                  Enviar{' '}
                   <FontAwesomeIcon
                     width="20px"
                     height="20px"
@@ -71,6 +64,10 @@ export default function Footer() {
         <section className={`col-12 mt-4 ${styles.footerSection}`}>
           <div className={`row ${styles.listStyle}`}>
             <div className="col-lg-3 col-md-6">
+              <Link href="/">
+                <NextImage src={brandIcon} alt="logo" />
+                {/* <img src={brandIcon.src} alt="logo" /> */}
+              </Link>
             </div>
 
             <div className="col-lg-2 col-md-6 mb-4 mt-3 mb-md-0">
