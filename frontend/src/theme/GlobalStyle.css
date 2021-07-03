@@ -1,5 +1,6 @@
 /* ensure all pages have Bootstrap CSS */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 @import '~@csstools/normalize.css';
 
 * {
@@ -17,20 +18,51 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--main_white);
+  font-family: 'Nunito', sans-serif;
 }
 
-p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
   margin: 0;
   padding: 0;
 }
 
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+p,
+a {
+  font-size: 16px;
+}
+
+/* Retira os indicadores up-down de inputs se for type="number" */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  margin: 0;
 }
 
 input[type='number'] {
-  -moz-appearance: textfield; /* Firefox */
+  -moz-appearance: textfield;
 }

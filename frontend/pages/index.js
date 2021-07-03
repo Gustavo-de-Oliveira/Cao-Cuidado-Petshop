@@ -48,32 +48,32 @@ export default function Home() {
             <Col>
               <Card className={styles.cardItem}>
                 <Card.Body className={styles.cardBody}>
-                  <p>Grande variedade de marcas</p>
-                  <FontAwesomeIcon height="50px" icon={faStar} />
+                  <h4>Grande variedade de marcas</h4>
+                  <FontAwesomeIcon height="60px" icon={faStar} />
                 </Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className={styles.cardItem}>
                 <Card.Body className={styles.cardBody}>
-                  <p>Frete grátis em todo o Brasil</p>
-                  <FontAwesomeIcon height="50px" icon={faShippingFast} />
+                  <h4>Frete grátis em todo o Brasil</h4>
+                  <FontAwesomeIcon height="60px" icon={faShippingFast} />
                 </Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className={styles.cardItem}>
                 <Card.Body className={styles.cardBody}>
-                  <p>Maior a compra maior o desconto</p>
-                  <FontAwesomeIcon height="50px" icon={faPercent} />
+                  <h4>Maior a compra maior o desconto</h4>
+                  <FontAwesomeIcon height="60px" icon={faPercent} />
                 </Card.Body>
               </Card>
             </Col>
             <Col>
               <Card className={styles.cardItem}>
                 <Card.Body className={styles.cardBody}>
-                  <p>Parcelamento em até 6x sem juros</p>
-                  <FontAwesomeIcon height="50px" icon={faCreditCard} />
+                  <h4>Parcelamento em até 6x sem juros</h4>
+                  <FontAwesomeIcon height="60px" icon={faCreditCard} />
                 </Card.Body>
               </Card>
             </Col>
@@ -82,7 +82,7 @@ export default function Home() {
 
         <div className={styles.spacingContainer}>
           <h1>Ofertas da semana</h1>
-          <h3>Aproveite!</h3>
+          <h4>Aproveite!</h4>
           <HorizontalProductsList products={products} />
         </div>
 

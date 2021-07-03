@@ -58,7 +58,7 @@ export default function ProductScreen({
             <Col>
               <div>
                 <h1>{title}</h1>
-                <h6>{description}</h6>
+                <h4>{description}</h4>
               </div>
               <p>Escolha o tamanho:</p>
               <div>
@@ -85,9 +85,9 @@ export default function ProductScreen({
                 <p style={{ textDecoration: 'line-through' }}>
                   De: R$ {oldPrice}
                 </p>
-                <h3 style={{ color: 'var(--primary)' }}>
+                <h2 style={{ color: 'var(--primary)' }}>
                   Por: R$ {newPrice} à vista
-                </h3>
+                </h2>
               </div>
               <div>
                 <button
@@ -125,22 +125,22 @@ export default function ProductScreen({
           <Row className={styles.productsCategories}>
             <Col>
               <Link color="var(--main_white)" href="#detalhes">
-                Detalhes do produto
+                <h3>Detalhes do produto</h3>
               </Link>
             </Col>
             <Col>
               <Link color="var(--main_white)" href="#especificaoes">
-                Especificações
+                <h3>Especificações</h3>
               </Link>
             </Col>
             <Col>
               <Link color="var(--main_white)" href="#avaliacao">
-                Avaliação de clientes
+                <h3>Avaliação de clientes</h3>
               </Link>
             </Col>
             <Col>
               <Link color="var(--main_white)" href="#perguntas">
-                Perguntas frequentes
+                <h3>Perguntas frequentes</h3>
               </Link>
             </Col>
           </Row>
@@ -150,8 +150,8 @@ export default function ProductScreen({
           <Row>
             <Card className={styles.detailCard}>
               <Card.Body>
-                <Card.Title id="detalhes">Detalhes do produto</Card.Title>
-                <Card.Text>
+                <h2 id="detalhes">Detalhes do produto</h2>
+                <p>
                   A Ração Seca Nutrilus Pro Frango & Carne para Cães Adultos
                   traz nutrição de alta qualidade pelo melhor custo beneficio.
                   Desenvolvido por veterinários a partir de ingredientes
@@ -159,27 +159,23 @@ export default function ProductScreen({
                   Ração Seca Nutrilus Pro Frango & Carne para Cães Adultos
                   garante uma alimentação balanceada e sabor irresistível.
                   Perfeita para nutrir e alegrar o seu cão!
-                </Card.Text>
-                <Card.Text>Benefícios:</Card.Text>
+                </p>
+                <p>Benefícios:</p>
                 <ul>
                   <li>intestino saudável;</li>
                   <li>reduz o odor das fezes;</li>
                   <li>proteínas de alta qualidade;</li>
                   <li>pelagem mais macia e brilhante;</li>
                 </ul>
-                <Card.Text>
-                  Para mais informações acesse: www.nutrilus.com.br
-                </Card.Text>
-                <Card.Text>
-                  Dúvidas entre em contato com sac@nutrire.ind.com.br
-                </Card.Text>
+                <p>Para mais informações acesse: www.nutrilus.com.br</p>
+                <p>Dúvidas entre em contato com sac@nutrire.ind.com.br</p>
               </Card.Body>
             </Card>
 
             <Card className={styles.detailCard}>
               <Card.Body>
-                <Card.Title id="especificaoes">Especificações</Card.Title>
-                <Card.Text>
+                <h2 id="especificaoes">Especificações</h2>
+                <p>
                   A Ração Seca Nutrilus Pro Frango & Carne para Cães Adultos
                   traz nutrição de alta qualidade pelo melhor custo beneficio.
                   Desenvolvido por veterinários a partir de ingredientes
@@ -187,26 +183,22 @@ export default function ProductScreen({
                   Ração Seca Nutrilus Pro Frango & Carne para Cães Adultos
                   garante uma alimentação balanceada e sabor irresistível.
                   Perfeita para nutrir e alegrar o seu cão!
-                </Card.Text>
-                <Card.Text>Benefícios:</Card.Text>
+                </p>
+                <p>Benefícios:</p>
                 <ul>
                   <li>intestino saudável;</li>
                   <li>reduz o odor das fezes;</li>
                   <li>proteínas de alta qualidade;</li>
                   <li>pelagem mais macia e brilhante;</li>
                 </ul>
-                <Card.Text>
-                  Para mais informações acesse: www.nutrilus.com.br
-                </Card.Text>
-                <Card.Text>
-                  Dúvidas entre em contato com sac@nutrire.ind.com.br
-                </Card.Text>
+                <p>Para mais informações acesse: www.nutrilus.com.br</p>
+                <p>Dúvidas entre em contato com sac@nutrire.ind.com.br</p>
               </Card.Body>
             </Card>
 
             <Card className={styles.detailCard}>
               <Card.Body>
-                <Card.Title id="avaliacao">Avaliação de clientes</Card.Title>
+                <h2 id="avaliacao">Avaliação de clientes</h2>
                 <h6>Top top top, até eu comi</h6>
                 <div>
                   <FontAwesomeIcon height="15px" icon={faStar} color="yellow" />
@@ -221,14 +213,12 @@ export default function ProductScreen({
 
             <Card className={styles.detailCard}>
               <Card.Body>
-                <Card.Title id="perguntas">Perguntas frequentes</Card.Title>
-                <Card.Text>
-                  P: Pode alimentar gato com essa ração? Grata.
-                </Card.Text>
-                <Card.Text>
+                <h2 id="perguntas">Perguntas frequentes</h2>
+                <p>P: Pode alimentar gato com essa ração? Grata.</p>
+                <p>
                   R: Não é recomendado, mas já alimentei a minha e ela está
                   muito bem.
-                </Card.Text>
+                </p>
               </Card.Body>
             </Card>
           </Row>
