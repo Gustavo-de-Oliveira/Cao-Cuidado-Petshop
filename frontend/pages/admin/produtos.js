@@ -1,6 +1,15 @@
 import React from 'react';
 // import NextLink from 'next/link';
-import { Container, Image, Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
+import {
+  Container,
+  Image,
+  Col,
+  Row,
+  Table,
+  Modal,
+  Form,
+  Button,
+} from 'react-bootstrap';
 
 export default function admIndex() {
   const [showAdd, setShowAdd] = React.useState(false);
@@ -15,12 +24,42 @@ export default function admIndex() {
       <h1 className="text-center mx-auto">Tela de estoque</h1>
 
       <div className="float-lg-right float-md-left">
-        <button className="m-2 btn btn-outline-primary" onClick={() => setShowAdd(true)}>Adicionar Produto</button>
-        <button className="m-2 btn btn-outline-primary" onClick={() => setShowAdoption(true)}>Adicionar Adoção</button>
-        <button className="m-2 btn btn-outline-warning" onClick={() => setShowEdit(true)}>Editar Produto</button>
-        <button className="m-2 btn btn-outline-warning" onClick={() => setShowEditAdoption(true)}>Editar Adoção</button>
-        <button className="m-2 btn btn-outline-danger" onClick={() => setShowDelete(true)}>Deletar Produto</button>
-        <button className="m-2 btn btn-outline-danger" onClick={() => setShowDeleteAdoption(true)}>Deletar Adoção</button>
+        <button
+          className="m-2 btn btn-outline-primary"
+          onClick={() => setShowAdd(true)}
+        >
+          Adicionar Produto
+        </button>
+        <button
+          className="m-2 btn btn-outline-primary"
+          onClick={() => setShowAdoption(true)}
+        >
+          Adicionar Adoção
+        </button>
+        <button
+          className="m-2 btn btn-outline-warning"
+          onClick={() => setShowEdit(true)}
+        >
+          Editar Produto
+        </button>
+        <button
+          className="m-2 btn btn-outline-warning"
+          onClick={() => setShowEditAdoption(true)}
+        >
+          Editar Adoção
+        </button>
+        <button
+          className="m-2 btn btn-outline-danger"
+          onClick={() => setShowDelete(true)}
+        >
+          Deletar Produto
+        </button>
+        <button
+          className="m-2 btn btn-outline-danger"
+          onClick={() => setShowDeleteAdoption(true)}
+        >
+          Deletar Adoção
+        </button>
       </div>
 
       <Table striped bordered hover size="sm">
@@ -32,7 +71,7 @@ export default function admIndex() {
             <th>Preço(R$)</th>
           </tr>
         </thead>
-        
+
         <tbody>
           <tr>
             <td>1</td>
@@ -92,7 +131,12 @@ export default function admIndex() {
       </Table>
 
       {/* MODAL ADICIONAR PRODUTOS */}
-      <Modal size="lg" show={showAdd} onHide={() => setShowAdd(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showAdd}
+        onHide={() => setShowAdd(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <h2>Adicionar Produto</h2>
         </Modal.Header>
@@ -154,7 +198,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowAdd(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowAdd(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -164,7 +213,12 @@ export default function admIndex() {
       </Modal>
 
       {/* MODAL ADICIONAR ADOÇÕES */}
-      <Modal size="lg" show={showAdoption} onHide={() => setShowAdd(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showAdoption}
+        onHide={() => setShowAdd(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <h2>Adicionar Adoção</h2>
         </Modal.Header>
@@ -213,7 +267,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowAdoption(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowAdoption(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -223,7 +282,12 @@ export default function admIndex() {
       </Modal>
 
       {/* MODAL EDITAR PRODUTOS */}
-      <Modal size="lg" show={showEdit} onHide={() => setShowEdit(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showEdit}
+        onHide={() => setShowEdit(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={5}>
@@ -292,7 +356,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowEdit(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowEdit(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -302,7 +371,12 @@ export default function admIndex() {
       </Modal>
 
       {/* MODAL EDITAR ADOÇÕES */}
-      <Modal size="lg" show={showEditAdoption} onHide={() => setShowEditAdoption(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showEditAdoption}
+        onHide={() => setShowEditAdoption(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={5}>
@@ -358,7 +432,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowEditAdoption(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowEditAdoption(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -368,7 +447,12 @@ export default function admIndex() {
       </Modal>
 
       {/* MODAL DELETAR PRODUTOS */}
-      <Modal size="lg" show={showDelete} onHide={() => setShowDelete(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showDelete}
+        onHide={() => setShowDelete(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={5}>
@@ -402,31 +486,35 @@ export default function admIndex() {
 
               <Form.Group as={Col} controlId="formGridDueDate">
                 <Form.Label>Validade</Form.Label>
-                <Form.Control type="date" placeholder="date" disabled/>
+                <Form.Control type="date" placeholder="date" disabled />
               </Form.Group>
             </Form.Row>
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridQuantidade">
                 <Form.Label>Quantidade em estoque</Form.Label>
-                <Form.Control type="number" placeholder="Quantidade" disabled/>
+                <Form.Control type="number" placeholder="Quantidade" disabled />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPrice">
                 <Form.Label>Preço</Form.Label>
-                <Form.Control type="number" placeholder="price" disabled/>
+                <Form.Control type="number" placeholder="price" disabled />
               </Form.Group>
             </Form.Row>
 
             <Form.Group controlId="formGridCodBar">
               <Form.Label>Código de barras</Form.Label>
-              <Form.Control type="number" placeholder="Código de barras" disabled/>
+              <Form.Control
+                type="number"
+                placeholder="Código de barras"
+                disabled
+              />
             </Form.Group>
 
             <Form.Row>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} disabled/>
+                <Form.Control as="textarea" rows={5} cols={80} disabled />
               </Form.Group>
             </Form.Row>
 
@@ -438,7 +526,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowDelete(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowDelete(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -448,7 +541,12 @@ export default function admIndex() {
       </Modal>
 
       {/* MODAL DELETAR ADOÇÕES */}
-      <Modal size="lg" show={showDeleteAdoption} onHide={() => setShowDeleteAdoption(false)} aria-labelledby="example-modal-sizes-title-sm">
+      <Modal
+        size="lg"
+        show={showDeleteAdoption}
+        onHide={() => setShowDeleteAdoption(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
         <Modal.Header>
           <Form.Group as={Row} controlId="formHorizontalEmail">
             <Form.Label column sm={5}>
@@ -477,23 +575,23 @@ export default function admIndex() {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Nome" disabled/>
+                <Form.Control type="text" placeholder="Nome" disabled />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridDueDate">
                 <Form.Label>Data de nascimento</Form.Label>
-                <Form.Control type="date" placeholder="birthday" disabled/>
+                <Form.Control type="date" placeholder="birthday" disabled />
               </Form.Group>
             </Form.Row>
 
             <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Vacinado" disabled/>
+              <Form.Check type="checkbox" label="Vacinado" disabled />
             </Form.Group>
 
             <Form.Row>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} disabled/>
+                <Form.Control as="textarea" rows={5} cols={80} disabled />
               </Form.Group>
             </Form.Row>
 
@@ -505,7 +603,12 @@ export default function admIndex() {
               </Col>
 
               <Col>
-                <Button variant="danger" size="lg" block onClick={() => setShowDeleteAdoption(false)}>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowDeleteAdoption(false)}
+                >
                   Cancelar
                 </Button>
               </Col>
@@ -513,8 +616,6 @@ export default function admIndex() {
           </Form>
         </Modal.Body>
       </Modal>
-
-
     </div>
   );
 }
