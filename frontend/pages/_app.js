@@ -12,7 +12,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <ProductsCartProvider>
         <Head>
-          <title>CãoCuidao Petshop</title>
+          <title>CãoCuidado Petshop</title>
           <link rel="icon" href="./paw.ico" />
         </Head>
         <Header />
