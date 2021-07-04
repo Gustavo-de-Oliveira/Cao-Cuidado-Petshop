@@ -198,9 +198,11 @@ export default function Header() {
                 <Form.Label>Senha</Form.Label>
                 <Form.Control type="password" placeholder="Senha" />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Entrar
-              </Button>
+              <Link href="/admin">
+                <Button variant="primary" type="submit">
+                  Entrar
+                </Button>
+              </Link>
             </Form>
           </Modal.Header>
 
