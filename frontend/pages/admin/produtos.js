@@ -1,14 +1,14 @@
-import React from 'react';
-// import NextLink from 'next/link';
+import React, { useState } from 'react';
 import { Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
+import products from '../../public/products.json';
 
 export default function admIndex() {
-  const [showAdd, setShowAdd] = React.useState(false);
-  const [showAdoption, setShowAdoption] = React.useState(false);
-  const [showEdit, setShowEdit] = React.useState(false);
-  const [showEditAdoption, setShowEditAdoption] = React.useState(false);
-  const [showDelete, setShowDelete] = React.useState(false);
-  const [showDeleteAdoption, setShowDeleteAdoption] = React.useState(false);
+  const [showAdd, setShowAdd] = useState(false);
+  const [showAdoption, setShowAdoption] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showEditAdoption, setShowEditAdoption] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showDeleteAdoption, setShowDeleteAdoption] = useState(false);
 
   return (
     <div>
@@ -64,66 +64,24 @@ export default function admIndex() {
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Quantidade</th>
+            {/* <th>Quantidade</th> */}
             <th>Preço(R$)</th>
+            <th>Preço na promoção(R$)</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ração de cachorro</td>
-            <td>34</td>
-            <td>29,99</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ração de cachorro</td>
-            <td>13</td>
-            <td>15,00</td>
-          </tr>
+          {products.data.map((product) => {
+            return (
+              <tr key={product.id}>
+                <td>{product.id}</td>
+                <td>{product.title}</td>
+                {/* <td>34</td> */}
+                <td>{product.oldPrice}</td>
+                <td>{product.newPrice}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
 
