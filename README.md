@@ -11,19 +11,20 @@ Trabalho da disciplina SCC0219, Introdução ao Desenvolvimento Web
 * [Git](https://git-scm.com)
 * [Node.js](https://nodejs.org/en/) mínimo v.12
 
+### Passos
 Clone o repositório:
 ```bash
 git clone https://github.com/Gustavo-de-Oliveira/Cao-Cuidado-Petshop.git
 ```
-Acesse o projeto na pasta /frontend
+Acesse o projeto na pasta /frontend:
 ```bash
 cd frontend
 ```
-Instale as dependências
+Instale as dependências:
 ```bash
 npm install
 ```
-Execute a aplicação
+Execute a aplicação:
 ```bash
 npm run dev
 ```
@@ -98,7 +99,7 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
 </p>
 
 ### Telas da Aplicação
-<p> O protótipo das páginas do website estão contidas em: https://www.figma.com/file/ajgzL9tCnb0tVoOSCGWkdZ/C%C3%A3o-Cuidado-Pet-Shop?node-id=0%3A1 </p>
+O protótipo das páginas do website estão contidas em: [Figma](https://www.figma.com/file/ajgzL9tCnb0tVoOSCGWkdZ/C%C3%A3o-Cuidado-Pet-Shop?node-id=0%3A1)
 
 #### Tela Inicial
   <p> Ao acessar o sistema, o cliente é direcionado para esta página. Nela, o usuário encontra as ofertas da semana, as promoções selecionadas, e as marcas com as quais o petshop trabalha </p>
@@ -121,4 +122,24 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
 ![Untitled Diagram](https://user-images.githubusercontent.com/48142112/119587739-af1b7d80-bda5-11eb-8857-b0cbc2a02dee.png)
 
 Obs: Este é um diagrama que ilustra a navegação lógica em que as páginas podem ser acessadas porém, ela desconsidera os headers e footers do website. As Páginas "Inicial", "Lista", "Carrinho", e "About" podem ser acessadas a partir de qualquer outra página do website, através do header.
+
+## Testes
+Foi realizado 1 teste de UI (interface de usuário), utilizando o framework [Cypress](https://www.cypress.io/). O Cypress permite a visualização dos testes automatizados em um browser criado por ele.
+
+O teste realizado verifica se o valor final do carrinho, após adicionar produtos e somar os valores com o frete, está correto. Para testar, faça os passos:
+
+1. Verifique se está na pasta /frontend:
+```bash
+/cd frontend
+```
+2. Verifique se o projeto está rodando localmente (localhost:3000):
+```bash
+npm run dev
+```
+3. Rode o teste com cypress
+```bash
+npm run test:open
+```
+4. O Cypress abrirá uma janela com uma lista de testes. Clique no único item da lista, o 'cart.spec.js'.
+5. Abrirá outra janela, carregando e rodando o teste.
 
