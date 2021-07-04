@@ -28,6 +28,8 @@ Execute a aplicação
 npm run dev
 ```
 Irá rodar na porta:3000 -> acesse http://localhost:3000
+
+Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de-oliveira.vercel.app/
  
 ## Requisitos
 <p> <ul>
