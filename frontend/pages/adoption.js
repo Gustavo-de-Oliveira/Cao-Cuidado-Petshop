@@ -21,7 +21,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -37,7 +40,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -53,7 +59,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -69,7 +78,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -85,7 +97,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -101,7 +116,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -117,7 +135,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>
@@ -133,7 +154,10 @@ export default function adoption() {
             style={{ width: '15rem' }}
             className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
           >
-            <Card.Img variant="top" src="holder.js/25px45" />
+            <Card.Img
+              variant="top"
+              src="https://i.postimg.cc/T1vyq1DK/dog1.jpg"
+            />
             <Card.Body>
               <Card.Title>Nome do animal</Card.Title>
               <Card.Text>

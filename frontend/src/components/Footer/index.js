@@ -12,7 +12,7 @@ import {
   faCcPaypal,
   faCcAmex,
 } from '@fortawesome/free-brands-svg-icons';
-import { faWallet, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faWallet, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import brandIcon from '../../../public/Logo_white.png';
 import styles from './styles.module.css';
 import Link from '../Link';
@@ -53,7 +53,7 @@ export default function Footer() {
                   <FontAwesomeIcon
                     width="20px"
                     height="20px"
-                    icon={faArrowUp}
+                    icon={faChevronRight}
                   />
                 </button>
               </div>
@@ -75,22 +75,22 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Sobre a Cão Cuidado PetShop
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Nossas lojas
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Trabalhe conosco
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Projetos sociais
                   </a>
                 </li>
@@ -102,18 +102,18 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Central de atendimento
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Assessoria de imprensa
                   </a>
                 </li>
               </ul>
 
-              <h5 className="text-uppercase mt-4">Atendimento</h5>
+              <h5 className="text-uppercase mt-4">Redes sociais</h5>
 
               <ul className="list-inline">
                 <li className="list-inline-item">
@@ -160,17 +160,17 @@ export default function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Política de privacidade
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Política de entrega e devolução
                   </a>
                 </li>
                 <li>
-                  <a href="404.js" className="">
+                  <a href="/404" className="">
                     Política de white hat
                   </a>
                 </li>

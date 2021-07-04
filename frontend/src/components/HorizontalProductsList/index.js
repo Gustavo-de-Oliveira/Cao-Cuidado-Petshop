@@ -12,7 +12,12 @@ export default function HorizontalProductsList({ products }) {
           <Col key={product.id}>
             <Link color="var(--main_black)" href={`/itens/${product.link}`}>
               <Card className={styles.cardProduct}>
-                <img alt="img" src={product.image} />
+                <img
+                  width="184px"
+                  height="232px"
+                  alt="img"
+                  src={product.image}
+                />
                 <Card.Body>
                   <p className={styles.cardProductTitle}>{product.title}</p>
                   <h4>De: R${product.oldPrice}</h4>
