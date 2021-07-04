@@ -36,7 +36,7 @@ export default function ProductScreen({
         <div className={styles.spacingContainer}>
           <Row>
             <Col className={styles.imagesContainer}>
-              <img src={image} alt="Imagem produto principal" width="50%" />
+              <img src={image} alt="Imagem produto principal" width="75%" />
               <div className={styles.smallImagesContainer}>
                 <img
                   className={styles.smallImages}

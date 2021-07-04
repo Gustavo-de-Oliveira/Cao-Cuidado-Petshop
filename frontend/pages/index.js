@@ -15,6 +15,41 @@ import Link from '../src/components/Link';
 import products from '../public/products.json';
 import HorizontalProductsList from '../src/components/HorizontalProductsList';
 
+const brandsList = [
+  {
+    id: 1,
+    url: 'https://twineich.com/wp-content/uploads/2017/10/Logo.png',
+  },
+  {
+    id: 2,
+    url: 'https://staticpetz.stoom.com.br/fotos/imagem-marca-bayer-pet-bayer.jpg',
+  },
+  {
+    id: 3,
+    url: 'https://staticpetz.stoom.com.br/fotos/imagem-marca-royal-canin-royal_canin.jpg',
+  },
+  {
+    id: 4,
+    url: 'https://staticpetz.stoom.com.br/fotos/imagem-marca-purina-purina.jpg',
+  },
+  {
+    id: 5,
+    url: 'https://staticpetz.stoom.com.br/fotos/imagem-marca-pedigree-pedigree.jpg',
+  },
+  {
+    id: 6,
+    url: 'https://staticpetz.stoom.com.br/fotos/imagem-marca-jambo-pet-jambo_pet.jpg',
+  },
+  {
+    id: 7,
+    url: 'https://www.petz.com.br/novaLoja/images/brands/premierpet.jpg',
+  },
+  {
+    id: 8,
+    url: 'https://staticpetz.stoom.com.br/novaLoja/images/brands/nd.jpg',
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -23,21 +58,27 @@ export default function Home() {
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://via.placeholder.com/1250x350"
+              src="https://i.postimg.cc/sDBxLp3t/header-desk.png"
+              width="1250px"
+              height="350px"
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://via.placeholder.com/1250x350"
+              src="https://i.postimg.cc/JhKR0n1N/banner-central-delivery-mobile.jpg"
+              width="1250px"
+              height="350px"
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
               className={styles.carouselItem}
-              src="https://via.placeholder.com/1250x350"
+              src="https://i.postimg.cc/W4phXxz7/1606938303-1605896789-banners-site-02.jpg"
+              width="1250px"
+              height="350px"
               alt="Third slide"
             />
           </Carousel.Item>
@@ -138,14 +179,13 @@ export default function Home() {
         <div className={styles.spacingContainer}>
           <h1>As melhores marcas</h1>
           <Row>
-            <Col>
-              <img
-                alt="brand"
-                src="https://twineich.com/wp-content/uploads/2017/10/Logo.png"
-                width="75px"
-                height="75px"
-              />
-            </Col>
+            {brandsList.map((brand) => {
+              return (
+                <Col key={brand.id}>
+                  <img alt="brand" src={brand.url} width="75px" height="75px" />
+                </Col>
+              );
+            })}
           </Row>
         </div>
       </Container>
