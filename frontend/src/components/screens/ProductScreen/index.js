@@ -63,15 +63,15 @@ export default function ProductScreen({
               <p>Escolha o tamanho:</p>
               <div>
                 <button type="button" className={styles.productSelectBtn}>
-                  10kg
-                  <br /> RS10,90/kg
+                  5kg
+                  <br /> RS20,90/kg
                 </button>
                 <button type="button" className={styles.productSelectBtn}>
                   10kg
-                  <br /> RS10,90/kg
+                  <br /> RS15,90/kg
                 </button>
                 <button type="button" className={styles.productSelectBtn}>
-                  10kg
+                  15kg
                   <br /> RS10,90/kg
                 </button>
               </div>
