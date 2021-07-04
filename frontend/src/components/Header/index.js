@@ -161,12 +161,14 @@ export default function Header() {
                   </Nav.Link>
 
                   <Nav.Link
+                    href="/404"
                     className={`pl-lg-5 text-white ${styles.navbarLink}`}
                   >
                     FAQ
                   </Nav.Link>
 
                   <Nav.Link
+                    href="/adoption"
                     className={`pl-lg-5 text-white ${styles.navbarLink}`}
                   >
                     Adoção

@@ -12,7 +12,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <ProductsCartProvider>
         <Head>
-          <title>ReactJS with react-bootstrap</title>
+          <title>CãoCuidao Petshop</title>
           <link rel="icon" href="./paw.ico" />
         </Head>
         <Header />
