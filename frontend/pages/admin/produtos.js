@@ -1,15 +1,6 @@
 import React from 'react';
 // import NextLink from 'next/link';
-import {
-  Container,
-  Image,
-  Col,
-  Row,
-  Table,
-  Modal,
-  Form,
-  Button,
-} from 'react-bootstrap';
+import { Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
 
 export default function admIndex() {
   const [showAdd, setShowAdd] = React.useState(false);
@@ -25,36 +16,42 @@ export default function admIndex() {
 
       <div className="float-lg-right float-md-left">
         <button
+          type="button"
           className="m-2 btn btn-outline-primary"
           onClick={() => setShowAdd(true)}
         >
           Adicionar Produto
         </button>
         <button
+          type="button"
           className="m-2 btn btn-outline-primary"
           onClick={() => setShowAdoption(true)}
         >
           Adicionar Adoção
         </button>
         <button
+          type="button"
           className="m-2 btn btn-outline-warning"
           onClick={() => setShowEdit(true)}
         >
           Editar Produto
         </button>
         <button
+          type="button"
           className="m-2 btn btn-outline-warning"
           onClick={() => setShowEditAdoption(true)}
         >
           Editar Adoção
         </button>
         <button
+          type="button"
           className="m-2 btn btn-outline-danger"
           onClick={() => setShowDelete(true)}
         >
           Deletar Produto
         </button>
         <button
+          type="button"
           className="m-2 btn btn-outline-danger"
           onClick={() => setShowDeleteAdoption(true)}
         >

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /// <reference types="cypress" />
 
 describe('/cart.js', () => {

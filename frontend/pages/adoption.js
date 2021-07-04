@@ -1,15 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 // import NextLink from 'next/link';
-import {
-  Container,
-  Image,
-  Col,
-  Row,
-  Card,
-  Button,
-  Modal,
-  Form,
-} from 'react-bootstrap';
+import { Container, Col, Card, Button, Modal, Form } from 'react-bootstrap';
 
 export default function adoption() {
   const [Show, setShow] = React.useState(false);
