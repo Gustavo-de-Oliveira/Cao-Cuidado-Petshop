@@ -5,7 +5,7 @@ const Animal = mongoose.model('Animal');
 const repository = require('../repositories/animal-repository');
 const router = require('../routes/animal-route');
 
-// Lista todos os Produtos
+// Lista todos os animais
 exports.get = async(req, res, next) => {
 
     try {

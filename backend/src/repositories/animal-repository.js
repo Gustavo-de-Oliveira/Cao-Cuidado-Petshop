@@ -27,7 +27,7 @@ exports.update = async(id, data) => {
         });
 }
 
-exports.delete = (id) => {
+exports.delete = async(id) => {
     return Animal 
       .findOneAndRemove(id);    
 }

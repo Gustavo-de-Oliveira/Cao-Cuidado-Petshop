@@ -8,7 +8,7 @@ const app = express();
 const router = express.Router();
 
 // Conecta ao MongoDB
-mongoose.connect('mongodb+srv://gant:nome@cluster0.q87wq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://gant:nome@cluster0.q87wq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',  {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Carrega os modelos
 const Animal = require('./model/animal');
