@@ -42,34 +42,3 @@ exports.post = async(req, res, next) => {
         }); 
     };
 };
-
-// Update product
-exports.put = async(req, res, next) => {
-    
-    try{
-        await repository.update(req.params.id, req.body);
-        res.status(201).send({
-            message: 'Produto atualizado.',
-        });
-    } catch (e) {
-
-        res.status(400).send({
-            message: 'Falha ao processar requisição',
-            data: e
-        });
-    };
-} 
-
-exports.delete = async(req, res, next) => {
-    try{
-        await repository.delete(req.body.id) 
-        res.status(200).send({
-            message: 'Produto removido com sucesso!'
-        });
-    } catch (e) {
-        res.status(400).send({
-            message: 'Falha ao remover produto',
-            data: e
-        })
-    };
-};
