@@ -3,13 +3,6 @@
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
-exports.get = async() => {
- 
-    const res = await Animal.find({
-            active: true        
-        }, 'specie race birthDate');
-    return res;
-}
 
 exports.create = async(data) => {
 
@@ -26,15 +19,15 @@ exports.get = async() => {
     return res;
 }
 
-
 exports.update = async(id, data) => {
+    
     await Product
         .findByIdAndUpdate(id, {
-            $set: { // Seta o que vai ser alterado
+            $set: { 
                 title: data.title,
                 description: data.description,
-                price: data.price,
-                slug: data.slug,
+                oldPrice: data.oldPrice,
+                newPrice: data.newPrice,
             }
         });
 }

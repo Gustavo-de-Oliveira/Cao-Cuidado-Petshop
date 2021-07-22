@@ -11,4 +11,10 @@ router.get('/', controller.get);
 // Create
 router.post('/', controller.post);  
 
+// Update
+router.put('/:id', controller.put);
+
+// Delete
+router.delete('/:id', controller.delete);
+
 module.exports = router;
