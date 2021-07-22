@@ -1,9 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Product = mongoose.model('Product');
 const repository = require('../repositories/product-repository');
-const router = require('../routes/product-route');
 const ValidationContract = require('../validators/fluent-validators');
 
 // Lista todos os Produtos

@@ -14,7 +14,8 @@ const schema = new Schema({
         type: String,
     },
     birthDate: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     vaccines: [{
         type: String,

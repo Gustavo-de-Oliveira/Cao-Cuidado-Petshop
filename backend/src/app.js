@@ -9,7 +9,7 @@ const app = express();
 const router = express.Router();
 
 // Conecta ao MongoDB
-mongoose.connect(config.connectionString,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true});
+mongoose.connect(config.connectionString,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
 
 // Carrega os modelos
 const User = require('./models/user');

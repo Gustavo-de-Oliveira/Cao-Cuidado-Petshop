@@ -1,9 +1,7 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Animal = mongoose.model('Animal');
 const repository = require('../repositories/animal-repository');
-const router = require('../routes/animal-route');
+const ValidationContract = require('../validators/fluent-validators');
 
 // Lista todos os animais
 exports.get = async(req, res, next) => {
@@ -15,15 +13,24 @@ exports.get = async(req, res, next) => {
         res.status(500).send({
             message: 'Falha ao processar requisição'
         });
-    }_;
+    };
 };
 
 exports.post = async(req, res, next) => {
+        
+    let contract = new ValidationContract();
     
+    contract.hasMinLen(req.body.specie, 2, 'A espécie deve conter pelo menos 2 caracteres');
+    contract.hasMinLen(req.body.race, 2, 'A raça deve conter pelo menos 2 caracteres');
+
+    if(!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+    }
+
     try{
         await repository.create(req.body)
         res.status(201).send({
-            message: 'Produto cadastrado com sucesso!'
+            message: 'Animal cadastrado com sucesso!'
         });
     } catch (e) { 
         res.status(500).send({ 
@@ -39,7 +46,7 @@ exports.put = async(req, res, next) => {
     try{
         await repository.update(req.params.id, req.body);
         res.status(201).send({
-            message: 'Produto atualizado.',
+            message: 'Animal atualizado.',
         });
     } catch (e) {
 
@@ -50,15 +57,16 @@ exports.put = async(req, res, next) => {
     };
 } 
 
+// Delete Animal
 exports.delete = async(req, res, next) => {
     try{
         await repository.delete(req.body.id) 
         res.status(200).send({
-            message: 'Produto removido com sucesso!'
+            message: 'Animal removido com sucesso!'
         });
     } catch (e) {
         res.status(400).send({
-            message: 'Falha ao remover produto',
+            message: 'Falha ao remover animal',
             data: e
         })
     };

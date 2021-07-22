@@ -5,10 +5,9 @@ const Product = mongoose.model('Product');
 
 exports.get = async() => {
  
-    const res = await Product.find({
+    const res = await Animal.find({
             active: true        
-        }, 'image title  description oldPrice newPrice link');
-
+        }, 'specie race birthDate');
     return res;
 }
 
@@ -17,6 +16,16 @@ exports.create = async(data) => {
     let product = new Product(data);
     await product.save();
 }
+
+exports.get = async() => {
+ 
+    const res = await Product.find({
+            active: true        
+        }, 'image title  description oldPrice newPrice link');
+
+    return res;
+}
+
 
 exports.update = async(id, data) => {
     await Product
