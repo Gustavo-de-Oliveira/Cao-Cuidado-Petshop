@@ -25,6 +25,10 @@ exports.post = async(req, res, next) => {
     contract.isEmail(req.body.email, 3, 'Email inválido');
     contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres.');
 
+    if(req.body.isValid) {
+        contract.isFixedLen(req.body.address.state, 2, "O estado deve conter 2 caracteres");
+    }
+
     if(!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
         return;
@@ -35,7 +39,10 @@ exports.post = async(req, res, next) => {
             name: req.body.name,
             email: req.body.email,
             password: md5(req.body.password + global.SALT_KEY),
-            user_type: req.body.user_type
+            birthDate: req.body.birthDate,
+            isAdmin: req.body.isAdmin,
+            address: req.body.address,
+            paymentMethods: req.body.paymentMethods,
         })
         res.status(201).send({
             message: 'Usuário cadastrado com sucesso!'
@@ -49,10 +56,22 @@ exports.post = async(req, res, next) => {
 };
 
 exports.put = async(req, res, next) => {
+    
+    let contract = new ValidationContract();
+
+    contract.hasMinLen(req.body.name, 3, 'O nome deve conter pelo menos 3 caracteres.');
+    contract.isEmail(req.body.email, 3, 'Email inválido');
+    contract.hasMinLen(req.body.password, 6, 'A senha deve conter pelo menos 6 caracteres.');
+
+    if(!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+        return;
+    }
+
     await repository.update(req.params.id, req.body);
     res.status(200).send({
         message: 'Usuario atualizado com sucesso!'
-    });
+    });   
 }
 
 exports.delete = async(req, res, next) => {

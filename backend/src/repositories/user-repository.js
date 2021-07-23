@@ -6,27 +6,45 @@ const User = mongoose.model('User');
 exports.get = async() => {
  
     const res = await User.find({
-        },'name email password user_type');
+        },'name email password isAdmin birthDate');
     return res;
 }
 
 exports.create = async(data) => {
+
+    if(data.isAdmin) {
+        data.address = null;
+        data.paymentMethods = null;
+    }
 
     let user = new User(data);
     await user.save();
 }
 
 exports.update = async(id, data) => {
-
-    await User
+    if(data.isAdmin) {
+        await User
+            .findByIdAndUpdate(id, {
+                nome: data.title,
+                email: data.email,
+                password: data.password,
+                isAdmin: data.isAdmin,
+                address: null,
+                paymentMethods: null,
+            })
+    }else{
+        await User
         .findByIdAndUpdate(id, {
             $set: {
                 nome: data.title,
                 email: data.email,
                 password: data.password,
-                user_type: data.user_type,
+                idAdmin: data.isAdmin,
+                addres: data.addres,
+                paymentMethods: data.paymentMethods,
             }
-        })    
+        }) 
+    }       
 } 
 
 exports.delete = (id) => {
