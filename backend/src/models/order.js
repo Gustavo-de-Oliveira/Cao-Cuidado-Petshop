@@ -3,12 +3,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define os produtos no DB
 const schema = new Schema({
 
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    number: {
+        type: String,
+        required: true
     },
     createDate: {
         type: Date,
@@ -27,17 +30,19 @@ const schema = new Schema({
             required: true,
             default: 1
         },
-        price: {
-            type: Number,
-            required: true,
-        },
         product: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product'
         },
-    }],
-    
-
+        assessment: {
+            grade: {
+                type: Number,
+            },
+            comment: {
+                type: String,
+            },
+        },
+    }],  
 });
 
 
