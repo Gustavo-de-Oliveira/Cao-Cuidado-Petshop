@@ -15,6 +15,14 @@ exports.get = async() => {
     return res;
 }
 
+exports.getById = async (id) => {
+
+    const res = await Animal.findById(id,
+        'specie race birthDate vaccines');
+
+    return res;
+}
+
 exports.update = async(id, data) => {
     await Animal
         .findByIdAndUpdate(id, {
