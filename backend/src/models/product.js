@@ -37,6 +37,16 @@ const schema = new Schema({
         required: true,
         default: true, // Set valor default
     },
+    stock: {
+        type: Number
+    },
+    images: [{
+        type: String
+    }],
+    brand: {
+        type: String,
+        required: true,
+    },
 });
 
 
