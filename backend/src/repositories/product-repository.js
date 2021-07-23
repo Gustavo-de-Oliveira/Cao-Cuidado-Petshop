@@ -14,8 +14,25 @@ exports.get = async() => {
  
     const res = await Product.find({
             active: true        
-        }, 'image title  description oldPrice newPrice link');
+        }, 'image title description oldPrice newPrice link');
 
+    return res;
+}
+
+exports.getById = async (id) => {
+
+    const res = await Product.findById(id,
+        'image title description oldPrice newPrice link');
+
+        return res;
+}
+
+exports.getByLink = async (_link) => {
+    
+    const res = await Product.findOne({
+            link: _link
+        }, 'image title description oldPrice newPrice link');
+    
     return res;
 }
 

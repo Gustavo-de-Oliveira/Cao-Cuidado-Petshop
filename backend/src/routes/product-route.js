@@ -7,6 +7,8 @@ const controller = require('../controllers/product-controller')
 
 // Read
 router.get('/', controller.get);
+router.get('/admin/:id', controller.getById);
+router.get('/:link', controller.getByLink);
 
 // Create
 router.post('/', controller.post);  

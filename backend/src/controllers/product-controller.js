@@ -16,6 +16,32 @@ exports.get = async(req, res, next) => {
     };
 };
 
+exports.getByLink = async(req, res, next) => {
+
+    try{
+        const data = await repository.getByLink(req.params.link);
+        res.status(200).send(data); 
+     } catch(e) {
+         res.status(500).send({
+             message: 'Falha ao processsar sua requisicao', 
+             data: e
+         });
+     };
+ };
+ 
+ exports.getById = async(req, res, next) => {
+ 
+    try {
+        const data = await repository.getById(req.params.id);
+        res.status(200).send(data); 
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processsar sua requisicao', 
+            data: e
+        });
+    };
+};
+
 exports.post = async(req, res, next) => {
     
     let contract = new ValidationContract();
@@ -62,7 +88,7 @@ exports.put = async(req, res, next) => {
             data: e
         });
     };
-} 
+};
 
 exports.delete = async(req, res, next) => {
     try{
