@@ -10,6 +10,20 @@ exports.get = async() => {
     return res;
 }
 
+exports.getById = async(id) => {
+    const res = await User.findById(id, 'name email password isAdmin birthDate');
+    return res;
+}
+
+exports.getByEmail = async (_email) => {
+    
+    const res = await User.findOne({
+            email: _email
+        }, 'name email password isAdmin birthDate');
+    
+    return res;
+}
+
 exports.create = async(data) => {
 
     if(data.isAdmin) {

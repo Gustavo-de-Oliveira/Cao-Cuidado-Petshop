@@ -10,6 +10,8 @@ router.post('/', controller.post);
 
 // Read
 router.get('/', controller.get);
+router.get('/admin/:id', controller.getById);
+router.get('/:email', controller.getByEmail);
 
 //Update
 router.put('/:id', controller.put);

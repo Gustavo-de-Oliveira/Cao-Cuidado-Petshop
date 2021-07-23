@@ -4,7 +4,6 @@ const repository = require('../repositories/user-repository');
 const ValidationContract = require('../validators/fluent-validators');
 const md5 = require('md5')
 
-// Lista todos os Usuários
 exports.get = async(req, res, next) => {
 
     try {
@@ -16,6 +15,34 @@ exports.get = async(req, res, next) => {
         });
     };
 };
+
+exports.getByEmail = async(req, res, next) => {
+
+    try{
+        const data = await repository.getByEmail(req.params.email);
+        res.status(200).send(data); 
+     } catch(e) {
+         res.status(500).send({
+             message: 'Falha ao processsar sua requisicao', 
+             data: e
+         });
+     };
+ };
+
+exports.getById = async(req, res, next) => {
+
+    try {
+        const data = await repository.getById(req.params.id);
+        res.status(200).send(data); 
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processsar sua requisição', 
+            data: e
+        });
+    }
+   
+};
+
 
 exports.post = async(req, res, next) => {
 
