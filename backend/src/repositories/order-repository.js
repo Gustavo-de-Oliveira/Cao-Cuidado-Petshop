@@ -39,16 +39,32 @@ exports.getByNumber = async (_number) => {
 
 // Create new Order
 exports.create = async(data) => {
+    
+    // Casts String to Object Id
+    data.customer = mongoose.Types.ObjectId(data.customer);
+    for(let i = 0; i < data.items.length; i++) {
+        data.items.product = mongoose.Types.ObjectId(data.items.produc);
+    }
 
-    let order = new Order(data);
+    let order = new Order({
+        customer: data.customer,
+        number: data.number,
+        createDate: data.createDate,
+        status: data.status,
+        items: data.items,
+    });
     await order.save();
 }
 
 // Update existing order
 exports.update = async(id, data) => {
     
-    console.log(data.customer, data.items, data.status, data.createDate);
-    
+    // Casts String to Object Id
+    data.customer = mongoose.Types.ObjectId(data.customer);
+    for(let i = 0; i<data.items.length; i++) {
+        data.items[i].product = mongoose.Types.ObjectId(data.items[i].product);    
+    }
+
     await Order
         .findByIdAndUpdate(id, {
             $set: { 

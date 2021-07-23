@@ -1,11 +1,10 @@
 'use strict';
 
 const guid = require('guid');
-const repository = require('../repositories/order-repository');
-
+const repository = require('../repositories/adoption-repository');
 const ValidationContract = require('../validators/fluent-validators');
 
-// List all orders
+// List all Adoptions
 exports.get = async(req, res, next) => {
 
     try {
@@ -18,7 +17,7 @@ exports.get = async(req, res, next) => {
     };
 };
 
-// Find Order By Id
+// Find Adoption By Id
 exports.getById = async(req, res, next) => {
  
     try {
@@ -32,7 +31,7 @@ exports.getById = async(req, res, next) => {
     };
 };
 
-// Find Order By (Order Number)
+// Find Adoption By (Adoption Number)
 exports.getByNumber = async(req, res, next) => {
 
     try{
@@ -46,17 +45,26 @@ exports.getByNumber = async(req, res, next) => {
      };
  };
 
- // Create new Order
+ // Create new Adoption
 exports.post = async(req, res, next) => {
+    
+    // Validation
+    let contract = new ValidationContract();
+    contract.isRequired(req.body.adopter, "O campo 'adopter' é necessário");
+    contract.isRequired(req.body.animal, "O campo 'animal' é necessário");
+
+    if(!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+    }
 
     try{
         await repository.create({
-            customer: req.body.customer,
+            adopter: req.body.adopter,
             number: guid.raw().substring(0, 6),
-            items: req.body.items
+            animal: req.body.animal
         })
         res.status(201).send({
-            message: 'Pedido cadastrado com sucesso!'
+            message: 'Adoção cadastrada com sucesso!'
         });
     } catch (e) { 
         res.status(500).send({ 
@@ -66,13 +74,15 @@ exports.post = async(req, res, next) => {
     };
 };
 
-// Update an existing order
+// Update an existing Adoption
 exports.put = async(req, res, next) => {
     
     let contract = new ValidationContract();
 
-    contract.isRequired(req.body.customer, "O campo 'customer' é necessário");
-    contract.isRequired(req.body.items, "O campo 'items' é necessário");
+    contract.isRequired(req.body.adopter, "O campo 'adopter' é necessário");
+    contract.isRequired(req.body.animal, "O campo 'animal' é necessário");
+    contract.isRequired(req.body.createDate, "O campo 'createDate' é necessário");
+    contract.isRequired(req.body.status, "O campo 'status' é necessário");
 
     if(!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
@@ -81,7 +91,7 @@ exports.put = async(req, res, next) => {
     try{
         await repository.update(req.params.id, req.body);
         res.status(201).send({
-            message: 'Pedido atualizado.',
+            message: 'Adoção atualizada.',
         });
     } catch (e) {
 
@@ -93,7 +103,7 @@ exports.put = async(req, res, next) => {
 } 
 
 
-// Delete order, given a id
+// Delete Adoption, given a id
 exports.delete = async(req, res, next) => {
     try{
         await repository.delete(req.params.id) 

@@ -34,7 +34,6 @@ exports.post = async(req, res, next) => {
     let contract = new ValidationContract();
     
     contract.hasMinLen(req.body.specie, 2, 'A espécie deve conter pelo menos 2 caracteres');
-    contract.hasMinLen(req.body.race, 2, 'A raça deve conter pelo menos 2 caracteres');
 
     if(!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
