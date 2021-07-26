@@ -71,6 +71,7 @@ exports.put = async(req, res, next) => {
     let contract = new ValidationContract();
     
     contract.hasMinLen(req.body.title, 3, 'O título deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.description, 3, 'A descrição deve conter pelo menos 3 caracteres');
 
     if(!contract.isValid()) {
         res.status(400).send(contract.errors()).end();

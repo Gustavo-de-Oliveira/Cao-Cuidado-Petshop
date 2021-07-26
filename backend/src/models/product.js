@@ -19,12 +19,17 @@ const schema = new Schema({
         type: String,
         required: true,
     },
-    oldPrice: {
+    realPrice: {
         type: Number,
     },
-    newPrice: {
+    salePrice: {
         type: Number,
         required: true,
+    },
+    onOffer: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
     link: {
         type: String,

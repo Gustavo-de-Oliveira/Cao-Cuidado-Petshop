@@ -60,6 +60,7 @@ exports.update = async(id, data) => {
         .findByIdAndUpdate(id, {
             $set: { 
                 adopter: data.adopter,
+                number: data.number,
                 animal: data.animal,
                 status: data.status,
                 createData: data.createDate

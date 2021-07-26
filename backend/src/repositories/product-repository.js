@@ -14,7 +14,7 @@ exports.get = async() => {
  
     const res = await Product.find({
             active: true        
-        }, 'image title description oldPrice newPrice link');
+        }, 'image title description realPrice salePrice link');
 
     return res;
 }
@@ -22,7 +22,7 @@ exports.get = async() => {
 exports.getById = async (id) => {
 
     const res = await Product.findById(id,
-        'image title description oldPrice newPrice link');
+        'image title description realPrice salePrice link');
 
         return res;
 }
@@ -31,7 +31,7 @@ exports.getByLink = async (_link) => {
     
     const res = await Product.findOne({
             link: _link
-        }, 'image title description oldPrice newPrice link');
+        }, 'image title description realPrice salePrice link');
     
     return res;
 }
@@ -43,8 +43,14 @@ exports.update = async(id, data) => {
             $set: { 
                 title: data.title,
                 description: data.description,
-                oldPrice: data.oldPrice,
-                newPrice: data.newPrice,
+                realPrice: data.realPrice,
+                salePrice: data.salePrice,
+                onOffer: data.onOffer,
+                link: data.link,
+                active: data.active,
+                stock: data.stock,
+                images: data.images,
+                brand: data.brand,
             }
         });
 }

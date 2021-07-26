@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Animal = mongoose.model('Animal');
 
 exports.create = async(data) => {
-
+    
     let animal = new Animal(data);
     await animal.save();
 }
@@ -27,9 +27,12 @@ exports.update = async(id, data) => {
     await Animal
         .findByIdAndUpdate(id, {
             $set: { 
+                specie: data.specie,
+                race: data.race,
                 birthDate: data.birthDate,
                 vaccines: data.vaccines,
-                photos: data.photos,
+                images: data.images,
+
             }
         });
 }
