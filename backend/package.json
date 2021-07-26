@@ -2,7 +2,7 @@
   "name": "node-str",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "../bin/server.js",
   "scripts": {
     "start": "node ../bin/server.js"
   },
@@ -13,8 +13,10 @@
     "body-parser": "^1.19.0",
     "debug": "^4.3.2",
     "express": "^4.17.1",
+    "guid": "0.0.12",
     "http": "0.0.1-security",
-    "mongoose": "^5.13.2"
+    "md5": "^2.3.0",
+    "mongoose": "^5.13.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.10"

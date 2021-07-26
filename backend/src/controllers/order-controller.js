@@ -1,9 +1,11 @@
 'use strict';
 
-const repository = require('../repositories/animal-repository');
+const guid = require('guid');
+const repository = require('../repositories/order-repository');
+
 const ValidationContract = require('../validators/fluent-validators');
 
-// Lista todos os animais
+// List all orders
 exports.get = async(req, res, next) => {
 
     try {
@@ -16,6 +18,7 @@ exports.get = async(req, res, next) => {
     };
 };
 
+// Find Order By Id
 exports.getById = async(req, res, next) => {
  
     try {
@@ -29,20 +32,31 @@ exports.getById = async(req, res, next) => {
     };
 };
 
-exports.post = async(req, res, next) => {
-        
-    let contract = new ValidationContract();
-    
-    contract.hasMinLen(req.body.specie, 2, 'A espécie deve conter pelo menos 2 caracteres');
-
-    if(!contract.isValid()) {
-        res.status(400).send(contract.errors()).end();
-    }
+// Find Order By (Order Number)
+exports.getByNumber = async(req, res, next) => {
 
     try{
-        await repository.create(req.body)
+        const data = await repository.getByNumber(req.params.number);
+        res.status(200).send(data); 
+     } catch(e) {
+         res.status(500).send({
+             message: 'Falha ao processsar sua requisicao', 
+             data: e
+         });
+     };
+ };
+
+ // Create new Order
+exports.post = async(req, res, next) => {
+
+    try{
+        await repository.create({
+            customer: req.body.customer,
+            number: guid.raw().substring(0, 6),
+            items: req.body.items
+        })
         res.status(201).send({
-            message: 'Animal cadastrado com sucesso!'
+            message: 'Pedido cadastrado com sucesso!'
         });
     } catch (e) { 
         res.status(500).send({ 
@@ -52,13 +66,22 @@ exports.post = async(req, res, next) => {
     };
 };
 
-// Update Animal
+// Update an existing order
 exports.put = async(req, res, next) => {
     
+    let contract = new ValidationContract();
+
+    contract.isRequired(req.body.customer, "O campo 'customer' é necessário");
+    contract.isRequired(req.body.items, "O campo 'items' é necessário");
+
+    if(!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+    }
+
     try{
         await repository.update(req.params.id, req.body);
         res.status(201).send({
-            message: 'Animal atualizado.',
+            message: 'Pedido atualizado.',
         });
     } catch (e) {
 
@@ -69,17 +92,18 @@ exports.put = async(req, res, next) => {
     };
 } 
 
-// Delete Animal
+
+// Delete order, given a id
 exports.delete = async(req, res, next) => {
     try{
-        await repository.delete(req.body.id) 
+        await repository.delete(req.params.id) 
         res.status(200).send({
-            message: 'Animal removido com sucesso!'
+            message: 'Pedido removido com sucesso!'
         });
     } catch (e) {
         res.status(400).send({
-            message: 'Falha ao remover animal',
+            message: 'Falha ao remover pedido',
             data: e
-        })
+        });
     };
-};
+}

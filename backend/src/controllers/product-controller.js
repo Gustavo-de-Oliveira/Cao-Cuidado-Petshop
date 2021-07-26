@@ -1,9 +1,9 @@
 'use strict';
 
-const repository = require('../repositories/animal-repository');
+const repository = require('../repositories/product-repository');
 const ValidationContract = require('../validators/fluent-validators');
 
-// Lista todos os animais
+// Lista todos os Produtos
 exports.get = async(req, res, next) => {
 
     try {
@@ -16,7 +16,20 @@ exports.get = async(req, res, next) => {
     };
 };
 
-exports.getById = async(req, res, next) => {
+exports.getByLink = async(req, res, next) => {
+
+    try{
+        const data = await repository.getByLink(req.params.link);
+        res.status(200).send(data); 
+     } catch(e) {
+         res.status(500).send({
+             message: 'Falha ao processsar sua requisicao', 
+             data: e
+         });
+     };
+ };
+ 
+ exports.getById = async(req, res, next) => {
  
     try {
         const data = await repository.getById(req.params.id);
@@ -30,10 +43,11 @@ exports.getById = async(req, res, next) => {
 };
 
 exports.post = async(req, res, next) => {
-        
+    
     let contract = new ValidationContract();
     
-    contract.hasMinLen(req.body.specie, 2, 'A espécie deve conter pelo menos 2 caracteres');
+    contract.hasMinLen(req.body.title, 3, 'O título deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.link, 3, 'O link deve conter pelo menos 3 caracteres');
 
     if(!contract.isValid()) {
         res.status(400).send(contract.errors()).end();
@@ -42,7 +56,7 @@ exports.post = async(req, res, next) => {
     try{
         await repository.create(req.body)
         res.status(201).send({
-            message: 'Animal cadastrado com sucesso!'
+            message: 'Produto cadastrado com sucesso!'
         });
     } catch (e) { 
         res.status(500).send({ 
@@ -52,13 +66,21 @@ exports.post = async(req, res, next) => {
     };
 };
 
-// Update Animal
+// Update product
 exports.put = async(req, res, next) => {
+    let contract = new ValidationContract();
     
+    contract.hasMinLen(req.body.title, 3, 'O título deve conter pelo menos 3 caracteres');
+    contract.hasMinLen(req.body.description, 3, 'A descrição deve conter pelo menos 3 caracteres');
+
+    if(!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+    }
+
     try{
         await repository.update(req.params.id, req.body);
         res.status(201).send({
-            message: 'Animal atualizado.',
+            message: 'Produto atualizado.',
         });
     } catch (e) {
 
@@ -67,18 +89,17 @@ exports.put = async(req, res, next) => {
             data: e
         });
     };
-} 
+};
 
-// Delete Animal
 exports.delete = async(req, res, next) => {
     try{
-        await repository.delete(req.body.id) 
+        await repository.delete(req.params.id) 
         res.status(200).send({
-            message: 'Animal removido com sucesso!'
+            message: 'Produto removido com sucesso!'
         });
     } catch (e) {
         res.status(400).send({
-            message: 'Falha ao remover animal',
+            message: 'Falha ao remover produto',
             data: e
         })
     };
