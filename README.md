@@ -91,7 +91,7 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
 ![Petshop](https://user-images.githubusercontent.com/48142112/119704277-d584fb80-be2d-11eb-8332-bfcf128ac8c1.png)
 
  <ul>
-  <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são derivados de um usuário genérico.</li> 
+  <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são diferenciados por um atributo booleano que indica se o usuário é administrador, ou não..</li> 
   <li> Os produtos do petshop foram implementados com uma generalização, de forma que serviços e produtos são derivados de um item comercializável genérico.</li><br>
   <li> As vendas do sistema serão armazenadas dado um par <i>Cliente</i> e <i>"Item comercializável</i>. Mesmo que o cliente adquira vários itens em uma mesma compra, uma <i>Venda</i> será criada para cada produto. Para cada <i> Venda </i> o cliente poderá realizar avaliações. </li>
   <li> Analogamente, a adoção será instanciada dado um par <i> Cliente </i> e <i> Animal </i>, de forma que, cada adoção será identificada pelo par e pela data em que foi realizada. Nota-se também que, os animais são identificados por um código numérico</li>
