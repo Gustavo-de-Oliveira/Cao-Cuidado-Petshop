@@ -42,26 +42,7 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
       </ul>
   </li> <br>
  
-  <li> O sistema deve permitir que os clientes realizem seu cadastro no site, as informações dos clientes a serem armazenadas são: <i> CPF, nome, data de nascimento, endereço, telefone, formas de pagamento, e-mail e senha.</i> </li><br>
-    
-  <li> O sistema deve permitir a adição, remoção e gerenciamento de administradores do sistema, as informações dos administradores a serem armazenadas são: <i> CPF, nome, telefone, e-mail, cargo e senha </i>.</li><br>
- 
-  <li> Um administrador de determinado cargo, pode adicionar, remover e alterar as informações de outro administrador de um cargo com hierarquia menor. (incluir hierarquia)</li> <br>
- 
-  <li> O sistema deve permitir que os administradores adicionem e removam produtos do estoque. Para cada produto, deve ser fornecida uma descrição geral, bem como uma ficha técnica. As informações dos produtos a serem armazenadas são: <i> nome, marca, animais, descrição, ficha técnica, preço atual, imagens, preço real, quantidade em estoque, avaliações e dúvidas frequentes.</i>
-   <ul>
-     <li> Deve ser possível criar categorias de um mesmo produto, de forma que, itens de cada categoria tenha podem, ou não, ter preços diferentes. </li>
-     <li> Deve ser possível filtrar os produtos por nome, marca, animais relacionado e preço. </li>
-     <li> Para cada produto, deve haver uma lista de produtos relacionados, que deve ser atualizada dinamicamente conforme os produtos que mais são comprados juntos com ele.</li>
-   </ul>
-  </li><br>
- 
-  <li> O sistema deve permitir que os administradores adicionem e removam os serviços do estoque. Para cadastrar um serviço, deve ser fornecida uma descrição geral. Os dados a serem armazenados sobre cada produto são: <i> Nome, animais, descrição, duração, horários disponíveis, preço atual, preço real, avaliação e dúvidas frequentes.</i></li>
-  <ul>
-    <li> Para cada serviço, o sistema deve armazenar uma lista, cujo tamanho depende da duração do serviço, com todos os horários disponíveis para a semana. Sempre que o cliente realizar o agendamento no site, este horário não deve mais aparecer como disponível. </li>
-    <li> Deve ser possível filtrar os serviços com marca e animais relacionados.
-  </ul>
-  </li><br>
+  <li> O sistema deve permitir que os usuários realizem seu cadastro no site, as informações dos clientes a serem armazenadas são: <i> email, nome, senha, data de nascimento, endereço e formas de pagamento,.</i> </li><br>
  
   <li> Os administradores devem poder colocar produtos e serviços em oferta, alterando, assim, seu preço atual. Todos itens em oferta devem aparecer na página inicial do site.</li><br>
  
@@ -83,18 +64,18 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
  
  ## Descrição
  <p>
- As páginas web do site foram feitas em HTML5 e CSS3
-
+ As páginas web do site foram feitas em HTML5 e CSS3. O servidor foi feito em nodeJS, utilizando mongoDB para a base de dados.
  
  ### Modelagem do Banco de Dados
  O diagrama a seguir representa o Modelo Entidade-Relacionamento do sistema, e será útil para ilustrar como as principais funcionalidades do sistema serão implementadas:
+ 
   ![Petshop (2)](https://user-images.githubusercontent.com/48142112/127043245-37af8309-3c5d-4e9a-b5a4-081af9421875.png)
-
 
  <ul>
   <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são diferenciados por um atributo booleano que indica se o usuário é administrador, ou não</li> 
   <li> As vendas do sistema serão armazenadas de forma que, serão associados, para cada pedido, o cliente que o realizou, e a lista de itens envolvidos. Além disso, será possível associar uma avaliação para cada item comprado. </li>
   <li> A adoção será instanciada dado um par <i> Cliente </i> e <i> Animal </i>, de forma que, cada adoção será identificada pelo par e pela data em que foi realizada. Nota-se também que, os animais são identificados por um código numérico</li>
+   <li> Nota-se que o mongoDB utiliza de identificadores sintéticos para toda entidade. </li>
  </ul>
 </p>
 
