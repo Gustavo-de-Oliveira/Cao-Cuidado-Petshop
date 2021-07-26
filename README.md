@@ -88,13 +88,13 @@ Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de
  
  ### Modelagem do Banco de Dados
  O diagrama a seguir representa o Modelo Entidade-Relacionamento do sistema, e será útil para ilustrar como as principais funcionalidades do sistema serão implementadas:
-![Petshop](https://user-images.githubusercontent.com/48142112/119704277-d584fb80-be2d-11eb-8332-bfcf128ac8c1.png)
+  ![Petshop (2)](https://user-images.githubusercontent.com/48142112/127043245-37af8309-3c5d-4e9a-b5a4-081af9421875.png)
+
 
  <ul>
-  <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são diferenciados por um atributo booleano que indica se o usuário é administrador, ou não..</li> 
-  <li> Os produtos do petshop foram implementados com uma generalização, de forma que serviços e produtos são derivados de um item comercializável genérico.</li><br>
-  <li> As vendas do sistema serão armazenadas dado um par <i>Cliente</i> e <i>"Item comercializável</i>. Mesmo que o cliente adquira vários itens em uma mesma compra, uma <i>Venda</i> será criada para cada produto. Para cada <i> Venda </i> o cliente poderá realizar avaliações. </li>
-  <li> Analogamente, a adoção será instanciada dado um par <i> Cliente </i> e <i> Animal </i>, de forma que, cada adoção será identificada pelo par e pela data em que foi realizada. Nota-se também que, os animais são identificados por um código numérico</li>
+  <li> Os tipos de usuários do sistema foram implementados com uma generalização, de forma que clientes e administradores são diferenciados por um atributo booleano que indica se o usuário é administrador, ou não</li> 
+  <li> As vendas do sistema serão armazenadas de forma que, serão associados, para cada pedido, o cliente que o realizou, e a lista de itens envolvidos. Além disso, será possível associar uma avaliação para cada item comprado. </li>
+  <li> A adoção será instanciada dado um par <i> Cliente </i> e <i> Animal </i>, de forma que, cada adoção será identificada pelo par e pela data em que foi realizada. Nota-se também que, os animais são identificados por um código numérico</li>
  </ul>
 </p>
 
