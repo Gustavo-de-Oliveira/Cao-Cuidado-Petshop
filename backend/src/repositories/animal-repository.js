@@ -4,30 +4,40 @@ const mongoose = require('mongoose');
 const Animal = mongoose.model('Animal');
 
 exports.create = async(data) => {
-
+    
     let animal = new Animal(data);
     await animal.save();
 }
 
 exports.get = async() => {
  
-    const res = await Animal.find({
-            active: true        
-        }, 'specie race birthDate');
+    const res = await Animal.find({}, 'specie race birthDate vaccines');
+    return res;
+}
+
+exports.getById = async (id) => {
+
+    const res = await Animal.findById(id,
+        'specie race birthDate vaccines');
+
     return res;
 }
 
 exports.update = async(id, data) => {
     await Animal
         .findByIdAndUpdate(id, {
-            $set: { // Seta o que vai ser alterado
+            $set: { 
+                specie: data.specie,
+                race: data.race,
+                birthDate: data.birthDate,
                 vaccines: data.vaccines,
-                photos: data.photos,
+                images: data.images,
+
             }
         });
 }
 
-exports.delete = (id) => {
+exports.delete = async(id) => {
     return Animal 
       .findOneAndRemove(id);    
 }
