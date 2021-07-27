@@ -2,15 +2,16 @@
   "name": "node-str",
   "version": "1.0.0",
   "description": "",
-  "main": "../bin/server.js",
+  "main": "../backend/bin/server.js",
   "scripts": {
-    "start": "node ../bin/server.js"
+    "start": "node ../backend/bin/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "debug": "^4.3.2",
     "express": "^4.17.1",
     "guid": "0.0.12",
