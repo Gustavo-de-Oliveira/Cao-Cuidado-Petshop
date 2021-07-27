@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'
 import NextImage from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -21,19 +22,72 @@ import {
 } from 'react-bootstrap';
 import Link from '../Link';
 import styles from './styles.module.css';
-import brandIcon from '../../../public/Logo_white.png';
+//import brandIcon from '../../../public/Logo_white.png';
+
+async function login(email, pass) {
+  var myHeaders = new Headers();
+  myHeaders.append("Access-Control-Allow-Origin", "*");
+
+  var myInit = { method: 'GET',
+                 headers: myHeaders,
+                 mode: 'cors',
+                 cache: 'default' };
+
+  const res = await fetch("http://localhost:8080/users", myInit);
+
+  if (res.status === 200) {
+      const users = await res.json();
+
+      let user = users.find(u => u.email === email && u.password === "bd2d7c14b5d4d786e3cb48c176ad01f9");
+      
+      if(user) {
+        if(user.isAdmin) {
+          console.log(user);
+
+          Router.push('/admin');
+        }
+        else console.log("nop");
+
+      } else {
+        alert("Nenhum usuário encontrado!");
+      }
+  }
+}
+
+async function createAccount() {
+  var myHeaders = new Headers();
+  myHeaders.append("Access-Control-Allow-Origin", "*");
+
+  var myInit = { method: 'GET',
+                 headers: myHeaders,
+                 mode: 'cors',
+                 cache: 'default' };
+
+  const res = await fetch("http://localhost:8080/users", myInit);
+
+  if (res.status === 200) {
+      const users = await res.json();
+
+      let user = users.find(u => u.email === email && u.password === "bd2d7c14b5d4d786e3cb48c176ad01f9");
+      
+      console.log(users);
+  }
+}
 
 export default function Header() {
   const [smShow, setSmShow] = React.useState(false);
   const [hasLogin, setHasLogin] = React.useState(true);
+
+  const [email, setEmail] = React.useState('');
+  const [pass, setPass] = React.useState('');
 
   return (
     <>
       <header className="mb-5">
         <Navbar className={`${styles.bgNavbarUp}`} expand="lg">
           <Link href="/">
-            <NextImage src={brandIcon} alt="logo" width="95" height="67" />
-            {/* <img src={brandIcon.src} alt="logo" width="95" height="67" /> */}
+            {/*<NextImage src={brandIcon} alt="logo" width="95" height="67" />*/}
+            <img src="" alt="logo" width="95" height="67" /> 
           </Link>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -191,19 +245,18 @@ export default function Header() {
             <Form className="text-center mx-auto">
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Digite o email" />
+                <Form.Control type="email" placeholder="Digite o email" onChange={event => setEmail(event.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Senha</Form.Label>
-                <Form.Control type="password" placeholder="Senha" />
+                <Form.Control type="password" placeholder="Senha" onChange={event => setPass(event.target.value)} />
               </Form.Group>
-              <Link href="/admin">
-                <Button variant="primary" type="submit">
+              
+                <Button variant="primary" type="submit" onClick={() => setSmShow(false)} onClick={() => login(email, pass)} >
                   Entrar
                 </Button>
-              </Link>
-            </Form>
+                            </Form>
           </Modal.Header>
 
           <Modal.Body>
@@ -280,7 +333,7 @@ export default function Header() {
 
               <Form.Group as={Form.Row}>
                 <Col sm={{ span: 10, offset: 3 }}>
-                  <Button type="submit">Criar conta</Button>
+                  <Button type="submit" onClick={() => createAccount}>Criar conta</Button>
                 </Col>
               </Form.Group>
             </Form>

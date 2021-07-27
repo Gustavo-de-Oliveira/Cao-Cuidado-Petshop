@@ -13,7 +13,7 @@ import {
   faCcAmex,
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import brandIcon from '../../../public/Logo_white.png';
+//import brandIcon from '../../../public/Logo_white.png';
 import styles from './styles.module.css';
 import Link from '../Link';
 
@@ -65,8 +65,8 @@ export default function Footer() {
           <div className={`row ${styles.listStyle}`}>
             <div className="col-lg-3 col-md-6">
               <Link href="/">
-                <NextImage src={brandIcon} alt="logo" />
-                {/* <img src={brandIcon.src} alt="logo" /> */}
+                {/*<NextImage src={brandIcon} alt="logo" />*/}
+                 <img src="" alt="logo" /> 
               </Link>
             </div>
 
@@ -219,9 +219,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-/*
-TODO:
-	Ajustes de layout específicos com css
-	descobrir como add imagem
-*/
