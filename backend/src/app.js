@@ -1,15 +1,23 @@
 'use strict';
 
-const express       = require('express');
-const bodyParser    = require('body-parser');
-const mongoose      = require('mongoose'); 
-const config        = require('./config');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const config = require('./config');
+
+const cors = require('cors');
 
 const app = express();
 const router = express.Router();
+app.use(cors());
 
 // Conecta ao MongoDB
-mongoose.connect(config.connectionString,  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
+mongoose.connect(config.connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 // Carrega os modelos
 const User = require('./models/user');
@@ -24,10 +32,10 @@ const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
 const animalRoute = require('./routes/animal-route');
 const orderRoute = require('./routes/order-route');
-const adoptionRoute = require('./routes/adoption-route')
+const adoptionRoute = require('./routes/adoption-route');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Instancia as requisições definidas
 app.use('/', indexRoute);
