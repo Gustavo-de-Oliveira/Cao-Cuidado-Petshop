@@ -252,7 +252,6 @@ export default function Header() {
                 <Form.Label>Senha</Form.Label>
                 <Form.Control type="password" placeholder="Senha" onChange={event => setPass(event.target.value)} />
               </Form.Group>
-              
                 <Button variant="primary" type="submit" onClick={() => setSmShow(false)} onClick={() => login(email, pass)} >
                   Entrar
                 </Button>
