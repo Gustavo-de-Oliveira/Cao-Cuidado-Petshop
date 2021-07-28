@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { createContext, useState } from 'react';
 
 const ProductsCart = createContext({});
@@ -7,17 +8,20 @@ export const ProductsCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   function getTotalItems(productItems) {
-    productItems.reduce((accumulator, item) => accumulator + item.amount, 0);
+    return productItems.reduce(
+      (accumulator, item) => accumulator + item.amount,
+      0
+    );
   }
 
   function handleAddToCart(productItem) {
     setCartItems((prev) => {
       // item ja foi inserido no carrinho anteriormente, add + 1
-      const isItemInCart = prev.find((item) => item.id === productItem.id);
+      const isItemInCart = prev.find((item) => item._id === productItem._id);
 
       if (isItemInCart) {
         return prev.map((item) =>
-          item.id === productItem.id
+          item._id === productItem._id
             ? { ...item, amount: item.amount + 1 }
             : item
         );
@@ -31,11 +35,11 @@ export const ProductsCartProvider = ({ children }) => {
   function handleAddQuantityToCart(productItem, quantity) {
     setCartItems((prev) => {
       // item ja foi inserido no carrinho anteriormente, add + 1
-      const isItemInCart = prev.find((item) => item.id === productItem.id);
+      const isItemInCart = prev.find((item) => item._id === productItem._id);
 
       if (isItemInCart) {
         return prev.map((item) =>
-          item.id === productItem.id
+          item._id === productItem._id
             ? { ...item, amount: item.amount + quantity }
             : item
         );
@@ -49,7 +53,7 @@ export const ProductsCartProvider = ({ children }) => {
   function handleRemoveFromCart(productId) {
     setCartItems((prev) =>
       prev.reduce((accumulator, item) => {
-        if (item.id === productId) {
+        if (item._id === productId) {
           if (item.amount === 1) {
             return accumulator;
           }
@@ -63,7 +67,7 @@ export const ProductsCartProvider = ({ children }) => {
   function handleDeleteProductFromCart(productId) {
     setCartItems((prev) =>
       prev.reduce((accumulator, item) => {
-        if (item.id === productId) {
+        if (item._id === productId) {
           return accumulator;
         }
         return [...accumulator, item];

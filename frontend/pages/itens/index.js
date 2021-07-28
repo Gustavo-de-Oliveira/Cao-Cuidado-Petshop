@@ -1,10 +1,16 @@
 import React from 'react';
 import { Card, Form } from 'react-bootstrap';
 import Link from '../../src/components/Link';
-import products from '../../public/products.json';
 
-export function getStaticProps() {
-  const productsData = products.data;
+export async function getStaticProps() {
+  // const productsData = products.data;
+  const productsData = await fetch('http://localhost:8000/products').then(
+    async (serverResponse) => {
+      const response = await serverResponse.json();
+      // setProducts(response);
+      return response;
+    }
+  );
 
   return {
     props: {
@@ -82,6 +88,7 @@ export default function Itens({ productsData }) {
               {productsData.map((product) => {
                 return (
                   <Card
+                    key={product._id}
                     style={{ width: '15rem' }}
                     className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto"
                   >
@@ -96,8 +103,8 @@ export default function Itens({ productsData }) {
                           {product.title}
                         </Link>
                       </Card.Title>
-                      <h4>De: R${product.oldPrice}</h4>
-                      <h4>Por: R${product.newPrice}</h4>
+                      <h4>De: R${product.realPrice}</h4>
+                      <h4>Por: R${product.salePrice}</h4>
                     </Card.Body>
                   </Card>
                 );
