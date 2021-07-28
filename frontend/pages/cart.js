@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +17,8 @@ export default function Cart() {
 
   function calculateTotal(products) {
     return products.reduce(
-      (accumulator, product) => accumulator + product.amount * product.newPrice,
+      (accumulator, product) =>
+        accumulator + product.amount * product.salePrice,
       0
     );
   }
@@ -26,7 +28,7 @@ export default function Cart() {
       9.9 +
       products.reduce(
         (accumulator, product) =>
-          accumulator + product.amount * product.newPrice,
+          accumulator + product.amount * product.salePrice,
         0
       )
     );
@@ -40,7 +42,7 @@ export default function Cart() {
       ) : (
         cartItems.map((cartProduct) => {
           return (
-            <Row key={cartProduct.id} className={styles.spacingContainer}>
+            <Row key={cartProduct._id} className={styles.spacingContainer}>
               <Col className={styles.cartMainProcessItem}>
                 <img
                   src={cartProduct.image}
@@ -55,27 +57,27 @@ export default function Cart() {
               </Col>
               <Col className={styles.cartMainProcessItem}>
                 <h3>Preço (1un):</h3>
-                <h4>R$ {cartProduct.newPrice}</h4>
+                <h4>R$ {cartProduct.salePrice}</h4>
               </Col>
               <Col className={styles.cartMainProcessItem}>
                 <h3>Quantidade:</h3>
                 <InputQuantity
                   countQuantity={cartProduct.amount}
                   increase={() => handleAddToCart(cartProduct)}
-                  decrease={() => handleRemoveFromCart(cartProduct.id)}
+                  decrease={() => handleRemoveFromCart(cartProduct._id)}
                 />
               </Col>
               <Col className={styles.cartMainProcessItem}>
                 <h3>Total:</h3>
                 <h4>
-                  R$ {(cartProduct.newPrice * cartProduct.amount).toFixed(2)}
+                  R$ {(cartProduct.salePrice * cartProduct.amount).toFixed(2)}
                 </h4>
               </Col>
               <Col className={styles.cartMainProcessItem}>
                 <h3>Limpar:</h3>
                 <button
                   type="button"
-                  onClick={() => handleDeleteProductFromCart(cartProduct.id)}
+                  onClick={() => handleDeleteProductFromCart(cartProduct._id)}
                 >
                   <FontAwesomeIcon height="20px" icon={faTrash} />
                   <h4>Excluir</h4>
