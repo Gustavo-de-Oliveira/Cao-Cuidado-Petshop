@@ -40,7 +40,6 @@ export default function Header() {
       await fetch('http://localhost:8000/users').then(async (serverResponse) => {
         const response = await serverResponse.json();
         setUsers(response);
-        console.log(response);
       });
   }
 

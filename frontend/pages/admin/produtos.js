@@ -32,10 +32,12 @@ export default function admIndex() {
     const [animalSpecie, setAnimalSpecie] = useState("");
     const [animalRace, setAnimalRace] = useState("");
     const [animalBirthDate, setAnimalBirthDate] = useState("");
+    const [animalImage, setAnimalImage] = useState("");
 
     const [animal, setAnimal] = useState("");
 
 
+  //FUNÇÕES CRUD PRODUTOS
   async function getProducts() {
     await fetch('http://localhost:8000/products').then(async (serverResponse) => {
       const response = await serverResponse.json();
@@ -142,10 +144,12 @@ export default function admIndex() {
     }
   }
 
+
+  //FUNÇÕES CRUD ANIMAIS
   async function createAnimal() {
     setShowAdoption(false);
 
-    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
+    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "" && animalImage !== "") {
       const response = await fetch('http://localhost:8000/animals', { method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -157,7 +161,7 @@ export default function admIndex() {
           race: animalRace,
           birthDate: animalBirthDate,
           vaccines: animalVaccines,
-          images: ""
+          images: animalImage
         })
       });
 
@@ -167,6 +171,7 @@ export default function admIndex() {
       setAnimalSpecie("");
       setAnimalRace("");
       setAnimalBirthDate("");
+      setAnimalImage("");
     }
   }
 
@@ -180,15 +185,16 @@ export default function admIndex() {
         setAnimalSpecie(response.specie);
         setAnimalRace(response.race);
         setAnimalBirthDate(response.birthDate);
+        setAnimalImage(response.images);
       });
   }
 
   async function editAnimal() {
     setShowEditAdoption(false);
 
-    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
+    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "" && animalImage !== "") {
 
-      const response = await fetch(`http://localhost:8000/animals/${product._id}`, { method: 'PUT',
+      const response = await fetch(`http://localhost:8000/animals/${animalId}`, { method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -199,7 +205,7 @@ export default function admIndex() {
           race: animalRace,
           birthDate: animalBirthDate,
           vaccines: animalVaccines,
-          images: ""
+          images: animalImage
         })
       });
 
@@ -209,6 +215,7 @@ export default function admIndex() {
       setAnimalSpecie("");
       setAnimalRace("");
       setAnimalBirthDate("");
+      setAnimalImage("");
     }
   }
 
@@ -227,6 +234,7 @@ export default function admIndex() {
       setAnimalSpecie("");
       setAnimalRace("");
       setAnimalBirthDate("");
+      setAnimalImage("");
     }
   }
 
@@ -396,14 +404,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" onChange={event => setAnimalImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
 
             <Form.Row>
@@ -566,14 +570,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" value={animalImage} onChange={event => setAnimalImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
 
             <Form.Row>

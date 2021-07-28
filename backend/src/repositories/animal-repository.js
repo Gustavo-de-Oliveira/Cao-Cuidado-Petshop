@@ -11,14 +11,14 @@ exports.create = async(data) => {
 
 exports.get = async() => {
  
-    const res = await Animal.find({}, 'specie race name birthDate vaccines');
+    const res = await Animal.find({}, 'specie images race name birthDate vaccines');
     return res;
 }
 
 exports.getById = async (id) => {
 
     const res = await Animal.findById(id,
-        'specie race name birthDate vaccines');
+        'specie images race name birthDate vaccines');
 
     return res;
 }
