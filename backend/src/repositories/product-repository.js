@@ -42,6 +42,7 @@ exports.update = async(id, data) => {
         .findByIdAndUpdate(id, {
             $set: { 
                 title: data.title,
+                image: data.image,
                 description: data.description,
                 realPrice: data.realPrice,
                 salePrice: data.salePrice,
