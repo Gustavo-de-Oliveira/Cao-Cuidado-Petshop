@@ -24,22 +24,19 @@ export default function adoption() {
       className="col-lg-3 col-md-12 mr-1 mt-2 mx-auto">
       <Card.Img
         variant="top"
-        src={adoption.animal.images}
+        src={adoption.images}
       />
       <Card.Body>
-        <Card.Title>{ adoption.adopter.name }</Card.Title>
+        <Card.Title>{ adoption.name }</Card.Title>
         <Card.Text>
-          {adoption.animal.race}<br/>
-          {adoption.animal.specie}<br/>
-          {adoption.animal.birthDate}<br/>
-          {adoption.animal.vaccines}<br/>
+          Especie: {adoption.specie}<br/>
+          Raça: {adoption.race}<br/>
+          Nascimento: {adoption.birthDate}<br/>
+          Vacinas: {adoption.vaccines}<br/>
         </Card.Text>
-        { adoption.status === "created" ? 
-                <Button variant="primary" onClick={() => setShow(true)}>
-                  Mandar email
-                </Button> :
-                <p>ADOTADO!</p>
-        }
+        <Button variant="primary" onClick={() => setShow(true)}>
+          Mandar email
+        </Button>
       </Card.Body>
     </Card>
 
@@ -81,7 +78,7 @@ export default function adoption() {
 
 
   async function getAdoptions() {
-      await fetch('http://localhost:8000/adoptions').then(async (serverResponse) => {
+      await fetch('http://localhost:8000/animals').then(async (serverResponse) => {
         const response = await serverResponse.json();
         setAdoptions(response);
       });

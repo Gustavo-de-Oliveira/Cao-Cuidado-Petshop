@@ -40,20 +40,24 @@ export default function Header() {
       await fetch('http://localhost:8000/users').then(async (serverResponse) => {
         const response = await serverResponse.json();
         setUsers(response);
+        console.log(response);
       });
   }
 
   function login(email, pass) {
     let user = null;
-    user = users.find(user => user.email === email);
-    setSmShow(false);
+    
+    if(users) {
+      user = users.find(user => user.email === email);
+      setSmShow(false);
 
-    if(user) {
-      setName(user.name);
+      if(user) {
+        setName(user.name);
 
-      if(user.isAdmin) Router.push('/admin');
-    } else {
-      alert("Nenhum usuário encontrado");
+        if(user.isAdmin) Router.push('/admin');
+      } else {
+        alert("Nenhum usuário encontrado");
+      }
     }
   }
 
