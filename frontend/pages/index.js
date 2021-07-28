@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Card, Carousel, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,7 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styles from '../src/theme/pages/index.module.css';
 import Link from '../src/components/Link';
-import products from '../public/products.json';
 import HorizontalProductsList from '../src/components/HorizontalProductsList';
 
 const brandsList = [
@@ -51,6 +50,21 @@ const brandsList = [
 ];
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  async function getProducts() {
+    await fetch('http://localhost:8000/products').then(
+      async (serverResponse) => {
+        const response = await serverResponse.json();
+        setProducts(response);
+      }
+    );
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <>
       <Container>

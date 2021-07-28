@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +7,6 @@ import styles from './styles.module.css';
 import Link from '../../Link';
 import HorizontalProductsList from '../../HorizontalProductsList';
 import InputQuantity from '../../InputQuantity';
-import products from '../../../../public/products.json';
 import ProductsCart from '../../../context/productsCart';
 
 export default function ProductScreen({
@@ -15,12 +14,26 @@ export default function ProductScreen({
   image,
   title,
   description,
-  oldPrice,
-  newPrice,
+  realPrice,
+  salePrice,
 }) {
   const { handleAddQuantityToCart } = useContext(ProductsCart);
 
   const [countQuantity, setCountQuantity] = useState(1);
+  const [products, setProducts] = useState([]);
+
+  async function getProducts() {
+    await fetch('http://localhost:8000/products').then(
+      async (serverResponse) => {
+        const response = await serverResponse.json();
+        setProducts(response);
+      }
+    );
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
     <>
       <Container>
@@ -83,10 +96,10 @@ export default function ProductScreen({
               />
               <div>
                 <p style={{ textDecoration: 'line-through' }}>
-                  De: R$ {oldPrice}
+                  De: R$ {realPrice}
                 </p>
                 <h2 style={{ color: 'var(--primary)' }}>
-                  Por: R$ {newPrice} à vista
+                  Por: R$ {salePrice} à vista
                 </h2>
               </div>
               <div>
