@@ -31,6 +31,30 @@ npm run dev
 Irá rodar na porta:3000 -> acesse http://localhost:3000
 
 Para acessar o site em deploy uso o link: https://cao-cuidado-petshop-gustavo-de-oliveira.vercel.app/
+
+## Rodando o projeto - backend
+### Pré-requisitos
+* [Git](https://git-scm.com)
+* [Node.js](https://nodejs.org/en/) mínimo v.12
+
+### Passos
+Clone o repositório:
+```bash
+git clone https://github.com/Gustavo-de-Oliveira/Cao-Cuidado-Petshop.git
+```
+Acesse o projeto na pasta /backend:
+```bash
+cd backend
+```
+Instale as dependências:
+```bash
+npm install
+```
+Execute a aplicação:
+```bash
+npm start
+```
+Irá rodar na porta:8000 -> acesse http://localhost:8000
  
 ## Requisitos
 <p> <ul>
