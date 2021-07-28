@@ -36,6 +36,7 @@ const schema = new Schema({
         required: true,
         trim: true,
         index: true,
+        unique: true,
     },
     active: {
         type: Boolean,
