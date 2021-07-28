@@ -62,6 +62,7 @@ export default function Cart() {
               <Col className={styles.cartMainProcessItem}>
                 <h3>Quantidade:</h3>
                 <InputQuantity
+                  maximumQuantity={cartProduct.stock}
                   countQuantity={cartProduct.amount}
                   increase={() => handleAddToCart(cartProduct)}
                   decrease={() => handleRemoveFromCart(cartProduct._id)}

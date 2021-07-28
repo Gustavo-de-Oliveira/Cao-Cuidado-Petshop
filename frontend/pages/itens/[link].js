@@ -10,6 +10,7 @@ export default function ProductInternalScreen({
   description,
   realPrice,
   salePrice,
+  stock,
 }) {
   return (
     <ProductScreen
@@ -19,6 +20,7 @@ export default function ProductInternalScreen({
       description={description}
       realPrice={realPrice}
       salePrice={salePrice}
+      stock={stock}
     />
   );
 }
@@ -43,6 +45,7 @@ export async function getStaticProps({ params }) {
           productInfo.realPrice !== undefined ? productInfo.realPrice : null,
         salePrice:
           productInfo.salePrice !== undefined ? productInfo.salePrice : null,
+        stock: productInfo.stock,
       };
     }
     return accumulator;
@@ -56,6 +59,7 @@ export async function getStaticProps({ params }) {
       description: pageData.description,
       realPrice: pageData.realPrice,
       salePrice: pageData.salePrice,
+      stock: pageData.stock,
     },
   };
 }

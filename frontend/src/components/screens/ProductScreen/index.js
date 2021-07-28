@@ -16,6 +16,7 @@ export default function ProductScreen({
   description,
   realPrice,
   salePrice,
+  stock,
 }) {
   const { handleAddQuantityToCart } = useContext(ProductsCart);
 
@@ -90,6 +91,7 @@ export default function ProductScreen({
               </div>
               <p>Quantidade:</p>
               <InputQuantity
+                maximumQuantity={stock}
                 countQuantity={countQuantity}
                 increase={() => setCountQuantity(countQuantity + 1)}
                 decrease={() => setCountQuantity(countQuantity - 1)}
