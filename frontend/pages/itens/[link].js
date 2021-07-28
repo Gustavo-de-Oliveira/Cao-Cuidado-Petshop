@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ProductScreen from '../../src/components/screens/ProductScreen';
@@ -68,7 +69,11 @@ export async function getStaticPaths() {
   );
 
   const paths = productsData.map((product) => {
-    return { params: { link: product.link } };
+    return {
+      params: {
+        link: product.link,
+      },
+    };
   });
 
   return {
