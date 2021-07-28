@@ -3,12 +3,12 @@ import { Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
 
 export default function admIndex() {
   //MODAL CONTROLLER
-  const [showAdd, setShowAdd] = useState(false);
-  const [showAdoption, setShowAdoption] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showEditAdoption, setShowEditAdoption] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
-  const [showDeleteAdoption, setShowDeleteAdoption] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
+    const [showAdoption, setShowAdoption] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
+    const [showEditAdoption, setShowEditAdoption] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [showDeleteAdoption, setShowDeleteAdoption] = useState(false);
 
   //GENERAL
     const [products, setProducts] = useState([]);
@@ -54,7 +54,7 @@ export default function admIndex() {
 
         body: JSON.stringify({
           title: productTitle, 
-          image: "nopath",
+          image: productImage,
           description: productDescription,
           realPrice: productPrice,
           salePrice: productPrice,
@@ -62,13 +62,13 @@ export default function admIndex() {
           link: "nenhum",
           active: true,
           stock: productQuantity,
-          images: "",
           brand: productBrand,
         })
       });
 
     } else {
       setProductTitle("");
+      setProductImage("");
       setProductDescription("");
       setProductPrice("");
       setProductQuantity("");
@@ -81,6 +81,7 @@ export default function admIndex() {
         const response = await serverResponse.json();
         setProduct(response);
         setProductTitle(response.title);
+        setProductImage(response.image);
         setProductDescription(response.description);
         setProductPrice(response.realPrice);
         setProductQuantity(response.stock);
@@ -91,7 +92,7 @@ export default function admIndex() {
   async function editProduct() {
     setShowEdit(false);
 
-    if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "") {
+    if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "" && productImage !== "") {
 
       const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'PUT',
         headers: {
@@ -100,7 +101,7 @@ export default function admIndex() {
 
         body: JSON.stringify({
           title: productTitle,
-          image: "nopath",
+          image: productImage,
           description: productDescription,
           realPrice: productPrice,
           salePrice: productPrice,
@@ -108,13 +109,13 @@ export default function admIndex() {
           link: "nenhum",
           active: true,
           stock: productQuantity,
-          images: "",
           brand: productBrand,
         })
       });
 
     } else {
       setProductTitle("");
+      setProductImage("");
       setProductDescription("");
       setProductPrice("");
       setProductQuantity("");
@@ -133,6 +134,7 @@ export default function admIndex() {
 
     } else {
       setProductTitle("");
+      setProductImage("");
       setProductDescription("");
       setProductPrice("");
       setProductQuantity("");
@@ -322,14 +324,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" onChange={event => setProductImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
   
             <Form.Row>
@@ -484,14 +482,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" value={productImage} onChange={event => setProductImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
   
             <Form.Row>
