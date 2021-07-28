@@ -5,7 +5,9 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
 
-    
+    name: {
+        type: String,
+    },
     specie: {
         type: String,
         required: true,
@@ -14,15 +16,14 @@ const schema = new Schema({
         type: String,
     },
     birthDate: {
-        type: Date,
-        default: Date.now
+        type: Date
     },
     vaccines: [{
         type: String,
     }],
     images: [{
         type: String,
-    }]    
+    }]
 
 });
 

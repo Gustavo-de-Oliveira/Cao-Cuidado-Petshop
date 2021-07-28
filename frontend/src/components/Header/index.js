@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable no-shadow */
+import React, { useContext } from 'react';
+import Router from 'next/router';
 import NextImage from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,14 +20,81 @@ import {
   Button,
   InputGroup,
   Modal,
+  Badge,
 } from 'react-bootstrap';
 import Link from '../Link';
 import styles from './styles.module.css';
 import brandIcon from '../../../public/Logo_white.png';
+import ProductsCart from '../../context/productsCart';
 
 export default function Header() {
+  const { cartItems, getTotalItems } = useContext(ProductsCart);
+
   const [smShow, setSmShow] = React.useState(false);
   const [hasLogin, setHasLogin] = React.useState(true);
+
+  const [users, setUsers] = React.useState([]);
+
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [pass, setPass] = React.useState('');
+  const [passConfirm, setPassConfirm] = React.useState('');
+
+  async function getUsers() {
+      await fetch('http://localhost:8000/users').then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setUsers(response);
+      });
+  }
+
+  function login(email) {
+    let user = null;
+
+    if (users) {
+      user = users.find((user) => user.email === email);
+      setSmShow(false);
+
+      if (user) {
+        setName(user.name);
+
+        if (user.isAdmin) Router.push('/admin');
+      } else {
+        alert('Nenhum usuário encontrado');
+      }
+    }
+  }
+
+  async function createAccount() {
+    setSmShow(false);
+
+    if (email !== '' && name !== '' && pass === passConfirm && pass !== '') {
+      await fetch('http://localhost:8000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+
+        body: JSON.stringify({
+          name,
+          email,
+          password: pass,
+          birthDate: new Date(),
+          isAdmin: false,
+          address: '',
+          paymentMethods: [],
+        }),
+      });
+    } else {
+      setName('');
+      setEmail('');
+      setPass('');
+      setPassConfirm('');
+    }
+  }
+
+  React.useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -33,7 +102,12 @@ export default function Header() {
         <Navbar className={`${styles.bgNavbarUp}`} expand="lg">
           <Link href="/">
             <NextImage src={brandIcon} alt="logo" width="95" height="67" />
-            {/* <img src={brandIcon.src} alt="logo" width="95" height="67" /> */}
+            {/* <img
+              src="http://placehold.it/100x70"
+              alt="logo"
+              width="95"
+              height="67"
+            /> */}
           </Link>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -65,15 +139,31 @@ export default function Header() {
                     height="20px"
                     icon={faShoppingCart}
                   />
-                  <span className="text-center"> Carrinho</span>
+                  <span className="text-center"> Carrinho </span>
                 </Link>
+                <Badge
+                  style={{
+                    backgroundColor: 'var(--primary)',
+                    color: 'var(--main_white)',
+                    fontSize: '16px',
+                    margin: 10,
+                  }}
+                >
+                  {getTotalItems(cartItems) === 0
+                    ? ''
+                    : getTotalItems(cartItems)}
+                </Badge>
 
                 <Button
                   onClick={() => setSmShow(true)}
                   className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}
                 >
                   <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
-                  <span className="text-center"> Cadastro</span>
+                  {name ? (
+                    <span className="text-center">{name}</span>
+                  ) : (
+                    <span className="text-center"> Cadastro</span>
+                  )}
                 </Button>
               </Container>
             </Row>
@@ -191,18 +281,24 @@ export default function Header() {
             <Form className="text-center mx-auto">
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Digite o email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Digite o email"
+                  onChange={(event) => setEmail(event.target.value)}
+                />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Senha</Form.Label>
-                <Form.Control type="password" placeholder="Senha" />
+                <Form.Control
+                  type="password"
+                  placeholder="Senha"
+                  onChange={(event) => setPass(event.target.value)}
+                />
               </Form.Group>
-              <Link href="/admin">
-                <Button variant="primary" type="submit">
-                  Entrar
-                </Button>
-              </Link>
+              <Button variant="primary" onClick={() => login(email, pass)}>
+                Entrar
+              </Button>
             </Form>
           </Modal.Header>
 
@@ -231,7 +327,11 @@ export default function Header() {
                   Nome
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="text" placeholder="Nome" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Nome"
+                    onChange={(event) => setName(event.target.value)}
+                  />
                 </Col>
               </Form.Group>
 
@@ -240,7 +340,11 @@ export default function Header() {
                   Email
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="email" placeholder="Email" />
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
                 </Col>
 
                 <Form.Text className="text-muted">
@@ -253,7 +357,11 @@ export default function Header() {
                   Senha
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="password" placeholder="Senha" />
+                  <Form.Control
+                    type="password"
+                    placeholder="Senha"
+                    onChange={(event) => setPass(event.target.value)}
+                  />
                 </Col>
               </Form.Group>
 
@@ -268,6 +376,7 @@ export default function Header() {
                   <Form.Control
                     type="password"
                     placeholder="Repita sua senha"
+                    onChange={(event) => setPassConfirm(event.target.value)}
                   />
                 </Col>
               </Form.Group>
@@ -280,7 +389,7 @@ export default function Header() {
 
               <Form.Group as={Form.Row}>
                 <Col sm={{ span: 10, offset: 3 }}>
-                  <Button type="submit">Criar conta</Button>
+                  <Button onClick={() => createAccount()}>Criar conta</Button>
                 </Col>
               </Form.Group>
             </Form>

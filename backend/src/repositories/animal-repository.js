@@ -11,14 +11,14 @@ exports.create = async(data) => {
 
 exports.get = async() => {
  
-    const res = await Animal.find({}, 'specie race birthDate vaccines');
+    const res = await Animal.find({}, 'specie images race name birthDate vaccines');
     return res;
 }
 
 exports.getById = async (id) => {
 
     const res = await Animal.findById(id,
-        'specie race birthDate vaccines');
+        'specie images race name birthDate vaccines');
 
     return res;
 }
@@ -27,6 +27,7 @@ exports.update = async(id, data) => {
     await Animal
         .findByIdAndUpdate(id, {
             $set: { 
+                name: data.name,
                 specie: data.specie,
                 race: data.race,
                 birthDate: data.birthDate,
@@ -39,5 +40,5 @@ exports.update = async(id, data) => {
 
 exports.delete = async(id) => {
     return Animal 
-      .findOneAndRemove(id);    
+      .findByIdAndRemove(id);    
 }

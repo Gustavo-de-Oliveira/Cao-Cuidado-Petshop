@@ -6,12 +6,12 @@ const User = mongoose.model('User');
 exports.get = async() => {
  
     const res = await User.find({
-        },'name email password isAdmin birthDate');
+        },'name email password isAdmin address birthDate');
     return res;
 }
 
 exports.getById = async(id) => {
-    const res = await User.findById(id, 'name email password isAdmin birthDate');
+    const res = await User.findById(id, 'name email password isAdmin address birthDate');
     return res;
 }
 
@@ -19,7 +19,7 @@ exports.getByEmail = async (_email) => {
     
     const res = await User.findOne({
             email: _email
-        }, 'name email password isAdmin birthDate');
+        }, 'name email password isAdmin address birthDate');
     
     return res;
 }
@@ -43,7 +43,7 @@ exports.update = async(id, data) => {
                 email: data.email,
                 password: data.password,
                 isAdmin: data.isAdmin,
-                address: null,
+                address: data.address,
                 paymentMethods: null,
             })
     }else{
@@ -54,7 +54,7 @@ exports.update = async(id, data) => {
                 email: data.email,
                 password: data.password,
                 idAdmin: data.isAdmin,
-                addres: data.addres,
+                address: data.address,
                 paymentMethods: data.paymentMethods,
             }
         }) 
@@ -63,5 +63,5 @@ exports.update = async(id, data) => {
 
 exports.delete = (id) => {
 
-    return User.findOneAndRemove(id);    
+    return User.findByIdAndRemove(id);    
 }
