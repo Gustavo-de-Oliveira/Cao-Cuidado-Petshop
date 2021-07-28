@@ -63,5 +63,5 @@ exports.update = async(id, data) => {
 
 exports.delete = (id) => {
 
-    return User.findOneAndRemove(id);    
+    return User.findByIdAndRemove(id);    
 }

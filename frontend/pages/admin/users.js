@@ -1,4 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSearch
+} from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
 
 export default function admIndex() {
@@ -277,13 +281,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setUserId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchUser()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -364,13 +368,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setUserId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchUser()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>

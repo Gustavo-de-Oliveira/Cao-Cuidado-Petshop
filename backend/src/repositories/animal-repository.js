@@ -40,5 +40,5 @@ exports.update = async(id, data) => {
 
 exports.delete = async(id) => {
     return Animal 
-      .findOneAndRemove(id);    
+      .findByIdAndRemove(id);    
 }
