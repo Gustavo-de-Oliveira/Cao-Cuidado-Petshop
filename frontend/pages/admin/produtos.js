@@ -22,6 +22,9 @@ export default function admIndex() {
     const [productDescription, setProductDescription] = useState("");
     const [productBrand, setProductBrand] = useState("");
 
+    const [product, setProduct] = useState({});
+
+
   //ADOPTION FORM
     const [animalId, setAnimalId] = useState("");
     const [animalName, setAnimalName] = useState("");
@@ -30,40 +33,14 @@ export default function admIndex() {
     const [animalRace, setAnimalRace] = useState("");
     const [animalBirthDate, setAnimalBirthDate] = useState("");
 
+    const [animal, setAnimal] = useState("");
+
 
   async function getProducts() {
     await fetch('http://localhost:8000/products').then(async (serverResponse) => {
       const response = await serverResponse.json();
       setProducts(response);
     });
-  }
-
-  async function createAnimal() {
-    setShowAdoption(false);
-
-    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
-      const response = await fetch('http://localhost:8000/animals', { method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          name: animalName,
-          specie: animalSpecie,
-          race: animalRace,
-          birthDate: animalBirthDate,
-          vaccines: animalVaccines,
-          images: ""
-        })
-      });
-
-    } else {
-      setAnimalName("");
-      setAnimalVaccines("");
-      setAnimalSpecie("");
-      setAnimalRace("");
-      setAnimalBirthDate("");
-    }
   }
 
   async function createProduct() {
@@ -96,6 +73,158 @@ export default function admIndex() {
       setProductPrice("");
       setProductQuantity("");
       setProductBrand("");
+    }
+  }
+
+  async function searchProduct() {
+      await fetch(`http://localhost:8000/products/admin/${productId}`).then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setProduct(response);
+        setProductTitle(response.title);
+        setProductDescription(response.description);
+        setProductPrice(response.realPrice);
+        setProductQuantity(response.stock);
+        setProductBrand(response.brand);
+      });
+  }
+
+  async function editProduct() {
+    setShowEdit(false);
+
+    if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "") {
+
+      const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          title: productTitle,
+          image: "nopath",
+          description: productDescription,
+          realPrice: productPrice,
+          salePrice: productPrice,
+          onOffer: false,
+          link: "nenhum",
+          active: true,
+          stock: productQuantity,
+          images: "",
+          brand: productBrand,
+        })
+      });
+
+    } else {
+      setProductTitle("");
+      setProductDescription("");
+      setProductPrice("");
+      setProductQuantity("");
+      setProductBrand("");
+    }
+  }
+
+  async function deleteProduct() {
+    setShowDelete(false);
+
+    if(product) {
+
+      const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'DELETE'})
+      .then(res => res.json()) // or res.json()
+      .then(res => alert(product.title + " excluido com sucesso!"));
+
+    } else {
+      setProductTitle("");
+      setProductDescription("");
+      setProductPrice("");
+      setProductQuantity("");
+      setProductBrand("");
+    }
+  }
+
+  async function createAnimal() {
+    setShowAdoption(false);
+
+    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
+      const response = await fetch('http://localhost:8000/animals', { method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          name: animalName,
+          specie: animalSpecie,
+          race: animalRace,
+          birthDate: animalBirthDate,
+          vaccines: animalVaccines,
+          images: ""
+        })
+      });
+
+    } else {
+      setAnimalName("");
+      setAnimalVaccines("");
+      setAnimalSpecie("");
+      setAnimalRace("");
+      setAnimalBirthDate("");
+    }
+  }
+
+  async function searchAnimal() {
+      await fetch(`http://localhost:8000/animals/admin/${animalId}`).then(async (serverResponse) => {
+        const response = await serverResponse.json();
+
+        setAnimal(response);
+        setAnimalName(response.name);
+        setAnimalVaccines(response.vaccines);
+        setAnimalSpecie(response.specie);
+        setAnimalRace(response.race);
+        setAnimalBirthDate(response.birthDate);
+      });
+  }
+
+  async function editAnimal() {
+    setShowEditAdoption(false);
+
+    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
+
+      const response = await fetch(`http://localhost:8000/animals/${product._id}`, { method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          name: animalName,
+          specie: animalSpecie,
+          race: animalRace,
+          birthDate: animalBirthDate,
+          vaccines: animalVaccines,
+          images: ""
+        })
+      });
+
+    } else {
+      setAnimalName("");
+      setAnimalVaccines("");
+      setAnimalSpecie("");
+      setAnimalRace("");
+      setAnimalBirthDate("");
+    }
+  }
+
+  async function deleteAnimal() {
+    setShowDeleteAdoption(false);
+
+    if(product) {
+
+      const response = await fetch(`http://localhost:8000/animals/${animal._id}`, { method: 'DELETE'})
+      .then(res => res.json()) // or res.json()
+      .then(res => alert(animal.name + " excluido com sucesso!"));
+
+    } else {
+      setAnimalName("");
+      setAnimalVaccines("");
+      setAnimalSpecie("");
+      setAnimalRace("");
+      setAnimalBirthDate("");
     }
   }
 
@@ -341,8 +470,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={5}>
-              <Form.Control type="number" placeholder="ID" />
+            <Col sm={12}>
+              <Form.Control type="text" placeholder="ID" onChange={event => setProductId(event.target.value)}/>
+              <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => searchProduct()}
+                > [lupa] </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -359,46 +493,41 @@ export default function admIndex() {
                 feedbackTooltip
               />
             </Form.Row>
-
+  
             <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
+                <Form.Control type="text" placeholder="Nome" value={productTitle} onChange={event => setProductTitle(event.target.value)}/>
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridDueDate">
-                <Form.Label>Validade</Form.Label>
-                <Form.Control type="date" placeholder="date" />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Marca</Form.Label>
+                <Form.Control type="text" placeholder="Marca" value={productBrand} onChange={event => setProductBrand(event.target.value)}/>
               </Form.Group>
             </Form.Row>
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridQuantidade">
                 <Form.Label>Quantidade em estoque</Form.Label>
-                <Form.Control type="number" placeholder="Quantidade" />
+                <Form.Control type="number" placeholder="Quantidade" value={productQuantity} onChange={event => setProductQuantity(event.target.value)}/>
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPrice">
                 <Form.Label>Preço</Form.Label>
-                <Form.Control type="number" placeholder="price" />
+                <Form.Control type="number" placeholder="price" value={productPrice} onChange={event => setProductPrice(event.target.value)}/>
               </Form.Group>
             </Form.Row>
-
-            <Form.Group controlId="formGridCodBar">
-              <Form.Label>Código de barras</Form.Label>
-              <Form.Control type="number" placeholder="Código de barras" />
-            </Form.Group>
 
             <Form.Row>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} />
+                <Form.Control as="textarea" rows={5} cols={80} value={productDescription} onChange={event => setProductDescription(event.target.value)}/>
               </Form.Group>
             </Form.Row>
 
             <Row>
               <Col>
-                <Button variant="primary" size="lg" block>
+                <Button variant="primary" size="lg" block  onClick={() => editProduct()}>
                   Salvar
                 </Button>
               </Col>
@@ -429,8 +558,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={5}>
-              <Form.Control type="number" placeholder="ID" />
+            <Col sm={12}>
+              <Form.Control type="text" placeholder="ID" onChange={event => setAnimalId(event.target.value)}/>
+              <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => searchAnimal()}
+                > [lupa] </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -451,29 +585,35 @@ export default function admIndex() {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
+                <Form.Control type="text" placeholder="Nome" value={animalName} onChange={event => setAnimalName(event.target.value)}/>
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridDueDate">
                 <Form.Label>Data de nascimento</Form.Label>
-                <Form.Control type="date" placeholder="birthday" />
+                <Form.Control type="text" placeholder="birthday" value={animalBirthDate} onChange={event => setAnimalBirthDate(event.target.value)}/>
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Vacinado" />
+            <Form.Group as={Col} controlId="formGridName">
+              <Form.Label>Vacinas</Form.Label>
+              <Form.Control type="text" placeholder="Vacinas" value={animalVaccines} onChange={event => setAnimalVaccines(event.target.value)}/>
             </Form.Group>
 
             <Form.Row>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Raça</Form.Label>
+                <Form.Control type="text" placeholder="race" value={animalRace} onChange={event => setAnimalRace(event.target.value)}/>
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridDueDate">
+                <Form.Label>Especie</Form.Label>
+                <Form.Control type="text" placeholder="specie" value={animalSpecie} onChange={event => setAnimalSpecie(event.target.value)}/>
               </Form.Group>
             </Form.Row>
 
             <Row>
               <Col>
-                <Button variant="primary" size="lg" block>
+                <Button variant="primary" size="lg" block onClick={() => editAnimal()}>
                   Salvar
                 </Button>
               </Col>
@@ -504,8 +644,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={5}>
-              <Form.Control type="number" placeholder="ID" />
+            <Col sm={12}>
+              <Form.Control type="text" placeholder="ID" onChange={event => setProductId(event.target.value)}/>
+              <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => searchProduct()}
+                > [lupa] </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -513,60 +658,39 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                disabled
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
-            </Form.Row>
-
-            <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" disabled placeholder="Nome" />
+                <Form.Control type="text" placeholder="Nome" value={productTitle} onChange={event => setProductTitle(event.target.value)} disabled/>
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridDueDate">
-                <Form.Label>Validade</Form.Label>
-                <Form.Control type="date" placeholder="date" disabled />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Marca</Form.Label>
+                <Form.Control type="text" placeholder="Marca" value={productBrand} onChange={event => setProductBrand(event.target.value)} disabled/>
               </Form.Group>
             </Form.Row>
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridQuantidade">
                 <Form.Label>Quantidade em estoque</Form.Label>
-                <Form.Control type="number" placeholder="Quantidade" disabled />
+                <Form.Control type="number" placeholder="Quantidade" value={productQuantity} onChange={event => setProductQuantity(event.target.value)} disabled/>
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridPrice">
                 <Form.Label>Preço</Form.Label>
-                <Form.Control type="number" placeholder="price" disabled />
+                <Form.Control type="number" placeholder="price" value={productPrice} onChange={event => setProductPrice(event.target.value)} disabled/>
               </Form.Group>
             </Form.Row>
-
-            <Form.Group controlId="formGridCodBar">
-              <Form.Label>Código de barras</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Código de barras"
-                disabled
-              />
-            </Form.Group>
 
             <Form.Row>
               <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} disabled />
+                <Form.Control as="textarea" rows={5} cols={80} value={productDescription} onChange={event => setProductDescription(event.target.value)} disabled/>
               </Form.Group>
             </Form.Row>
 
             <Row>
               <Col>
-                <Button variant="primary" size="lg" block>
+                <Button variant="primary" size="lg" block  onClick={() => deleteProduct()}>
                   Salvar
                 </Button>
               </Col>
@@ -597,8 +721,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={5}>
-              <Form.Control type="number" placeholder="ID" />
+            <Col sm={12}>
+              <Form.Control type="text" placeholder="ID" onChange={event => setAnimalId(event.target.value)}/>
+              <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => searchAnimal()}
+                > [lupa] </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -606,43 +735,37 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-                disabled
-              />
-            </Form.Row>
-
-            <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Nome" disabled />
+                <Form.Control type="text" placeholder="Nome" value={animalName} onChange={event => setAnimalName(event.target.value)} disabled/>
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridDueDate">
                 <Form.Label>Data de nascimento</Form.Label>
-                <Form.Control type="date" placeholder="birthday" disabled />
+                <Form.Control type="text" placeholder="birthday" value={animalBirthDate} onChange={event => setAnimalBirthDate(event.target.value)} disabled/>
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Vacinado" disabled />
+            <Form.Group as={Col} controlId="formGridName">
+              <Form.Label>Vacinas</Form.Label>
+              <Form.Control type="text" placeholder="Vacinas" value={animalVaccines} onChange={event => setAnimalVaccines(event.target.value)} disabled/>
             </Form.Group>
 
             <Form.Row>
-              <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Descrição</Form.Label>
-                <Form.Control as="textarea" rows={5} cols={80} disabled />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Raça</Form.Label>
+                <Form.Control type="text" placeholder="race" value={animalRace} onChange={event => setAnimalRace(event.target.value)} disabled/>
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridDueDate">
+                <Form.Label>Especie</Form.Label>
+                <Form.Control type="text" placeholder="specie" value={animalSpecie} onChange={event => setAnimalSpecie(event.target.value)} disabled/>
               </Form.Group>
             </Form.Row>
 
             <Row>
               <Col>
-                <Button variant="primary" size="lg" block>
+                <Button variant="primary" size="lg" block onClick={() => deleteAnimal()}>
                   Salvar
                 </Button>
               </Col>

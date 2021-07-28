@@ -14,7 +14,7 @@ exports.get = async() => {
  
     const res = await Product.find({
             active: true        
-        }, 'image title description stock realPrice salePrice link');
+        }, 'image title brand description stock realPrice salePrice link');
 
     return res;
 }
@@ -22,7 +22,7 @@ exports.get = async() => {
 exports.getById = async (id) => {
 
     const res = await Product.findById(id,
-        'image title description stock realPrice salePrice link');
+        'image title brand description stock realPrice salePrice link');
 
         return res;
 }
@@ -31,7 +31,7 @@ exports.getByLink = async (_link) => {
     
     const res = await Product.findOne({
             link: _link
-        }, 'image title description stock realPrice salePrice link');
+        }, 'image title brand description stock realPrice salePrice link');
     
     return res;
 }
