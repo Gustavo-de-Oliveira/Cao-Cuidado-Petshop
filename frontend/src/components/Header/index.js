@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import React from 'react';
+import React, { useContext } from 'react';
 import Router from 'next/router';
 import NextImage from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,12 +20,16 @@ import {
   Button,
   InputGroup,
   Modal,
+  Badge,
 } from 'react-bootstrap';
 import Link from '../Link';
 import styles from './styles.module.css';
 import brandIcon from '../../../public/Logo_white.png';
+import ProductsCart from '../../context/productsCart';
 
 export default function Header() {
+  const { cartItems, getTotalItems } = useContext(ProductsCart);
+
   const [smShow, setSmShow] = React.useState(false);
   const [hasLogin, setHasLogin] = React.useState(true);
 
@@ -135,8 +139,20 @@ export default function Header() {
                     height="20px"
                     icon={faShoppingCart}
                   />
-                  <span className="text-center"> Carrinho</span>
+                  <span className="text-center"> Carrinho </span>
                 </Link>
+                <Badge
+                  style={{
+                    backgroundColor: 'var(--primary)',
+                    color: 'var(--main_white)',
+                    fontSize: '16px',
+                    margin: 10,
+                  }}
+                >
+                  {getTotalItems(cartItems) === 0
+                    ? ''
+                    : getTotalItems(cartItems)}
+                </Badge>
 
                 <Button
                   onClick={() => setSmShow(true)}

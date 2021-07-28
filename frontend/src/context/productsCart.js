@@ -8,7 +8,10 @@ export const ProductsCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   function getTotalItems(productItems) {
-    productItems.reduce((accumulator, item) => accumulator + item.amount, 0);
+    return productItems.reduce(
+      (accumulator, item) => accumulator + item.amount,
+      0
+    );
   }
 
   function handleAddToCart(productItem) {
