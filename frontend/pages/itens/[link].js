@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import products from '../../public/products.json';
 import ProductScreen from '../../src/components/screens/ProductScreen';
 
 export default function ProductInternalScreen({
@@ -8,8 +7,8 @@ export default function ProductInternalScreen({
   image,
   title,
   description,
-  oldPrice,
-  newPrice,
+  realPrice,
+  salePrice,
 }) {
   return (
     <ProductScreen
@@ -17,14 +16,19 @@ export default function ProductInternalScreen({
       image={image}
       title={title}
       description={description}
-      oldPrice={oldPrice}
-      newPrice={newPrice}
+      realPrice={realPrice}
+      salePrice={salePrice}
     />
   );
 }
 
-export function getStaticProps({ params }) {
-  const productsData = products.data;
+export async function getStaticProps({ params }) {
+  const productsData = await fetch('http://localhost:8000/products').then(
+    async (serverResponse) => {
+      const response = await serverResponse.json();
+      return response;
+    }
+  );
 
   const pageData = productsData.reduce((accumulator, productInfo) => {
     if (productInfo.link === params.link) {
@@ -34,8 +38,10 @@ export function getStaticProps({ params }) {
         image: productInfo.image,
         title: productInfo.title,
         description: productInfo.description,
-        oldPrice: productInfo.oldPrice,
-        newPrice: productInfo.newPrice,
+        realPrice:
+          productInfo.realPrice !== undefined ? productInfo.realPrice : null,
+        salePrice:
+          productInfo.salePrice !== undefined ? productInfo.salePrice : null,
       };
     }
     return accumulator;
@@ -47,14 +53,19 @@ export function getStaticProps({ params }) {
       image: pageData.image,
       title: pageData.title,
       description: pageData.description,
-      oldPrice: pageData.oldPrice,
-      newPrice: pageData.newPrice,
+      realPrice: pageData.realPrice,
+      salePrice: pageData.salePrice,
     },
   };
 }
 
-export function getStaticPaths() {
-  const productsData = products.data;
+export async function getStaticPaths() {
+  const productsData = await fetch('http://localhost:8000/products').then(
+    async (serverResponse) => {
+      const response = await serverResponse.json();
+      return response;
+    }
+  );
 
   const paths = productsData.map((product) => {
     return { params: { link: product.link } };
