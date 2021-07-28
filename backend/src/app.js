@@ -1,5 +1,6 @@
 'use strict';
 
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,6 +9,14 @@ const config = require('./config');
 const cors = require('cors');
 
 const app = express();
+
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
+
 const router = express.Router();
 app.use(cors());
 

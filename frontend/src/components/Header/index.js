@@ -24,62 +24,76 @@ import Link from '../Link';
 import styles from './styles.module.css';
 //import brandIcon from '../../../public/Logo_white.png';
 
-async function login(email, pass) {
-  var myHeaders = new Headers();
-  myHeaders.append("Access-Control-Allow-Origin", "*");
-
-  var myInit = { method: 'GET',
-                 headers: myHeaders,
-                 mode: 'cors',
-                 cache: 'default' };
-
-  const res = await fetch("http://localhost:8080/users", myInit);
-
-  if (res.status === 200) {
-      const users = await res.json();
-
-      let user = users.find(u => u.email === email && u.password === "bd2d7c14b5d4d786e3cb48c176ad01f9");
-      
-      if(user) {
-        if(user.isAdmin) {
-          console.log(user);
-
-          Router.push('/admin');
-        }
-        else console.log("nop");
-
-      } else {
-        alert("Nenhum usuário encontrado!");
-      }
-  }
-}
-
-async function createAccount() {
-  var myHeaders = new Headers();
-  myHeaders.append("Access-Control-Allow-Origin", "*");
-
-  var myInit = { method: 'GET',
-                 headers: myHeaders,
-                 mode: 'cors',
-                 cache: 'default' };
-
-  const res = await fetch("http://localhost:8080/users", myInit);
-
-  if (res.status === 200) {
-      const users = await res.json();
-
-      let user = users.find(u => u.email === email && u.password === "bd2d7c14b5d4d786e3cb48c176ad01f9");
-      
-      console.log(users);
-  }
-}
 
 export default function Header() {
   const [smShow, setSmShow] = React.useState(false);
   const [hasLogin, setHasLogin] = React.useState(true);
+  
+  const [users, setUsers] = React.useState([]);
 
+  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [pass, setPass] = React.useState('');
+  const [passConfirm, setPassConfirm] = React.useState('');
+
+  async function getUsers() {
+      await fetch('http://localhost:8000/users').then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setUsers(response);
+        console.log(response);
+      });
+  }
+
+  function login(email, pass) {
+    let user = null;
+    
+    if(users) {
+      user = users.find(user => user.email === email);
+      setSmShow(false);
+
+      if(user) {
+        setName(user.name);
+
+        if(user.isAdmin) Router.push('/admin');
+      } else {
+        alert("Nenhum usuário encontrado");
+      }
+    }
+  }
+
+  async function createAccount() {
+    setSmShow(false);
+
+
+    if(email !== "" && name !== "" && pass === passConfirm && pass !== "") {
+
+      const response = await fetch('http://localhost:8000/users', { method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: pass,
+          birthDate: new Date(),
+          isAdmin: false,
+          address: "",
+          paymentMethods: [],
+        })
+      });
+
+    } else {
+      setName("");
+      setEmail("");
+      setPass("");
+      setPassConfirm("");
+    }
+  }
+
+  React.useEffect(() => {
+      getUsers();
+  }, [])
 
   return (
     <>
@@ -127,7 +141,7 @@ export default function Header() {
                   className={`btn bg-transparent border-0 col-lg-3 col-md-2 col-sm-1 mr-md-5 ${styles.topBtn}`}
                 >
                   <FontAwesomeIcon icon={faUser} width="20px" height="20px" />
-                  <span className="text-center"> Cadastro</span>
+                  { name  ? (<span className="text-center">{ name }</span>) : (<span className="text-center"> Cadastro</span>)}
                 </Button>
               </Container>
             </Row>
@@ -252,11 +266,10 @@ export default function Header() {
                 <Form.Label>Senha</Form.Label>
                 <Form.Control type="password" placeholder="Senha" onChange={event => setPass(event.target.value)} />
               </Form.Group>
-              
-                <Button variant="primary" type="submit" onClick={() => setSmShow(false)} onClick={() => login(email, pass)} >
+                <Button variant="primary" onClick={() => login(email, pass)} >
                   Entrar
                 </Button>
-                            </Form>
+            </Form>
           </Modal.Header>
 
           <Modal.Body>
@@ -284,7 +297,7 @@ export default function Header() {
                   Nome
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="text" placeholder="Nome" />
+                  <Form.Control type="text" placeholder="Nome" onChange={event => setName(event.target.value)}/>
                 </Col>
               </Form.Group>
 
@@ -293,7 +306,7 @@ export default function Header() {
                   Email
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="email" placeholder="Email" />
+                  <Form.Control type="email" placeholder="Email" onChange={event => setEmail(event.target.value)}/>
                 </Col>
 
                 <Form.Text className="text-muted">
@@ -306,7 +319,7 @@ export default function Header() {
                   Senha
                 </Form.Label>
                 <Col sm={8}>
-                  <Form.Control type="password" placeholder="Senha" />
+                  <Form.Control type="password" placeholder="Senha" onChange={event => setPass(event.target.value)}/>
                 </Col>
               </Form.Group>
 
@@ -321,6 +334,7 @@ export default function Header() {
                   <Form.Control
                     type="password"
                     placeholder="Repita sua senha"
+                    onChange={event => setPassConfirm(event.target.value)}
                   />
                 </Col>
               </Form.Group>
@@ -333,7 +347,7 @@ export default function Header() {
 
               <Form.Group as={Form.Row}>
                 <Col sm={{ span: 10, offset: 3 }}>
-                  <Button type="submit" onClick={() => createAccount}>Criar conta</Button>
+                  <Button onClick={() => createAccount()}>Criar conta</Button>
                 </Col>
               </Form.Group>
             </Form>
