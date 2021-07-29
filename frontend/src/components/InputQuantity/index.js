@@ -4,7 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 
-export default function InputQuantity({ countQuantity, increase, decrease }) {
+export default function InputQuantity({
+  maximumQuantity,
+  countQuantity,
+  increase,
+  decrease,
+}) {
   return (
     <div className={styles.productQuantityContainer}>
       {countQuantity <= 1 ? (
@@ -27,7 +32,7 @@ export default function InputQuantity({ countQuantity, increase, decrease }) {
       )}
 
       <p className={styles.productQuantityInput}>{countQuantity}</p>
-      {countQuantity >= 10 ? (
+      {countQuantity >= maximumQuantity ? (
         <button
           disabled
           type="button"

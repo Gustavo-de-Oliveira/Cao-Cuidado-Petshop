@@ -1,8 +1,15 @@
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 // import NextLink from 'next/link';
 import { Container, Image, Col, Row } from 'react-bootstrap';
 
-export default function Page404() {
+export default function PageAbout() {
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -15,67 +22,72 @@ export default function Page404() {
           />
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque elementum mollis odio, quis feugiat urna vulputate
-            quis. Vestibulum quis lorem arcu. Nam aliquet ultricies pulvinar.
-            Sed tempus, sem vitae vestibulum euismod, est velit scelerisque sem,
-            eu condimentum ex ante eget sem. Sed sed mi faucibus dui fermentum
-            auctor vitae at libero. Quisque eget pretium metus. Cras id
-            consequat felis. Duis tristique erat vitae leo euismod tempus. Donec
-            consequat neque augue, commodo volutpat lectus dignissim ut. Donec
-            egestas massa in nibh volutpat, vel consequat lectus mollis. Aliquam
-            rhoncus feugiat tempus.
+            A Cão Cuidado é um e-commerce petshop, focado nos melhores produtos
+            das melhores marcas para atender melhor você! Além de rações, aqui
+            você encontra outros tipos de produtos para o seu pet, como:
+            medicamentos, beleza e limpeza, brinquedos, coleiras e guias e muito
+            mais! Tudo isso muito fácil em nosso site e com frete rápido
           </p>
-
           <p>
-            Curabitur sapien mauris, varius eget sem ac, aliquet ultricies sem.
-            Cras ornare venenatis odio eget ultrices. Donec aliquam leo nec
-            placerat laoreet. Curabitur faucibus libero at quam pulvinar
-            lacinia. Nunc commodo nibh risus, in faucibus est porta et. Proin
-            tempus tempus mattis. Etiam vitae libero in turpis aliquet interdum
-            ut quis nibh. Integer pretium erat erat, in pretium magna placerat
-            a.
+            <br />
+            Além do e-commerce de produtos para os seus pets, temos também uma
+            área para você adotar um novo pet! Visite e veja quais os novos
+            animaiszinhos que procuram um novo dono.
           </p>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <h5 className="text-uppercase mt-4">Redes sociais</h5>
 
-          <p>
-            Nunc condimentum tristique sapien, in tempus dui consequat
-            pellentesque. Suspendisse turpis nulla, interdum in accumsan
-            sodales, malesuada sit amet magna. In efficitur porta lectus quis
-            vehicula. Aenean luctus convallis venenatis. Duis vel nunc
-            scelerisque, fermentum diam in, gravida nisl. Morbi hendrerit elit
-            nulla, a dictum orci iaculis vel. Suspendisse enim mauris, vehicula
-            vitae leo et, finibus molestie augue. Vivamus tempus erat vel augue
-            finibus iaculis. Pellentesque malesuada luctus justo, at imperdiet
-            arcu dignissim ac. Donec finibus dui nec eros imperdiet eleifend.
-            Sed aliquet felis nec nulla hendrerit, quis porta nisl fringilla.
-            Integer tristique consequat mi et facilisis. Donec non malesuada
-            nunc, eget varius tellus.
-          </p>
-
-          <p>
-            Curabitur sapien mauris, varius eget sem ac, aliquet ultricies sem.
-            Cras ornare venenatis odio eget ultrices. Donec aliquam leo nec
-            placerat laoreet. Curabitur faucibus libero at quam pulvinar
-            lacinia. Nunc commodo nibh risus, in faucibus est porta et. Proin
-            tempus tempus mattis. Etiam vitae libero in turpis aliquet interdum
-            ut quis nibh. Integer pretium erat erat, in pretium magna placerat
-            a.
-          </p>
-
-          <p>
-            Nunc condimentum tristique sapien, in tempus dui consequat
-            pellentesque. Suspendisse turpis nulla, interdum in accumsan
-            sodales, malesuada sit amet magna. In efficitur porta lectus quis
-            vehicula. Aenean luctus convallis venenatis. Duis vel nunc
-            scelerisque, fermentum diam in, gravida nisl. Morbi hendrerit elit
-            nulla, a dictum orci iaculis vel. Suspendisse enim mauris, vehicula
-            vitae leo et, finibus molestie augue. Vivamus tempus erat vel augue
-            finibus iaculis. Pellentesque malesuada luctus justo, at imperdiet
-            arcu dignissim ac. Donec finibus dui nec eros imperdiet eleifend.
-            Sed aliquet felis nec nulla hendrerit, quis porta nisl fringilla.
-            Integer tristique consequat mi et facilisis. Donec non malesuada
-            nunc, eget varius tellus.
-          </p>
+            <ul className="list-inline">
+              <li className="list-inline-item">
+                <a href="https://twitter.com" className=" list-inline-item">
+                  <FontAwesomeIcon
+                    color="var(--primary)"
+                    height="30px"
+                    icon={faTwitter}
+                  />
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  href="https://facebook.com/caocuidadodermato"
+                  className=" list-inline-item"
+                >
+                  <FontAwesomeIcon
+                    color="var(--primary)"
+                    height="30px"
+                    icon={faFacebook}
+                  />
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a
+                  href="https://instagram.com/caocuidado"
+                  className=" list-inline-item"
+                >
+                  <FontAwesomeIcon
+                    color="var(--primary)"
+                    height="30px"
+                    icon={faInstagram}
+                  />
+                </a>
+              </li>
+              <li className="list-inline-item">
+                <a href="https://youtube.com" className=" list-inline-item">
+                  <FontAwesomeIcon
+                    color="var(--primary)"
+                    height="30px"
+                    icon={faYoutube}
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
         </Col>
       </Row>
     </Container>

@@ -13,38 +13,38 @@ import {
   faCcAmex,
 } from '@fortawesome/free-brands-svg-icons';
 import { faWallet, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-//import brandIcon from '../../../public/Logo_white.png';
+import brandIcon from '../../../public/Logo_white.png';
 import styles from './styles.module.css';
 import Link from '../Link';
 
 export default function Footer() {
   const [email, setEmail] = React.useState('');
 
-  const handleSubmit = (e) => { 
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log('Sending');
 
-    let data = {
+    const data = {
       email,
-      about: "News"
+      about: 'News',
     };
 
     fetch('/api/contact', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     }).then((res) => {
-      console.log('Response received')
+      console.log('Response received');
       if (res.status === 200) {
-        console.log('Response succeeded!')
-        setSubmitted(true)
-        setEmail('')
+        console.log('Response succeeded!');
+        // setSubmitted(true);
+        setEmail('');
       }
-    })
-  }
+    });
+  };
 
   return (
     <footer className={`${styles.footerContainer}`}>
@@ -74,7 +74,10 @@ export default function Footer() {
 
               <div className="col-auto mt-2">
                 <button
-                  onClick={(e)=>{handleSubmit(e)}}
+                  type="button"
+                  onClick={(e) => {
+                    handleSubmit(e);
+                  }}
                   className={`btn mt-3 mb-4 ${styles.sendBtn}`}
                 >
                   Enviar{' '}
@@ -93,8 +96,8 @@ export default function Footer() {
           <div className={`row ${styles.listStyle}`}>
             <div className="col-lg-3 col-md-6">
               <Link href="/">
-                {/*<NextImage src={brandIcon} alt="logo" />*/}
-                 <img src="" alt="logo" /> 
+                <NextImage src={brandIcon} alt="logo" />
+                {/* <img src="" alt="logo" /> */}
               </Link>
             </div>
 

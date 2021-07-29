@@ -19,6 +19,10 @@
   color: var(--secondary);
 }
 
+.productQuantityBtn:disabled {
+  color: var(--secondary_light);
+}
+
 .productQuantityInput {
   background: none;
   border: none;
