@@ -13,7 +13,6 @@ import {
   Container,
   Col,
   Row,
-  Nav,
   Navbar,
   Form,
   FormControl,
@@ -41,10 +40,10 @@ export default function Header() {
   const [passConfirm, setPassConfirm] = React.useState('');
 
   async function getUsers() {
-      await fetch('http://localhost:8000/users').then(async (serverResponse) => {
-        const response = await serverResponse.json();
-        setUsers(response);
-      });
+    await fetch('http://localhost:8000/users').then(async (serverResponse) => {
+      const response = await serverResponse.json();
+      setUsers(response);
+    });
   }
 
   function login(email) {
@@ -112,17 +111,22 @@ export default function Header() {
 
           <Navbar.Toggle aria-controls="navbarScroll" />
 
-          <Navbar.Collapse id="navbarScroll" className="">
+          <Navbar.Collapse id="navbarScroll">
             <Row className="col-lg-12">
               <InputGroup className="my-auto col-lg-5 col-md-7 rounded-0">
                 <FormControl
-                  className=""
                   placeholder="Pesquise algo em nosso site"
                   aria-label="Pesquise algo em nosso site"
                 />
-                <Button variant="" className={`btn ${styles.btnSearch}`}>
-                  <FontAwesomeIcon width="15px" height="15px" icon={faSearch} />
-                </Button>
+                <Link href="\itens">
+                  <Button variant="" className={`btn ${styles.btnSearch}`}>
+                    <FontAwesomeIcon
+                      width="15px"
+                      height="15px"
+                      icon={faSearch}
+                    />
+                  </Button>
+                </Link>
               </InputGroup>
 
               <Container
@@ -171,7 +175,7 @@ export default function Header() {
         </Navbar>
 
         <Navbar className={`${styles.bgNavbarBottom}`} expand="lg">
-          <Navbar.Toggle aria-controls="filterSection" className="">
+          <Navbar.Toggle aria-controls="filterSection">
             <FontAwesomeIcon width="15px" height="15px" icon={faFilter} />
           </Navbar.Toggle>
 
@@ -243,26 +247,23 @@ export default function Header() {
                 <div className="border-right ml-lg-5" />
 
                 <div className="col-lg-5 ml-lg-5 d-lg-flex">
-                  <Nav.Link
-                    href="/about"
-                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
-                  >
-                    Sobre Cão cuidado
-                  </Nav.Link>
+                  <div className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                    <Link color="var(--main_white)" href="/about">
+                      Sobre Cão cuidado
+                    </Link>
+                  </div>
 
-                  <Nav.Link
-                    href="/404"
-                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
-                  >
-                    FAQ
-                  </Nav.Link>
+                  <div className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                    <Link color="var(--main_white)" href="/404">
+                      FAQ
+                    </Link>
+                  </div>
 
-                  <Nav.Link
-                    href="/adoption"
-                    className={`pl-lg-5 text-white ${styles.navbarLink}`}
-                  >
-                    Adoção
-                  </Nav.Link>
+                  <div className={`pl-lg-5 text-white ${styles.navbarLink}`}>
+                    <Link color="var(--main_white)" href="/adoption">
+                      Adoção
+                    </Link>
+                  </div>
                 </div>
               </Form.Row>
             </Form>
