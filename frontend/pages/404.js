@@ -10,7 +10,7 @@ export default function Page404() {
         <Col md="auto" className="mt-2 mb-3">
           <Image
             className=""
-            src="https://st2.depositphotos.com/1000877/5947/i/600/depositphotos_59478951-stock-photo-red-kitten.jpg/"
+            src="https://i.postimg.cc/y8CtmHND/sadcat.jpg"
             rounded
           />
         </Col>
