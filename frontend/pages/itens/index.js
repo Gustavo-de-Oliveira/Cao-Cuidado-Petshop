@@ -4,11 +4,9 @@ import { Card, Form } from 'react-bootstrap';
 import Link from '../../src/components/Link';
 
 export async function getStaticProps() {
-  // const productsData = products.data;
   const productsData = await fetch('http://localhost:8000/products').then(
     async (serverResponse) => {
       const response = await serverResponse.json();
-      // setProducts(response);
       return response;
     }
   );
@@ -22,62 +20,62 @@ export async function getStaticProps() {
 
 // eslint-disable-next-line react/prop-types
 export default function Itens({ productsData }) {
-  // const [Show, setShow] = React.useState(false);
-  // const [ShowFilter, setShowFilter] = React.useState(true);
-
   return (
     <>
       <div className="col-12 row">
         <div className="col-lg-2">
-          <h4 className="border-bottom">Categoria 1</h4>
+          <h4 className="border-bottom">Categorias</h4>
           <Form>
             <div key="checkbox" className="mb-3">
-              <Form.Check type="checkbox" id="op1" label="op 1" />
+              <Form.Check type="checkbox" id="op1" label="Ração" />
 
-              <Form.Check type="checkbox" id="op2" label="op 2" />
+              <Form.Check type="checkbox" id="op2" label="Petiscos e ossos" />
 
-              <Form.Check type="checkbox" id="op3" label="op 3" />
+              <Form.Check
+                type="checkbox"
+                id="op3"
+                label="Tapetes, fraldas e banheiros"
+              />
 
-              <Form.Check type="checkbox" id="op4" label="op 4" />
+              <Form.Check type="checkbox" id="op4" label="Farmácia" />
             </div>
           </Form>
 
-          <h4 className="border-bottom">Categoria 2</h4>
+          <h4 className="border-bottom">Faixa de preço</h4>
           <Form>
             <div key="checkbox" className="mb-3">
-              <Form.Check type="checkbox" id="op1" label="op 1" />
+              <Form.Check type="checkbox" id="op1" label="R$ 0,00 - R$ 50,00" />
 
-              <Form.Check type="checkbox" id="op2" label="op 2" />
+              <Form.Check
+                type="checkbox"
+                id="op2"
+                label="R$ 50,00 - R$ 100,00"
+              />
 
-              <Form.Check type="checkbox" id="op3" label="op 3" />
+              <Form.Check
+                type="checkbox"
+                id="op3"
+                label="R$ 100,00 - R$ 150,00"
+              />
 
-              <Form.Check type="checkbox" id="op4" label="op 4" />
+              <Form.Check
+                type="checkbox"
+                id="op4"
+                label="R$ 150,00 - R$ 200,00"
+              />
             </div>
           </Form>
 
-          <h4 className="border-bottom">Categoria 3</h4>
+          <h4 className="border-bottom">Marcas</h4>
           <Form>
             <div key="checkbox" className="mb-3">
-              <Form.Check type="checkbox" id="op1" label="op 1" />
+              <Form.Check type="checkbox" id="op1" label="Bayer Pet" />
 
-              <Form.Check type="checkbox" id="op2" label="op 2" />
+              <Form.Check type="checkbox" id="op2" label="Ceva" />
 
-              <Form.Check type="checkbox" id="op3" label="op 3" />
+              <Form.Check type="checkbox" id="op3" label="Royal Canin" />
 
-              <Form.Check type="checkbox" id="op4" label="op 4" />
-            </div>
-          </Form>
-
-          <h4 className="border-bottom">Categoria 4</h4>
-          <Form>
-            <div key="checkbox" className="mb-3">
-              <Form.Check type="checkbox" id="op1" label="op 1" />
-
-              <Form.Check type="checkbox" id="op2" label="op 2" />
-
-              <Form.Check type="checkbox" id="op3" label="op 3" />
-
-              <Form.Check type="checkbox" id="op4" label="op 4" />
+              <Form.Check type="checkbox" id="op4" label="Pet Society" />
             </div>
           </Form>
         </div>
