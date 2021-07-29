@@ -7,10 +7,10 @@ describe('/cart.js', () => {
     cy.visit('/');
     // clica no item especifico
     cy.get(
-      '#horizontalProductsList a[href="/itens/racao-royal-canin-medio-5kg"]'
+      '#horizontalProductsList a[href="/itens/racao-tartaruga-grande-25kg"]'
     ).click();
     // verifica se foi pra pagina certa
-    cy.url().should('include', '/itens/racao-royal-canin-medio-5kg');
+    cy.url().should('include', '/itens/racao-tartaruga-grande-25kg');
     // clica 4 vezes no botao '+'
     for (let n = 0; n < 3; n++) {
       cy.get('#increase_button').click();
@@ -22,6 +22,6 @@ describe('/cart.js', () => {
     // verifica se foi pra pagina certa
     cy.url().should('include', '/cart');
     // verifica se o valor 'total' ficou com a soma correta
-    cy.get('#finalPriceContainer h4').should('have.text', 'R$ 169.86');
+    cy.get('#finalPriceContainer h4').should('have.text', 'R$ 369.90');
   });
 });
