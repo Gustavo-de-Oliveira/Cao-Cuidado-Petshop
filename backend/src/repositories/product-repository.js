@@ -58,5 +58,5 @@ exports.update = async(id, data) => {
 
 exports.delete = (id) => {
     return Product 
-      .findOneAndRemove(id);    
+      .findByIdAndRemove(id);    
 }

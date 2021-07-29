@@ -41,10 +41,10 @@ export default function Header() {
   const [passConfirm, setPassConfirm] = React.useState('');
 
   async function getUsers() {
-    await fetch('http://localhost:8000/users').then(async (serverResponse) => {
-      const response = await serverResponse.json();
-      setUsers(response);
-    });
+      await fetch('http://localhost:8000/users').then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setUsers(response);
+      });
   }
 
   function login(email) {

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Col, Row, Table, Modal, Form, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faSearch
+} from '@fortawesome/free-solid-svg-icons';
+import { Col, Row, Table, Modal, Form, Button, Tooltip } from 'react-bootstrap';
 
 export default function admIndex() {
   //MODAL CONTROLLER
@@ -10,8 +14,62 @@ export default function admIndex() {
     const [showDelete, setShowDelete] = useState(false);
     const [showDeleteAdoption, setShowDeleteAdoption] = useState(false);
 
+    const [showAddAdoption, setShowAddAdoption] = useState(false);
+    const [showAddSale, setShowAddSale] = useState(false);
+
   //GENERAL
     const [products, setProducts] = useState([]);
+    const [animals, setAnimals] = useState([]);
+    const [user, setUser] = useState({});
+
+    const [email, setEmail] = useState("");
+
+    async function getProducts() {
+      await fetch('http://localhost:8000/products').then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setProducts(response);
+      });
+    }
+
+    async function getAnimals() {
+      await fetch('http://localhost:8000/animals').then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setAnimals(response);
+      });
+    }
+
+    async function createAdoption() {
+      setShowAddAdoption(false);
+      let animal = null;
+      let user = null;
+
+      if(email !== "" && animalName !== "") {
+        await fetch(`http://localhost:8000/users/${email}`).then(async (serverResponse) => {
+          const response = await serverResponse.json();
+          setUser(response);
+          user = response;
+        });
+        animal = animals.find(animal => animal.name && (animal.name).toLowerCase() === animalName.toLowerCase());
+        console.log(animal);
+        const response = await fetch('http://localhost:8000/adoptions', { method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            adopter: user._id,
+            number: animals.length+1,
+            createDate: new Date(),
+            status: 'done',
+            animal: animal._id,
+          })
+        });
+
+        //Após adotar deleta o animal
+        const del = await fetch(`http://localhost:8000/animals/${animal._id}`, { method: 'DELETE'})
+        .then(res => res.json());
+      }
+    }
 
   //PRODUCTS FORM
     const [productId, setProductId] = useState("");
@@ -21,6 +79,7 @@ export default function admIndex() {
     const [productPrice, setProductPrice] = useState("");
     const [productDescription, setProductDescription] = useState("");
     const [productBrand, setProductBrand] = useState("");
+    const [salePrice, setSalePrice] = useState("");
 
     const [product, setProduct] = useState({});
 
@@ -32,206 +91,216 @@ export default function admIndex() {
     const [animalSpecie, setAnimalSpecie] = useState("");
     const [animalRace, setAnimalRace] = useState("");
     const [animalBirthDate, setAnimalBirthDate] = useState("");
+    const [animalImage, setAnimalImage] = useState("");
 
     const [animal, setAnimal] = useState("");
 
 
-  async function getProducts() {
-    await fetch('http://localhost:8000/products').then(async (serverResponse) => {
-      const response = await serverResponse.json();
-      setProducts(response);
-    });
-  }
+  //FUNÇÕES CRUD PRODUTOS
+    async function createProduct() {
+      setShowAdd(false);
 
-  async function createProduct() {
-    setShowAdd(false);
+      if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "") {
+        const response = await fetch('http://localhost:8000/products', { method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
 
-    if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "") {
-      const response = await fetch('http://localhost:8000/products', { method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+          body: JSON.stringify({
+            title: productTitle, 
+            image: productImage,
+            description: productDescription,
+            realPrice: productPrice,
+            salePrice: productPrice,
+            onOffer: false,
+            link: "nenhum",
+            active: true,
+            stock: productQuantity,
+            brand: productBrand,
+          })
+        });
 
-        body: JSON.stringify({
-          title: productTitle, 
-          image: productImage,
-          description: productDescription,
-          realPrice: productPrice,
-          salePrice: productPrice,
-          onOffer: false,
-          link: "nenhum",
-          active: true,
-          stock: productQuantity,
-          brand: productBrand,
-        })
-      });
-
-    } else {
-      setProductTitle("");
-      setProductImage("");
-      setProductDescription("");
-      setProductPrice("");
-      setProductQuantity("");
-      setProductBrand("");
+      } else {
+        setProductTitle("");
+        setProductImage("");
+        setProductDescription("");
+        setProductPrice("");
+        setProductQuantity("");
+        setProductBrand("");
+      }
     }
-  }
 
-  async function searchProduct() {
-      await fetch(`http://localhost:8000/products/admin/${productId}`).then(async (serverResponse) => {
-        const response = await serverResponse.json();
-        setProduct(response);
-        setProductTitle(response.title);
-        setProductImage(response.image);
-        setProductDescription(response.description);
-        setProductPrice(response.realPrice);
-        setProductQuantity(response.stock);
-        setProductBrand(response.brand);
-      });
-  }
-
-  async function editProduct() {
-    setShowEdit(false);
-
-    if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "" && productImage !== "") {
-
-      const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          title: productTitle,
-          image: productImage,
-          description: productDescription,
-          realPrice: productPrice,
-          salePrice: productPrice,
-          onOffer: false,
-          link: "nenhum",
-          active: true,
-          stock: productQuantity,
-          brand: productBrand,
-        })
-      });
-
-    } else {
-      setProductTitle("");
-      setProductImage("");
-      setProductDescription("");
-      setProductPrice("");
-      setProductQuantity("");
-      setProductBrand("");
+    async function searchProduct() {
+        await fetch(`http://localhost:8000/products/admin/${productId}`).then(async (serverResponse) => {
+          const response = await serverResponse.json();
+          setProduct(response);
+          setProductTitle(response.title);
+          setProductImage(response.image);
+          setProductDescription(response.description);
+          setProductPrice(response.realPrice);
+          setSalePrice(response.salePrice);
+          setProductQuantity(response.stock);
+          setProductBrand(response.brand);
+        });
     }
-  }
 
-  async function deleteProduct() {
-    setShowDelete(false);
+    async function editProduct() {
+      setShowEdit(false);
 
-    if(product) {
+      if(productTitle !== "" && productQuantity !== "" && productPrice !== "" && productDescription !== "" && productBrand !== "" && productImage !== "") {
 
-      const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'DELETE'})
-      .then(res => res.json()) // or res.json()
-      .then(res => alert(product.title + " excluido com sucesso!"));
+        if(salePrice === "") salePrice = productPrice;
 
-    } else {
-      setProductTitle("");
-      setProductImage("");
-      setProductDescription("");
-      setProductPrice("");
-      setProductQuantity("");
-      setProductBrand("");
+        const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            title: productTitle,
+            image: productImage,
+            description: productDescription,
+            realPrice: productPrice,
+            salePrice: salePrice,
+            onOffer: false,
+            link: "nenhum",
+            active: true,
+            stock: productQuantity,
+            brand: productBrand,
+          })
+        });
+
+      } else {
+        setProductTitle("");
+        setProductImage("");
+        setProductDescription("");
+        setProductPrice("");
+        setProductQuantity("");
+        setProductBrand("");
+        setProductSale("");
+      }
     }
-  }
 
-  async function createAnimal() {
-    setShowAdoption(false);
+    async function deleteProduct() {
+      setShowDelete(false);
 
-    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
-      const response = await fetch('http://localhost:8000/animals', { method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+      if(product) {
+        console.log(product);
 
-        body: JSON.stringify({
-          name: animalName,
-          specie: animalSpecie,
-          race: animalRace,
-          birthDate: animalBirthDate,
-          vaccines: animalVaccines,
-          images: ""
-        })
-      });
+        const response = await fetch(`http://localhost:8000/products/${product._id}`, { method: 'DELETE'})
+        .then(res => res.json()) // or res.json()
+        .then(res => alert(product.title + " excluido com sucesso!"));
 
-    } else {
-      setAnimalName("");
-      setAnimalVaccines("");
-      setAnimalSpecie("");
-      setAnimalRace("");
-      setAnimalBirthDate("");
+      } else {
+        setProductTitle("");
+        setProductImage("");
+        setProductDescription("");
+        setProductPrice("");
+        setProductQuantity("");
+        setProductBrand("");
+      }
     }
-  }
 
-  async function searchAnimal() {
-      await fetch(`http://localhost:8000/animals/admin/${animalId}`).then(async (serverResponse) => {
-        const response = await serverResponse.json();
 
-        setAnimal(response);
-        setAnimalName(response.name);
-        setAnimalVaccines(response.vaccines);
-        setAnimalSpecie(response.specie);
-        setAnimalRace(response.race);
-        setAnimalBirthDate(response.birthDate);
-      });
-  }
+  //FUNÇÕES CRUD ANIMAIS
+    async function createAnimal() {
+      setShowAdoption(false);
 
-  async function editAnimal() {
-    setShowEditAdoption(false);
+      if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "" && animalImage !== "") {
+        const response = await fetch('http://localhost:8000/animals', { method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
 
-    if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "") {
+          body: JSON.stringify({
+            name: animalName,
+            specie: animalSpecie,
+            race: animalRace,
+            birthDate: animalBirthDate,
+            vaccines: animalVaccines,
+            images: animalImage
+          })
+        });
 
-      const response = await fetch(`http://localhost:8000/animals/${product._id}`, { method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          name: animalName,
-          specie: animalSpecie,
-          race: animalRace,
-          birthDate: animalBirthDate,
-          vaccines: animalVaccines,
-          images: ""
-        })
-      });
-
-    } else {
-      setAnimalName("");
-      setAnimalVaccines("");
-      setAnimalSpecie("");
-      setAnimalRace("");
-      setAnimalBirthDate("");
+      } else {
+        setAnimalName("");
+        setAnimalVaccines("");
+        setAnimalSpecie("");
+        setAnimalRace("");
+        setAnimalBirthDate("");
+        setAnimalImage("");
+      }
     }
-  }
 
-  async function deleteAnimal() {
-    setShowDeleteAdoption(false);
+    async function searchAnimal() {
+        await fetch(`http://localhost:8000/animals/admin/${animalId}`).then(async (serverResponse) => {
+          const response = await serverResponse.json();
 
-    if(product) {
-
-      const response = await fetch(`http://localhost:8000/animals/${animal._id}`, { method: 'DELETE'})
-      .then(res => res.json()) // or res.json()
-      .then(res => alert(animal.name + " excluido com sucesso!"));
-
-    } else {
-      setAnimalName("");
-      setAnimalVaccines("");
-      setAnimalSpecie("");
-      setAnimalRace("");
-      setAnimalBirthDate("");
+          setAnimal(response);
+          setAnimalName(response.name);
+          setAnimalVaccines(response.vaccines);
+          setAnimalSpecie(response.specie);
+          setAnimalRace(response.race);
+          setAnimalBirthDate(response.birthDate);
+          setAnimalImage(response.images);
+        });
     }
-  }
+
+    async function editAnimal() {
+      setShowEditAdoption(false);
+
+      if(animalName !== "" && animalVaccines !== "" && animalSpecie !== "" && animalRace !== "" && animalBirthDate !== "" && animalImage !== "") {
+
+        const response = await fetch(`http://localhost:8000/animals/${animalId}`, { method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            name: animalName,
+            specie: animalSpecie,
+            race: animalRace,
+            birthDate: animalBirthDate,
+            vaccines: animalVaccines,
+            images: animalImage
+          })
+        });
+
+      } else {
+        setAnimalName("");
+        setAnimalVaccines("");
+        setAnimalSpecie("");
+        setAnimalRace("");
+        setAnimalBirthDate("");
+        setAnimalImage("");
+      }
+    }
+
+    async function deleteAnimal() {
+      setShowDeleteAdoption(false);
+
+      if(product) {
+
+        const response = await fetch(`http://localhost:8000/animals/${animal._id}`, { method: 'DELETE'})
+        .then(res => res.json()) // or res.json()
+        .then(res => alert(animal.name + " excluido com sucesso!"));
+
+      } else {
+        setAnimalName("");
+        setAnimalVaccines("");
+        setAnimalSpecie("");
+        setAnimalRace("");
+        setAnimalBirthDate("");
+        setAnimalImage("");
+      }
+    }
+
+  //FUNÇÕES ADICIONAR ADOÇÃO
+
 
   React.useEffect(() => {
       getProducts();
+      getAnimals();
   }, [])
 
   const listItems = products.map((product) =>  
@@ -262,7 +331,7 @@ export default function admIndex() {
           className="m-2 btn btn-outline-primary"
           onClick={() => setShowAdoption(true)}
         >
-          Adicionar Adoção
+          Adicionar Animal
         </button>
         <button
           type="button"
@@ -276,7 +345,7 @@ export default function admIndex() {
           className="m-2 btn btn-outline-warning"
           onClick={() => setShowEditAdoption(true)}
         >
-          Editar Adoção
+          Editar Animal
         </button>
         <button
           type="button"
@@ -290,7 +359,14 @@ export default function admIndex() {
           className="m-2 btn btn-outline-danger"
           onClick={() => setShowDeleteAdoption(true)}
         >
-          Deletar Adoção
+          Deletar Animal
+        </button>
+        <button
+          type="button"
+          className="m-2 btn btn-outline-success"
+          onClick={() => setShowAddAdoption(true)}
+        >
+          Criar Adoção
         </button>
       </div>
 
@@ -383,7 +459,7 @@ export default function admIndex() {
         </Modal.Body>
       </Modal>
 
-      {/* MODAL ADICIONAR ADOÇÕES */}
+      {/* MODAL ADICIONAR ANIMAIS */}
       <Modal
         size="lg"
         show={showAdoption}
@@ -396,14 +472,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" onChange={event => setAnimalImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
 
             <Form.Row>
@@ -464,17 +536,17 @@ export default function admIndex() {
         onHide={() => setShowEdit(false)}
         aria-labelledby="example-modal-sizes-title-sm">
         <Modal.Header>
-          <Form.Group as={Row} controlId="formHorizontalEmail">
+          <Form.Group as={Row} controlId="formHorizontalEmail" >
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setProductId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchProduct()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -508,7 +580,14 @@ export default function admIndex() {
 
               <Form.Group as={Col} controlId="formGridPrice">
                 <Form.Label>Preço</Form.Label>
-                <Form.Control type="number" placeholder="price" value={productPrice} onChange={event => setProductPrice(event.target.value)}/>
+                <Form.Control type="number" placeholder="R$" value={productPrice} onChange={event => setProductPrice(event.target.value)}/>
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridPrice">
+                <Form.Label>
+                  Preço em promoção
+                 </Form.Label>
+                <Form.Control type="number" placeholder="R$" value={salePrice} onChange={event => setSalePrice(event.target.value)}/>
               </Form.Group>
             </Form.Row>
 
@@ -541,7 +620,7 @@ export default function admIndex() {
         </Modal.Body>
       </Modal>
 
-      {/* MODAL EDITAR ADOÇÕES */}
+      {/* MODAL EDITAR ANIMAIS */}
       <Modal
         size="lg"
         show={showEditAdoption}
@@ -552,13 +631,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setAnimalId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchAnimal()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -566,14 +645,10 @@ export default function admIndex() {
         <Modal.Body>
           <Form>
             <Form.Row>
-              <Form.File
-                className="position-relative"
-                required
-                name="file"
-                label="Foto"
-                id="validationFormik107"
-                feedbackTooltip
-              />
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Link da Imagem</Form.Label>
+                <Form.Control type="text" placeholder="link" value={animalImage} onChange={event => setAnimalImage(event.target.value)}/>
+              </Form.Group>
             </Form.Row>
 
             <Form.Row>
@@ -638,13 +713,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setProductId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchProduct()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -704,7 +779,7 @@ export default function admIndex() {
         </Modal.Body>
       </Modal>
 
-      {/* MODAL DELETAR ADOÇÕES */}
+      {/* MODAL DELETAR ANIMAIS */}
       <Modal
         size="lg"
         show={showDeleteAdoption}
@@ -715,13 +790,13 @@ export default function admIndex() {
             <Form.Label column sm={5}>
               Buscar por ID
             </Form.Label>
-            <Col sm={12}>
+            <Col sm={12} className="d-flex">
               <Form.Control type="text" placeholder="ID" onChange={event => setAnimalId(event.target.value)}/>
               <Button
                   variant="primary"
                   size="sm"
                   onClick={() => searchAnimal()}
-                > [lupa] </Button>
+                > <FontAwesomeIcon width="15px" height="15px" icon={faSearch} /> </Button>
             </Col>
           </Form.Group>
         </Modal.Header>
@@ -770,6 +845,53 @@ export default function admIndex() {
                   size="lg"
                   block
                   onClick={() => setShowDeleteAdoption(false)}
+                >
+                  Cancelar
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+
+      {/* MODAL ADICIONAR ADOÇÃO */}
+      <Modal
+        size="lg"
+        show={showAddAdoption}
+        onHide={() => setShowAddAdoption(false)}
+        aria-labelledby="example-modal-sizes-title-sm">
+        <Modal.Header>
+          <h2>Adicionar Adoção</h2>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Form>
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Nome do animal</Form.Label>
+                <Form.Control type="text" placeholder="Nome" onChange={event => setAnimalName(event.target.value)}/>
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridName">
+                <Form.Label>Email do Adotador</Form.Label>
+                <Form.Control type="email" placeholder="email" onChange={event => setEmail(event.target.value)}/>
+              </Form.Group>
+            </Form.Row>
+
+            <Row>
+              <Col>
+                <Button variant="primary" size="lg" block  onClick={() => createAdoption()}>
+                  Salvar
+                </Button>
+              </Col>
+
+              <Col>
+                <Button
+                  variant="danger"
+                  size="lg"
+                  block
+                  onClick={() => setShowAddAdoption(false)}
                 >
                   Cancelar
                 </Button>
