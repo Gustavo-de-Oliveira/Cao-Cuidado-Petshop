@@ -41,10 +41,10 @@ export default function Header() {
   const [passConfirm, setPassConfirm] = React.useState('');
 
   async function getUsers() {
-      await fetch('http://localhost:8000/users').then(async (serverResponse) => {
-        const response = await serverResponse.json();
-        setUsers(response);
-      });
+    await fetch('http://localhost:8000/users').then(async (serverResponse) => {
+      const response = await serverResponse.json();
+      setUsers(response);
+    });
   }
 
   function login(email) {
@@ -101,13 +101,13 @@ export default function Header() {
       <header className="mb-5">
         <Navbar className={`${styles.bgNavbarUp}`} expand="lg">
           <Link href="/">
-            <NextImage src={brandIcon} alt="logo" width="95" height="67" />
-            {/* <img
+            {/* <NextImage src={brandIcon} alt="logo" width="95" height="67" /> */}
+            <img
               src="http://placehold.it/100x70"
               alt="logo"
               width="95"
               height="67"
-            /> */}
+            />
           </Link>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
